@@ -1,0 +1,49 @@
+﻿@{
+   
+    
+}
+
+<link href="~/Content/css/addclass.css" rel="stylesheet" />
+<link href="~/Content/css/snow.css" rel="stylesheet" />
+<div class="frameclass">
+    <div class="snowflakes" aria-hidden="true">
+        <div class="snowflake">.</div>
+        <div class="snowflake">.</div>
+        <div class="snowflake">.</div>
+        <div class="snowflake">.</div>
+        <div class="snowflake">.</div>
+        <div class="snowflake">.</div>
+        <div class="snowflake">.</div>
+        <div class="snowflake">.</div>
+        <div class="snowflake">.</div>
+        <div class="snowflake">.</div>
+    </div>
+    <div class="createclass">
+
+        @using (Html.BeginForm("createclass", "Class", FormMethod.Post))
+        {
+            <div class="divaddclass"><label style="color:white">Add Class</label><br /></div>
+
+
+
+            <div class="form-group bmd-form-group" style="margin-top:-20px">
+                <label class="bmd-label-floating" style="color:white;">Class Name</label><br />
+                <textarea name="classname" required placeholder="Nhập tên lớp" ></textarea>
+
+            </div>
+            <div class="form-group bmd-form-group">
+                <label class="bmd-label-floating" style="color:white;">Class Infro</label><br />
+                <textarea name="inforclass" required placeholder="Nhập thông tin lớp"></textarea>
+            </div>
+
+
+            <div class="form-group bmd-form-group">
+                <button type="submit" class="btn btn-primary addclass">Add</button>
+            </div>
+
+
+        }
+
+    </div>
+
+</div>
