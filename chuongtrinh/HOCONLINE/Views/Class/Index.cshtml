@@ -137,7 +137,7 @@
 
 
 
-<body class="container" style="background-color: #E6E6E6; margin-top: 20px">
+<body class="container" style="background-color: white; margin-top: 20px">
     <div class="thongbaomoi" >
         <label>Thong bao moi</label><br />
         <a href="~/Class/Index/@lop.MaLop">Làm mới</a>
@@ -161,14 +161,14 @@
 
 
 
-        <div class="dangtb" >
+        <div class="dangtb">
             @using (Html.BeginForm("DangTB", "Class", FormMethod.Post, new { enctype = "multipart/form-data" }))
             {
 
                 <div class="row">
                     <div class="col-md-1">
                         <div class="form-group bmd-form-group">
-                            <img src=@user.HinhAnh  width="30" height="30" style="border-radius:45px;" />
+                            <img src=@user.HinhAnh width="30" height="30" style="border-radius:45px;" />
                         </div>
                     </div>
                     <div class="navbar-left" style="margin-top:10px">
@@ -179,140 +179,141 @@
                 </div>
 
                 <div class="form-group bmd-form-group">
-                  
-                    <button class="glyphicon glyphicon-menu-down showthongbao" ></button>
+
+                    <button class="glyphicon glyphicon-menu-down showthongbao"></button>
                 </div>
                 <div class="hideDangThongBao" style="display:none; padding:20px">
-                    <textarea  name="noidung" id="noidung" required></textarea>
+                    <textarea name="noidung" id="noidung" required></textarea>
                     <div><label class="101-1"></label></div> <br />
-                    <label class="glyphicon glyphicon-paperclip themfiletb" for="101-1" >  Thêm</label>
+                    <label class="glyphicon glyphicon-paperclip themfiletb" for="101-1">  Thêm</label>
 
                     <input type="file" multiple name="file" style="display:none" id="101-1" class="fileupload glyphicon glyphicon-file" />
-                    <button  id="dang" class="navbar-right">Dang</button>
-                    <button class="glyphicon glyphicon-menu-up hidethongbao " ></button>
+                    <button id="dang" class="navbar-right">Dang</button>
+                    <button class="glyphicon glyphicon-menu-up hidethongbao "></button>
                 </div>}
         </div>
 
 
-                @{ if (Model.Count > 0)
+        @{ if (Model.Count > 0)
+            {
+                foreach (var i in Model)
+                {
+                    if (i.MaBaiTap != null)
                     {
-                        foreach (var i in Model)
-                        {
-                            if (i.MaBaiTap != null)
-                            {
-
-                                <a href="~/Class/ShowInforBaiTap/@i.MaBaiTap">
-                                    <div class="thongbaobaitap" >
-                                        <table style="margin-bottom:20px;">
-                                            <tr>
-                                                <th><img class="navbar-link" src=@i.TaiKhoan.HinhAnh width="50" height="50" style="border-radius:45px;" /></th>
-                                                <th style="padding-left:10px">
-                                                    <label>@i.TaiKhoan.Ho @i.TaiKhoan.Ten</label><br />
-                                                    <label style="font-size:10px">@i.NgayDang.Value.ToString(string.Format("HH:mm:ss dd/MM/yyyy"))</label><br />
-                                                </th>
-                                            </tr>
-                                        </table>
-                                        <div>@Html.Raw(@i.Thongtin)</div>
-                                    </div>
-                                </a>
+                <div class="thongbao">
+                    <a href="~/Class/ShowInforBaiTap/@i.MaBaiTap">
+                        <div class="thongbaobaitap">
+                            <table style="margin-bottom:20px;">
+                                <tr>
+                                    <th><img class="navbar-link" src=@i.TaiKhoan.HinhAnh width="50" height="50" style="border-radius:45px;" /></th>
+                                    <th style="padding-left:10px">
+                                        <label>@i.TaiKhoan.Ho @i.TaiKhoan.Ten</label><br />
+                                        <label style="font-size:10px">@i.NgayDang.Value.ToString(string.Format("HH:mm:ss dd/MM/yyyy"))</label><br />
+                                    </th>
+                                </tr>
+                            </table>
+                            <div>@Html.Raw(@i.Thongtin)</div>
+                        </div>
+                    </a>
+                </div>
                             }
                             else if (i.MaBaiTap == null)
                             {
-                                <div class="thongbao">
+                            <div class="thongbao">
 
-                                    <div id="@i.MaBaiDang">
+                                <div id="@i.MaBaiDang">
 
-                                        @if (i.NguoiDang.Equals((Session["user"] as HOCONLINE.Models.TaiKhoan).TenDangNhap))
-                                        {
+                                    @if (i.NguoiDang.Equals((Session["user"] as HOCONLINE.Models.TaiKhoan).TenDangNhap))
+                                    {
 
-                                            <div class="navbar-right dropdown ">
-                                                <i class="glyphicon glyphicon-option-vertical" id="menu " data-toggle="dropdown" style="margin-right:10px" aria-haspopup="true" aria-expanded="false"></i>
-                                                <div class="dropdown-menu " aria-labelledby="menu ">
-                                                    <ul class="nav">
-                                                        <li><a class="dropdown-itemxoa" href="~/Class/DeleteThongBao/@i.MaBaiDang" onclick="return conformdelete()">xoa</a></li>
-                                                        <li><a class="dropdown-itemsua" id="@i.MaBaiDang">sua</a></li>
+                                        <div class="navbar-right dropdown ">
+                                            <i class="glyphicon glyphicon-option-vertical" id="menu " data-toggle="dropdown" style="margin-right:10px" aria-haspopup="true" aria-expanded="false"></i>
+                                            <div class="dropdown-menu " aria-labelledby="menu ">
+                                                <ul class="nav">
+                                                    <li><a class="dropdown-itemxoa" href="~/Class/DeleteThongBao/@i.MaBaiDang" onclick="return conformdelete()">xoa</a></li>
+                                                    <li><a class="dropdown-itemsua" id="@i.MaBaiDang">sua</a></li>
 
 
-                                                    </ul>
-                                                </div>
-
+                                                </ul>
                                             </div>
 
-                                        }
+                                        </div>
 
-                                        <table style="margin-bottom:20px;">
-                                            <tr>
-                                                <th><img class="navbar-link" src=@i.TaiKhoan.HinhAnh width="50" height="50" style="border-radius:45px;" /></th>
-                                                <th style="padding-left:10px">
-                                                    <label>@i.TaiKhoan.Ho @i.TaiKhoan.Ten</label><br />
-                                                    <label style="font-size:10px">@i.NgayDang.Value.ToString(string.Format("HH:mm:ss dd/MM/yyyy"))</label>
-                                                </th>
+                                    }
 
-                                            </tr>
-                                        </table>
-                                        <div>@Html.Raw(@i.Thongtin)</div>
-                                        @{
-                                            if (i.FileTBs.Count > 0)
-                                            {
-                                                <hr />
-                                            }
+                                    <table style="margin-bottom:20px;">
+                                        <tr>
+                                            <th><img class="navbar-link" src=@i.TaiKhoan.HinhAnh width="50" height="50" style="border-radius:45px;" /></th>
+                                            <th style="padding-left:10px">
+                                                <label>@i.TaiKhoan.Ho @i.TaiKhoan.Ten</label><br />
+                                                <label style="font-size:10px">@i.NgayDang.Value.ToString(string.Format("HH:mm:ss dd/MM/yyyy"))</label>
+                                            </th>
 
-                                            foreach (var filetb in i.FileTBs)
-                                            {
-                                                if (@filetb.TenFile.IndexOf(".png") == @filetb.TenFile.Length - 4 || @filetb.TenFile.IndexOf(".jpg") == @filetb.TenFile.Length - 4)
-                                                {
-                                                    <div class="filethongbao">
-                                                        <img class="anhfilethongbao" src="@filetb.NoiLuu" width="50" height="30">
-                                                        <a href=@filetb.NoiLuu download>@filetb.TenFile</a>
-                                                    </div>
-
-                                                }
-                                                else
-                                                {
-                                                    
-
-                                                    <div class="filethongbao">
-                                                        <img  class="anhfilethongbao" src="~/Content/image/Icon/unnamed.png"  width="40" height="30">
-                                                        <a href=@filetb.NoiLuu download style="margin-left:20px">@filetb.TenFile</a>
-                                                    </div> }
-
-
-                                            }
-                                        }
-                                    </div>
-
-
-
-
-                                    <div class="suaThongBao-@i.MaBaiDang" style="display:none;padding:20px">
-                                        @using (Html.BeginForm("EditThongBao", "Class", new { id = i.MaBaiDang }, FormMethod.Post, new { enctype = "multipart/form-data" }))
+                                        </tr>
+                                    </table>
+                                    <div>@Html.Raw(@i.Thongtin)</div>
+                                    @{
+                                        if (i.FileTBs.Count > 0)
                                         {
-                                            <textarea  name="suanoidungthongbao" required>@i.Thongtin</textarea>
-                                            foreach (var filetb in i.FileTBs)
+                                            <hr />
+                                        }
+
+                                        foreach (var filetb in i.FileTBs)
+                                        {
+                                            if (@filetb.TenFile.IndexOf(".png") == @filetb.TenFile.Length - 4 || @filetb.TenFile.IndexOf(".jpg") == @filetb.TenFile.Length - 4)
                                             {
-                                                <br /><a class="suafile_@i.MaBaiDang" href=@filetb.NoiLuu>@filetb.TenFile</a>
+                                                <div class="filethongbao">
+                                                    <img class="anhfilethongbao" src="@filetb.NoiLuu" width="50" height="30">
+                                                    <a href=@filetb.NoiLuu download>@filetb.TenFile</a>
+                                                </div>
+
                                             }
-                                            <div><label class=file-@i.MaBaiDang></label></div> <br />
-                                            <label class="glyphicon glyphicon-paperclip themfiletb" for=file-@i.MaBaiDang >  Thêm</label>
-
-                                            <input type="file" multiple name="file" id=file-@i.MaBaiDang class="suafileupload glyphicon glyphicon-file"style="display:none"  />
+                                            else
+                                            {
 
 
-
-                                            <button  class="navbar-right" id="dang">Sửa</button>
+                                                <div class="filethongbao">
+                                                    <img class="anhfilethongbao" src="~/Content/image/Icon/unnamed.png" width="40" height="30">
+                                                    <a href=@filetb.NoiLuu download style="margin-left:20px">@filetb.TenFile</a>
+                                                </div> }
 
 
                                         }
-                                        <button class="glyphicon glyphicon-menu-up huysuaThongBao "  id="@i.MaBaiDang"></button>
+                                    }
+                                </div>
 
-                                    </div>
 
-                                                </div>
+
+
+                                <div class="suaThongBao-@i.MaBaiDang" style="display:none;padding:20px">
+                                    @using (Html.BeginForm("EditThongBao", "Class", new { id = i.MaBaiDang }, FormMethod.Post, new { enctype = "multipart/form-data" }))
+                                    {
+                                        <textarea name="suanoidungthongbao" required>@i.Thongtin</textarea>
+                                        foreach (var filetb in i.FileTBs)
+                                        {
+                                            <br /><a class="suafile_@i.MaBaiDang" href=@filetb.NoiLuu>@filetb.TenFile</a>
+                                        }
+                                        <div><label class=file-@i.MaBaiDang></label></div> <br />
+                                        <label class="glyphicon glyphicon-paperclip themfiletb" for=file-@i.MaBaiDang>  Thêm</label>
+
+                                        <input type="file" multiple name="file" id=file-@i.MaBaiDang class="suafileupload glyphicon glyphicon-file" style="display:none" />
+
+
+
+                                        <button class="navbar-right" id="dang">Sửa</button>
+
+
+                                    }
+                                    <button class="glyphicon glyphicon-menu-up huysuaThongBao " id="@i.MaBaiDang"></button>
+
+                                </div>
+
+                            </div>
                             }
 
-                        }
-                    }
-                }
+                            }
+                            }
+                            }
 
 
 
@@ -320,5 +321,5 @@
 
 
 
-            </div>
+                        </div>
 </body>
