@@ -26,13 +26,13 @@ namespace HOCONLINE.Controllers
        
         public ActionResult checkaccount(TaiKhoan taiKhoan)
         {
-            if (!this.IsCaptchaValid(""))
+            /*if (!this.IsCaptchaValid(""))
             {
                 ModelState.AddModelError("", "Invalid Captcha");
             }
 
             else if (ModelState.IsValid)
-            {
+            {*/
                 DB db = new DB();
                 string mk = Models.crypt.Encrypt.encryptuser(taiKhoan.MatKhau);
                 var TK = db.TaiKhoans.SingleOrDefault(x => x.TenDangNhap.Equals(taiKhoan.TenDangNhap) && x.MatKhau.Equals(mk));
@@ -53,7 +53,7 @@ namespace HOCONLINE.Controllers
                     ModelState.AddModelError("", "tên đăng nhập không đúng ");
                 }
 
-            }
+            /*}*/
             return View("Login");
         }
 
