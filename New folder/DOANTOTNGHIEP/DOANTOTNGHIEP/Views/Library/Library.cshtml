@@ -1,0 +1,102 @@
+﻿@{
+
+    Layout = "~/Views/Shared/Layoutclass.cshtml";
+    <script src="~/Scripts/jquery.signalR-2.4.2.min.js"></script>
+    <script src="~/signalr/hubs"></script>
+    var user = Session["user"] as DOANTOTNGHIEP.Models.TaiKhoan;
+    string nguoitao = user.TenDangNhap;
+    DOANTOTNGHIEP.Models.ThongBao tb = new DOANTOTNGHIEP.Models.ThongBao();
+    var malop = Session["malop"].ToString();
+
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title></title>
+    <style type="text/css">
+        .anhload {
+            position: relative;
+            margin: auto;
+            display: block;
+            top: 20%;
+        }
+
+        form {
+            margin-block-end: 0em;
+        }
+        .noidung {
+            width: 100%;
+            max-width: 90%;
+            border: 1px solid black;
+            border-radius: 5px;
+            font-size: 20px;
+            outline: none;
+            background-color: #BDBDBD;
+            color: white;
+        }
+        .noidung:focus{
+            background-color:white;
+            color:black;
+        }
+        #tailieu{
+            margin-top:40px
+        }
+       
+       
+        
+    </style>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            reset();
+            $('.headthuvien').css("color", "black");
+            $('.headthuvien').css("background-color", "white");
+            
+            $(window).on('load', function (event) {
+                $('body').removeClass('preloading');
+                // $('.load').delay(1000).fadeOut('fast');
+                $('.loader').delay(1000).fadeOut('fast');
+            });
+
+
+            $('#search').trigger("click");
+            $('#search').click(function () {
+                $('.loader').css("display", "block"); 
+                $('#tailieu').css("display", "none");
+            });
+
+
+        });
+
+   
+
+    </script>
+</head>
+<body style="">
+    <div style="width:100%;border-bottom:1px solid black">
+        @using (Ajax.BeginForm("Searchlibrary", "Library", new AjaxOptions { HttpMethod = "POST", UpdateTargetId = "tailieu" ,InsertionMode=InsertionMode.Replace}))
+        {
+        <div style="text-align:center;padding:10px;background-color:#292929;z-index:9999;position:fixed;top:auto;right:0px;left:0px" >
+            <button type="submit" class="glyphicon glyphicon-search " style="font-size:20px;background-color:transparent;border:0px;color:white" id="search"></button>
+            <input class="noidung" type="text" name="noidungcantin" placeholder="search" >
+
+        </div>
+        }
+
+    </div>
+    
+    <div>
+        <div class="loader" style="width:100%;height:100%;background-color:#292929;display:none">
+            <img src="~/Content/image/Icon/b7671b668a78e0208b9c2d1c36802ce8.gif" class="anhload" />
+            <span class="fas fa-spinner xoay icon"></span>
+        </div>
+        <div id="tailieu">
+
+        </div>
+
+
+    </div>
+</body>
+</html>

@@ -1,0 +1,121 @@
+﻿@model List<DOANTOTNGHIEP.Models.ThanhVienLop>
+@{
+    Layout = "~/Views/Shared/Layoutclass.cshtml";
+    <script src="~/Scripts/jquery.signalR-2.4.2.min.js"></script>
+    <script src="~/signalr/hubs"></script>
+    var user = Session["user"] as DOANTOTNGHIEP.Models.TaiKhoan;
+    string nguoitao = user.TenDangNhap;
+    var malop = Session["malop"].ToString();
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title></title>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            reset();
+        $('.headthanhvien').css("color", "black");
+            $('.headthanhvien').css("background-color", "white");
+            $('.moithamgia').click(function () {
+                $('.moithamgia').css("display", "none");
+                $('.divthamgia').css("display", "block");
+            });
+            $('.huy').click(function () {
+                $('.moithamgia').css("display", "block");
+                $('.divthamgia').css("display", "none");
+                $('label.result').remove();
+            });
+
+            $('.join').click(function () {
+                var email = $('.emailthamgia').val();
+                if (email.length == 0) {
+                    alert("vui lòng nhập email");
+                }
+                else {
+
+
+                    $.ajax({
+                        url: '/Class/inviteclass', type: 'post',
+                        data: {
+                            email: email,
+
+                        },
+                        success: function (result) {
+                            $('label.result').remove();
+                            $('.emailthamgia').val("");
+                            $('br.result').after(result);
+                        },
+
+
+                    });
+                }
+
+
+            });
+
+        });
+
+       
+
+        
+    </script>
+
+</head>
+<body class="container">
+    @if (Model[0].LopHoc.NguoiTao.Equals(nguoitao)) { 
+  
+    <button class="moithamgia" style=" background-image: linear-gradient(to right,#0404B4,#A901DB); padding: 5px; padding-left: 15px; padding-right: 15px; color: white; border-radius: 20px; margin: 2%">Mời tham gia</button>
+    <div class="divthamgia" style="display:none">
+        <input type="text" placeholder="Nhập email" style="border-radius:5px;outline:none; width:300px" class="emailthamgia" />
+        <button class="join" style=" background-image: linear-gradient(to right,#0404B4,#A901DB); padding: 5px; padding-left: 15px; padding-right: 15px; color: white; border-radius: 20px; margin: 2%">Mời tham gia</button>
+        <button class="huy" style=" background-image: linear-gradient(to right,#0404B4,#A901DB); padding: 5px; padding-left: 15px; padding-right: 15px; color: white; border-radius: 20px; margin: 2%">Hide</button><br  class="result"/>
+        
+    </div>  }
+    <div style="margin-top:20px">
+
+        <div><label>Giáo viên</label></div>
+        <div>
+            <ul style="list-style-type: none;">
+                @{
+                    foreach (var i in Model)
+                    {
+
+                        if (i.LopHoc.NguoiTao.Equals(i.Mathanhvien))
+                        {
+                            <li class="navbar-link " style="margin-bottom:40px;">
+
+                                <img class="navbar-link" src=@i.TaiKhoan.HinhAnh width="30" height="30" style="border-radius:45px;" />
+                                <label>@i.TaiKhoan.Ho @i.TaiKhoan.Ten</label>
+                                <label class="navbar-right">@i.TaiKhoan.Email</label>
+
+                            </li>
+                        }
+                    }
+                }
+            </ul>
+        </div>
+        <div><label>Sinh viên</label> <label class="navbar-right" style="margin-right:5%">@Convert.ToInt32(@Model.Count() - 1)</label></div>
+        <div>
+            <ul style="list-style-type: none;">
+                @{
+                    foreach (var i in Model)
+                    {
+                        if (!i.LopHoc.NguoiTao.Equals(i.Mathanhvien))
+                        {
+                            <li class="nav-item " style="padding:10px;border-bottom:0.5px solid blue;">
+
+                                <img class="navbar-link" src=@i.TaiKhoan.HinhAnh width="30" height="30" style="border-radius:45px;" />
+                                <label>@i.TaiKhoan.Ho @i.TaiKhoan.Ten</label>
+                                <label class="navbar-right">@i.TaiKhoan.Email</label>
+                            </li>
+                        }
+                    }
+                }
+            </ul>
+        </div>
+    </div>
+</body>
+</html>

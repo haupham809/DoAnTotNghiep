@@ -1,0 +1,1290 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{1BA3E152-F392-4A9D-B70A-D64A18AB2BA1}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>DOANTOTNGHIEP</RootNamespace>
+    <AssemblyName>DOANTOTNGHIEP</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <Use64BitIISExpress />
+    <IISExpressSSLPort>44386</IISExpressSSLPort>
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AdvancedStringBuilder, Version=0.1.0.0, Culture=neutral, PublicKeyToken=e818a2fc08933ddb, processorArchitecture=MSIL">
+      <HintPath>..\packages\AdvancedStringBuilder.0.1.0\lib\net45\AdvancedStringBuilder.dll</HintPath>
+    </Reference>
+    <Reference Include="BundleTransformer.Core, Version=1.10.0.0, Culture=neutral, PublicKeyToken=973c344c93aac60d, processorArchitecture=MSIL">
+      <HintPath>..\packages\BundleTransformer.Core.1.10.0\lib\net40\BundleTransformer.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="CaptchaMvc, Version=2.5.0.0, Culture=neutral, PublicKeyToken=fe46ad421dd3b0e6, processorArchitecture=MSIL">
+      <HintPath>..\packages\CaptchaMvc.Mvc5.1.5.0\lib\net45-full\CaptchaMvc.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="HtmlAgilityPack, Version=1.11.42.0, Culture=neutral, PublicKeyToken=bd319b19eaf3b43a, processorArchitecture=MSIL">
+      <HintPath>..\packages\HtmlAgilityPack.1.11.42\lib\Net45\HtmlAgilityPack.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.SignalR.Core, Version=2.2.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.SignalR.Core.2.2.2\lib\net45\Microsoft.AspNet.SignalR.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.SignalR.SystemWeb, Version=2.2.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.SignalR.SystemWeb.2.2.2\lib\net45\Microsoft.AspNet.SignalR.SystemWeb.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Owin, Version=4.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.4.0.1\lib\net45\Microsoft.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Host.SystemWeb, Version=4.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Host.SystemWeb.4.0.1\lib\net45\Microsoft.Owin.Host.SystemWeb.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security, Version=4.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.4.0.1\lib\net45\Microsoft.Owin.Security.dll</HintPath>
+    </Reference>
+    <Reference Include="NotFoundMvc, Version=1.5.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\NotFoundMvc.1.5.0\lib\net40\NotFoundMvc.dll</HintPath>
+    </Reference>
+    <Reference Include="Owin, Version=1.0.0.0, Culture=neutral, PublicKeyToken=f0ebd12fd5e55cc5, processorArchitecture=MSIL">
+      <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Spire.Barcode, Version=6.3.0.0, Culture=neutral, PublicKeyToken=663f351905198cb3, processorArchitecture=MSIL">
+      <HintPath>..\packages\Spire.Office.7.3.2\lib\net40\Spire.Barcode.dll</HintPath>
+    </Reference>
+    <Reference Include="Spire.DataExport, Version=4.1.10.0, Culture=neutral, PublicKeyToken=663f351905198cb3, processorArchitecture=MSIL">
+      <HintPath>..\packages\Spire.Office.7.3.2\lib\net40\Spire.DataExport.dll</HintPath>
+    </Reference>
+    <Reference Include="Spire.DataExport.ResourceMgr, Version=2.1.0.0, Culture=neutral, PublicKeyToken=4bc1500157862925, processorArchitecture=MSIL">
+      <HintPath>..\packages\Spire.Office.7.3.2\lib\net40\Spire.DataExport.ResourceMgr.dll</HintPath>
+    </Reference>
+    <Reference Include="Spire.Doc, Version=10.3.7.0, Culture=neutral, PublicKeyToken=663f351905198cb3, processorArchitecture=MSIL">
+      <HintPath>..\packages\Spire.Office.7.3.2\lib\net40\Spire.Doc.dll</HintPath>
+    </Reference>
+    <Reference Include="Spire.DocViewer.Forms, Version=7.2.1.0, Culture=neutral, PublicKeyToken=663f351905198cb3, processorArchitecture=MSIL">
+      <HintPath>..\packages\Spire.Office.7.3.2\lib\net40\Spire.DocViewer.Forms.dll</HintPath>
+    </Reference>
+    <Reference Include="Spire.Email, Version=5.2.0.0, Culture=neutral, PublicKeyToken=663f351905198cb3, processorArchitecture=MSIL">
+      <HintPath>..\packages\Spire.Office.7.3.2\lib\net40\Spire.Email.dll</HintPath>
+    </Reference>
+    <Reference Include="Spire.License, Version=1.4.0.40, Culture=neutral, PublicKeyToken=b1144360237c8b3f, processorArchitecture=MSIL">
+      <HintPath>..\packages\Spire.Office.7.3.2\lib\net40\Spire.License.dll</HintPath>
+    </Reference>
+    <Reference Include="Spire.OfficeViewer.Forms, Version=7.3.2.0, Culture=neutral, PublicKeyToken=663f351905198cb3, processorArchitecture=MSIL">
+      <HintPath>..\packages\Spire.Office.7.3.2\lib\net40\Spire.OfficeViewer.Forms.dll</HintPath>
+    </Reference>
+    <Reference Include="Spire.Pdf, Version=8.3.9.0, Culture=neutral, PublicKeyToken=663f351905198cb3, processorArchitecture=MSIL">
+      <HintPath>..\packages\Spire.Office.7.3.2\lib\net40\Spire.Pdf.dll</HintPath>
+    </Reference>
+    <Reference Include="Spire.PdfViewer.Asp, Version=7.2.5.0, Culture=neutral, PublicKeyToken=663f351905198cb3, processorArchitecture=MSIL">
+      <HintPath>..\packages\Spire.Office.7.3.2\lib\net40\Spire.PdfViewer.Asp.dll</HintPath>
+    </Reference>
+    <Reference Include="Spire.PdfViewer.Forms, Version=7.2.5.0, Culture=neutral, PublicKeyToken=663f351905198cb3, processorArchitecture=MSIL">
+      <HintPath>..\packages\Spire.Office.7.3.2\lib\net40\Spire.PdfViewer.Forms.dll</HintPath>
+    </Reference>
+    <Reference Include="Spire.Presentation, Version=7.3.1.0, Culture=neutral, PublicKeyToken=663f351905198cb3, processorArchitecture=MSIL">
+      <HintPath>..\packages\Spire.Office.7.3.2\lib\net40\Spire.Presentation.dll</HintPath>
+    </Reference>
+    <Reference Include="Spire.Spreadsheet, Version=6.1.3.0, Culture=neutral, PublicKeyToken=663f351905198cb3, processorArchitecture=MSIL">
+      <HintPath>..\packages\Spire.Office.7.3.2\lib\net40\Spire.Spreadsheet.dll</HintPath>
+    </Reference>
+    <Reference Include="Spire.XLS, Version=12.3.8.0, Culture=neutral, PublicKeyToken=663f351905198cb3, processorArchitecture=MSIL">
+      <HintPath>..\packages\Spire.Office.7.3.2\lib\net40\Spire.XLS.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+    </Reference>
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.7\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.7\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="WebGrease">
+      <Private>True</Private>
+      <HintPath>..\packages\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
+    </Reference>
+    <Reference Include="Antlr3.Runtime">
+      <Private>True</Private>
+      <HintPath>..\packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\ClassController.cs" />
+    <Compile Include="Controllers\EmailController.cs" />
+    <Compile Include="Controllers\FeedbackController.cs" />
+    <Compile Include="Controllers\LibraryController.cs" />
+    <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\TrangChuController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\BaiTap.cs" />
+    <Compile Include="Models\BaiTapTL.cs" />
+    <Compile Include="Models\BaiTapTN.cs" />
+    <Compile Include="Models\CauHoi.cs" />
+    <Compile Include="Models\crypt\Encrypt.cs" />
+    <Compile Include="Models\DapAn.cs" />
+    <Compile Include="Models\Diem.cs" />
+    <Compile Include="Models\document.cs" />
+    <Compile Include="Models\FileBTTL.cs" />
+    <Compile Include="Models\FileTB.cs" />
+    <Compile Include="Models\GetData\GetAccount.cs" />
+    <Compile Include="Models\GetData\GetClass.cs" />
+    <Compile Include="Models\GetData\Getdiem.cs" />
+    <Compile Include="Models\Loimoi.cs" />
+    <Compile Include="Models\LopHoc.cs" />
+    <Compile Include="Models\Mess.cs" />
+    <Compile Include="Models\DB.cs" />
+    <Compile Include="Models\Plagiarism.cs" />
+    <Compile Include="Models\sortmesstime.cs" />
+    <Compile Include="Models\TaiKhoan.cs" />
+    <Compile Include="Models\Tailieu.cs" />
+    <Compile Include="Models\ThanhVienLop.cs" />
+    <Compile Include="Models\ThongBao.cs" />
+    <Compile Include="Models\TTBaiTapTL.cs" />
+    <Compile Include="Models\TTBaiTapTN.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Signalr\Baitap.cs" />
+    <Compile Include="Signalr\Message.cs" />
+    <Compile Include="Signalr\MyHub1.cs" />
+    <Compile Include="Signalr\Thongbao.cs" />
+    <Compile Include="Startup.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\animate.css" />
+    <Content Include="Content\animate.min.css" />
+    <Content Include="Content\bootstrap-theme.css" />
+    <Content Include="Content\bootstrap-theme.min.css" />
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\BTTL\10009arp-la-gi-muc-dich-va-cach-thuc-hoat-dong-cua-arp-1.jpg" />
+    <Content Include="Content\BTTL\10010ARP-request-reply-procedure-see-online-version-for-colours.png" />
+    <Content Include="Content\BTTL\10012arp-la-gi-muc-dich-va-cach-thuc-hoat-dong-cua-arp-1.jpg" />
+    <Content Include="Content\BTTL\10013ARP-request-reply-procedure-see-online-version-for-colours.png" />
+    <Content Include="Content\BTTL\10016arp-la-gi-muc-dich-va-cach-thuc-hoat-dong-cua-arp-1.jpg" />
+    <Content Include="Content\BTTL\10017ARP-request-reply-procedure-see-online-version-for-colours.png" />
+    <Content Include="Content\BTTL\10019arp-la-gi-muc-dich-va-cach-thuc-hoat-dong-cua-arp-1.jpg" />
+    <Content Include="Content\BTTL\10020ARP-request-reply-procedure-see-online-version-for-colours.png" />
+    <Content Include="Content\BTTL\10025arp-la-gi-muc-dich-va-cach-thuc-hoat-dong-cua-arp-1.jpg" />
+    <Content Include="Content\BTTL\10026ARP-request-reply-procedure-see-online-version-for-colours.png" />
+    <Content Include="Content\BTTL\10028arp-la-gi-muc-dich-va-cach-thuc-hoat-dong-cua-arp-1.jpg" />
+    <Content Include="Content\BTTL\10029ARP-request-reply-procedure-see-online-version-for-colours.png" />
+    <Content Include="Content\BTTL\10030arp-la-gi-muc-dich-va-cach-thuc-hoat-dong-cua-arp-1.jpg" />
+    <Content Include="Content\BTTL\10031arp-la-gi-muc-dich-va-cach-thuc-hoat-dong-cua-arp-1.jpg" />
+    <Content Include="Content\BTTL\10034empty_states_students.png" />
+    <Content Include="Content\BTTL\10035ARP-request-reply-procedure-see-online-version-for-colours.png" />
+    <Content Include="Content\BTTL\10036arp-la-gi-muc-dich-va-cach-thuc-hoat-dong-cua-arp-1.jpg" />
+    <Content Include="Content\BTTL\10037ARP-request-reply-procedure-see-online-version-for-colours.png" />
+    <Content Include="Content\BTTL\10039hqdefault.jpg" />
+    <Content Include="Content\BTTL\10041arp-la-gi-muc-dich-va-cach-thuc-hoat-dong-cua-arp-1.jpg" />
+    <Content Include="Content\BTTL\10042ARP-request-reply-procedure-see-online-version-for-colours.png" />
+    <Content Include="Content\BTTL\10043arp-la-gi-muc-dich-va-cach-thuc-hoat-dong-cua-arp-1.jpg" />
+    <Content Include="Content\BTTL\10045arp-la-gi-muc-dich-va-cach-thuc-hoat-dong-cua-arp-1.jpg" />
+    <Content Include="Content\BTTL\10047chromedriver.exe" />
+    <Content Include="Content\BTTL\10048ARP-request-reply-procedure-see-online-version-for-colours.png" />
+    <Content Include="Content\BTTL\123margherita-pizza-with.jpg" />
+    <Content Include="Content\BTTL\1arp-la-gi-muc-dich-va-cach-thuc-hoat-dong-cua-arp-1.jpg" />
+    <Content Include="Content\BTTL\1ARP-request-reply-procedure-see-online-version-for-colours.png" />
+    <Content Include="Content\BTTL\1kisspng-computer-icons-apprendimento-online-educational-te-learning-5abcb50f068469.4096609615223165590267.jpg" />
+    <Content Include="Content\BTTL\1margherita-pizza-with.jpg" />
+    <Content Include="Content\BTTL\1mau-xanh-duong.jpg" />
+    <Content Include="Content\BTTL\1pexels-pixabay-36717.jpg" />
+    <Content Include="Content\chromdriver\1.exe" />
+    <Content Include="Content\chromdriver\chromedriver.exe" />
+    <Content Include="Content\css\addclass.css" />
+    <Content Include="Content\css\Baitapgv.css" />
+    <Content Include="Content\css\Baitapsv.css" />
+    <Content Include="Content\css\confirmemail.css" />
+    <Content Include="Content\css\editaccount.css" />
+    <Content Include="Content\css\editpass.css" />
+    <Content Include="Content\css\forgotpass.css" />
+    <Content Include="Content\css\informess.css" />
+    <Content Include="Content\css\login.css" />
+    <Content Include="Content\css\newpass.css" />
+    <Content Include="Content\css\register.css" />
+    <Content Include="Content\css\showbaitap.css" />
+    <Content Include="Content\css\snow.css" />
+    <Content Include="Content\css\thongbao.css" />
+    <Content Include="Content\FileBTTL\381.txt" />
+    <Content Include="Content\file\sample.html" />
+    <Content Include="Content\file\sample_files\Sheet1.html" />
+    <Content Include="Content\file\sample_files\tabs.html" />
+    <Content Include="Content\font-awesome.css" />
+    <Content Include="Content\font-awesome.min.css" />
+    <Content Include="Content\image\Icon\b7671b668a78e0208b9c2d1c36802ce8.gif" />
+    <Content Include="Content\image\Icon\classroom-icon-png-8.png" />
+    <Content Include="Content\image\Icon\classroom-icon-png-81.jpg" />
+    <Content Include="Content\image\Icon\empty_states_students.png" />
+    <Content Include="Content\image\Icon\hero-glow.svg" />
+    <Content Include="Content\image\Icon\icons8-member-48.png" />
+    <Content Include="Content\image\Icon\library-owl.jpg" />
+    <Content Include="Content\image\Icon\menu.png" />
+    <Content Include="Content\image\Icon\pexels-alleksana-4271933.jpg" />
+    <Content Include="Content\image\Icon\unnamed.png" />
+    <Content Include="Content\image\imageaccount\1a.jpg" />
+    <Content Include="Content\image\imageaccount\1arp-la-gi-muc-dich-va-cach-thuc-hoat-dong-cua-arp-1.jpg" />
+    <Content Include="Content\image\imageaccount\1ckeditor_3087086.jpg" />
+    <Content Include="Content\image\imageaccount\1pexels-pixabay-36717.jpg" />
+    <Content Include="Content\image\imageaccount\1web-design-01-220x150.jpg" />
+    <Content Include="Content\image\imageaccount\1windows-11-background.jpg" />
+    <Content Include="Content\image\imageaccount\3kisspng-computer-icons-apprendimento-online-educational-te-learning-5abcb50f068469.4096609615223165590267.jpg" />
+    <Content Include="Content\image\imageaccount\a.jpg" />
+    <Content Include="Content\image\imageaccount\b.jpg" />
+    <Content Include="Content\image\imageaccount\c.jpg" />
+    <Content Include="Content\image\imageaccount\d.jpg" />
+    <Content Include="Content\image\imageaccount\hauanh-avatar-dep-250x320.jpg" />
+    <Content Include="Content\image\imageaccount\hauc.jpg" />
+    <Content Include="Content\image\imageaccount\hauhinh-anh-dep-chat-luong-001.jpg" />
+    <Content Include="Content\image\imageaccount\haupham8091-Phong-Nam-Quay-Son-Cao-Ky-Nhan_680x0.jpg" />
+    <Content Include="Content\image\imageaccount\haupham809b.jpg" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem-1547985949.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem-1547985953.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\-1546656012.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\-1546656013.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\-1546656019.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\-1546656205.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\-1546656206.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\-1546656207.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\-1546656208.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\-1546656209.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\-1546656210.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\-1546656213.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\-1546656216.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\-1546656220.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\-1546656229.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\-1546656363.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\-1546656450.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\-1546656561.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\-1546656692.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\-1546656693.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\-1546656697.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\-1546656699.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\-1546656702.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\-1546656707.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\-1546663830.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\-1546663837.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\-1546664431.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\-1546664432.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\-1546664433.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\-1546664434.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\-1546664435.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\-1546664436.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\-1546664437.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\-1546664438.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\-1546664441.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\-1546664531.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\-1546664532.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\-1546664534.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\-1546664535.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\-1546664536.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\-1546664539.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\-1546664541.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\-1546664557.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\-1546664799.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\-1546665548.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\-1546665554.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\-1546665555.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\-1546665557.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\-1546665563.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\-1546665566.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\-1546665571.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\-1546665645.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\-1546665646.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\-1546665648.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\-1546665650.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\-1546665653.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\-1546665658.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\-1546666306.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\-1546666733.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\-1546666811.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\-1546666894.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\-1546902196.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\-1547359252.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\-1547359254.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\-1547359258.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\-1547359261.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\-1547359391.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\-1547359392.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\-1547359396.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\-1547359398.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\-1547359417.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\-1547359436.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\-1547359509.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\-1547359601.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\-1547362860.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\-1547365222.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\-1547365400.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\-1547365428.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\-1547365464.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\-1547365481.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\-1547365501.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\-1547365726.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\-1547370089.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\-1547371530.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\-1547371613.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\-1547371683.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\-1547371806.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\-1547371836.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\-1547372096.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\-1547428398.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\-1547541796.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\-1547947636.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\-1547947649.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\-1547947971.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\-1547964195.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\-1547964196.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\-1547964572.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\-1547964680.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\-1547964724.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\-1547964773.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\-1547979213.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\-1547979245.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\-1547979342.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\-1547979452.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\-1547979526.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\-1547979663.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\-1547979878.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\-1547984076.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\-1547984121.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\-1547984205.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\-1547984261.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\-1547984363.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\-1547984580.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\-1547984654.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\-1547984799.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\-1547984983.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\-1547984986.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\-1547985118.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\-1547985123.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\1-120210701152129.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\1-120210701153024.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\1-120210701153025.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\1-120210703132652.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\1-220210701152129.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\1-220210701153024.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\1-220210701153025.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\1-220210703132652.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\1-320210701152129.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\1-320210701153024.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\1-320210701153025.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\1-320210703132652.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\1-420210701152129.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\1-420210701153025.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\1-420210703132652.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\1-520210701152129.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\1-520210701153025.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\1-520210703132652.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\1-620210701152129.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\1-620210701153025.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\1-620210703132652.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\1-720210701152129.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\1-720210701153025.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\1-720210703132652.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\1-820210701152129.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\1-820210701153025.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\1.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\116122021224717.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\116122021224928.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\116122021225230.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\116122021225348.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\116122021230352.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\116122021230353.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\116122021231217.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\116122021231858.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\116122021231859.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\116122021232407.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\116122021232637.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\116122021233221.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\116122021233222.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\116122021234012.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\116122021234013.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\116122021234059.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\116122021234123.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\116122021234249.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\116122021234250.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\11615202104550.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\11615202104709.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\11615202104926.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\116192021185457.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\116192021190614.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\116192021190730.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\116192021190912.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\116192021191056.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\116192021191158.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\116192021191220.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\116192021191312.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\116192021191445.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\116192021231403.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\116192021232804.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\116192021232901.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\116192021232902.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\116192021233213.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\116192021233418.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\116192021233558.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\116192021233559.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\116192021234653.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\116202021142710.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\116212021180205.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\11621202151018.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\11621202154828.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\11621202155818.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\116222021112703.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\116222021112826.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\116222021143734.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\116222021144356.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\116222021145414.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\116222021223229.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\116222021230619.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\116222021230716.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\116222021230900.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\116222021232034.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\116222021232605.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\116222021233523.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\11622202123913.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\11622202123940.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\11622202124130.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\11623202100506.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\11623202103708.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\11623202104001.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\11623202104342.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\11623202105139.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\11623202105303.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\11623202105719.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\116232021205926.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\116232021205927.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\116232021210107.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\116232021210318.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\116232021210423.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\116232021211134.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\116232021211519.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\116232021211537.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\116252021201602.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\116262021201747.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\116262021201900.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\116262021202057.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\116262021203638.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\116262021203639.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\11712021144139.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\126122021224717.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\126122021224928.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\126122021225230.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\126122021225348.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\126122021230352.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\126122021230353.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\126122021231217.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\126122021231858.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\126122021231859.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\126122021232407.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\126122021232637.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\126122021233221.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\126122021233222.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\126122021234012.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\126122021234013.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\126122021234059.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\126122021234123.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\126122021234249.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\126122021234250.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\12615202104550.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\12615202104709.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\12615202104926.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\126192021185457.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\126192021190614.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\126192021190730.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\126192021190912.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\126192021191056.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\126192021191158.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\126192021191220.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\126192021191312.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\126192021191445.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\126192021231403.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\126192021232804.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\126192021232901.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\126192021232902.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\126192021233213.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\126192021233418.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\126192021233558.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\126192021233559.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\126192021234653.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\126202021142710.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\126212021180205.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\12621202151018.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\12621202154828.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\12621202155818.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\126222021112703.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\126222021112826.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\126222021143734.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\126222021144356.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\126222021145414.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\126222021223229.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\126222021230619.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\126222021230716.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\126222021230900.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\126222021232034.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\126222021232605.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\126222021233523.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\12622202123913.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\12622202123940.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\12622202124130.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\12623202100506.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\12623202103708.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\12623202104001.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\12623202104342.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\12623202105139.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\12623202105303.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\12623202105719.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\126232021205926.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\126232021205927.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\126232021210107.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\126232021210318.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\126232021210423.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\126232021211134.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\126232021211519.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\126232021211537.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\126252021201602.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\126262021201747.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\126262021201900.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\126262021202057.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\126262021203638.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\126262021203639.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\12712021144139.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\136122021224717.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\136122021225348.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\136122021230352.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\136122021230353.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\136122021231217.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\136122021231859.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\136122021232407.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\136122021232637.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\136122021233222.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\136122021234013.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\136122021234059.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\136122021234123.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\136122021234250.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\13615202104550.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\13615202104709.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\13615202104926.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\136192021185457.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\136192021190614.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\136192021190730.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\136192021190912.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\136192021191056.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\136192021191158.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\136192021191220.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\136192021191312.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\136192021191445.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\136192021231403.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\136192021232804.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\136192021232901.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\136192021232902.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\136192021233213.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\136192021233418.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\136192021233558.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\136192021233559.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\136192021234653.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\136202021142710.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\136212021180205.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\13621202151018.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\13621202154828.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\13621202155818.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\136222021112703.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\136222021112826.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\136222021143734.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\136222021144356.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\136222021145414.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\136222021223229.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\136222021230619.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\136222021230716.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\136222021230900.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\136222021232034.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\136222021232605.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\136222021233523.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\13622202123913.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\13622202123940.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\13622202124130.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\13623202100506.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\13623202103708.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\13623202104001.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\13623202104342.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\13623202105139.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\13623202105303.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\13623202105719.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\136232021205926.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\136232021205927.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\136232021210107.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\136232021210318.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\136232021210423.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\136232021211134.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\136232021211519.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\136232021211537.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\136252021201602.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\136262021201747.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\136262021201900.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\136262021202057.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\136262021203638.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\136262021203639.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\13712021144139.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\146122021224717.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\146122021225348.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\146122021230352.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\146122021230353.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\146122021231217.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\146122021231859.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\146122021232407.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\146122021232637.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\146122021233222.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\146122021234013.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\146122021234059.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\146122021234123.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\146122021234250.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\14615202104550.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\14615202104709.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\14615202104926.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\146192021185457.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\146192021190614.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\146192021190730.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\146192021190912.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\146192021191056.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\146192021191158.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\146192021191220.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\146192021191312.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\146192021191445.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\146192021231403.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\146192021232804.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\146192021232901.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\146192021232902.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\146192021233213.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\146192021233418.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\146192021233558.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\146192021233559.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\146192021234653.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\146202021142710.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\146212021180205.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\14621202151018.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\14621202154828.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\14621202155818.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\146222021112703.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\146222021112826.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\146222021143734.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\146222021144356.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\146222021145414.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\146222021223229.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\146222021230619.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\146222021230716.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\146222021230900.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\146222021232034.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\146222021232605.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\146222021233523.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\14622202123913.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\14622202123940.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\14622202124130.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\14623202100506.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\14623202103708.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\14623202104001.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\14623202104342.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\14623202105139.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\14623202105303.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\14623202105719.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\146232021205927.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\146232021210107.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\146232021210318.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\146232021210423.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\146232021211134.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\146232021211519.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\146232021211537.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\146252021201602.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\146262021201747.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\146262021201900.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\146262021202057.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\146262021203639.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\14712021144139.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\156192021191445.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\156192021231403.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\156192021232804.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\156192021232901.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\156192021232902.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\156192021233213.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\156192021233418.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\156192021233558.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\156192021233559.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\156192021234653.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\156202021142710.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\156202021142711.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\156212021180205.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\15621202151018.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\15621202154828.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\15621202155818.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\156222021112703.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\156222021112826.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\156222021143734.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\156222021144356.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\156222021145414.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\156222021223229.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\156222021230619.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\156222021230716.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\156222021230900.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\156222021232034.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\156222021232605.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\156222021233523.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\15622202123913.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\15622202123940.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\15622202124130.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\15623202100506.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\15623202103708.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\15623202103709.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\15623202104001.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\15623202104342.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\15623202105139.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\15623202105303.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\15623202105719.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\156232021205927.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\156232021210107.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\156232021210318.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\156232021210423.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\156232021211134.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\156232021211519.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\156232021211537.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\156252021201602.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\156262021201747.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\156262021201900.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\156262021202057.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\156262021203639.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\15712021144139.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\166192021191445.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\166192021231403.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\166192021232804.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\166192021232901.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\166192021232902.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\166192021233213.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\166192021233418.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\166192021233558.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\166192021233559.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\166192021234653.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\166202021142710.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\166202021142711.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\166212021180205.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\16621202151018.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\16621202154828.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\16621202155818.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\166222021112703.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\166222021112826.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\166222021143734.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\166222021144356.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\166222021145414.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\166222021223229.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\166222021230619.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\166222021230716.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\166222021230900.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\166222021232034.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\166222021232605.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\166222021233523.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\16622202123913.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\16622202123940.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\16622202124130.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\16623202100506.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\16623202103708.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\16623202103709.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\16623202104001.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\16623202104342.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\16623202105139.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\16623202105303.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\16623202105719.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\166232021205927.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\166232021210107.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\166232021210318.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\166232021210423.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\166232021211134.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\166232021211519.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\166232021211537.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\166232021211538.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\166252021201602.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\166262021201747.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\166262021201900.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\166262021202057.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\166262021203639.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\16712021144139.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\176192021191445.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\176192021231403.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\176192021232804.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\176192021232901.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\176192021232902.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\176192021233213.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\176192021233418.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\176192021233558.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\176192021233559.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\176192021234653.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\176202021142710.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\176202021142711.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\176212021180205.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\17621202151018.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\17621202154828.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\17621202155818.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\176222021112703.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\176222021112826.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\176222021143734.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\176222021144356.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\176222021145414.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\176222021223229.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\176222021230619.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\176222021230716.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\176222021230900.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\176222021232034.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\176222021232605.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\176222021233523.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\17622202123913.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\17622202123940.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\17622202124130.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\17623202100506.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\17623202103708.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\17623202103709.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\17623202104001.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\17623202104342.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\17623202105139.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\17623202105303.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\17623202105719.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\176232021205927.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\176232021210107.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\176232021210318.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\176232021210423.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\176232021211134.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\176232021211519.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\176232021211537.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\176232021211538.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\176252021201602.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\176262021201747.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\176262021201900.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\176262021202057.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\176262021203639.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\17712021144139.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\186192021191445.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\186192021231403.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\186192021232804.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\186192021232901.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\186192021232902.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\186192021233213.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\186192021233418.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\186192021233558.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\186192021233559.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\186192021234653.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\186202021142710.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\186202021142711.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\186212021180205.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\18621202151018.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\18621202154828.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\18621202155818.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\186222021112703.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\186222021112826.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\186222021143734.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\186222021144356.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\186222021145414.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\186222021223229.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\186222021230619.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\186222021230716.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\186222021230900.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\186222021232034.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\186222021232605.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\186222021233523.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\18622202123913.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\18622202123940.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\18622202124130.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\18623202100506.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\18623202103708.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\18623202103709.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\18623202104001.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\18623202104342.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\18623202105139.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\18623202105303.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\18623202105719.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\186232021205927.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\186232021210107.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\186232021210318.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\186232021210423.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\186232021211134.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\186232021211519.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\186232021211537.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\186232021211538.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\186252021201602.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\186262021201747.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\186262021201900.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\186262021202057.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\186262021203639.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\18712021144139.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\2.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\216152021193524.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\216182021175623.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\226152021193524.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\226182021175623.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\236152021193524.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\236182021175623.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\246152021193524.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\246182021175623.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\3.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\4.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\hau-120220407094149.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\hau-220220407094149.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\hau-320220407094149.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\hau-420220407094149.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\hau-520220407094149.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\hau-620220407094149.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\hau-720220407094149.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\hau16262021221535.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\hau26262021221535.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\hau36262021221535.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\hau46262021221535.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\hau56262021221535.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\hau66262021221535.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\hau76262021221535.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\hau76262021221536.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\hau86262021221535.png" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\hau86262021221536.png" />
+    <Content Include="Content\image\imageclass\23arp-la-gi-muc-dich-va-cach-thuc-hoat-dong-cua-arp-1.jpg" />
+    <Content Include="Content\image\imageclass\23ARP-request-reply-procedure-see-online-version-for-colours.png" />
+    <Content Include="Content\image\imageclass\23dfdlophoc.png" />
+    <Content Include="Content\image\imageclass\23kisspng-computer-icons-apprendimento-online-educational-te-learning-5abcb50f068469.4096609615223165590267.jpg" />
+    <Content Include="Content\image\imageclass\23pexels-pixabay-36717.jpg" />
+    <Content Include="Content\image\imageclass\23Screenshot 2021-05-20 124046.png" />
+    <Content Include="Content\image\imageclass\23Screenshot 2021-05-20 124103.png" />
+    <Content Include="Content\image\imageclass\25margherita-pizza-with.jpg" />
+    <Content Include="Content\image\imageclass\25unnamed.png" />
+    <Content Include="Content\image\imageclass\26arp-la-gi-muc-dich-va-cach-thuc-hoat-dong-cua-arp-1.jpg" />
+    <Content Include="Content\image\imageclass\38img_backtoschool.jpg" />
+    <Content Include="Content\image\imageclass\40img_backtoschool.jpg" />
+    <Content Include="Content\image\imageclass\41api-la-gi4.jpg" />
+    <Content Include="Content\image\imageclass\41arp-la-gi-muc-dich-va-cach-thuc-hoat-dong-cua-arp-1.jpg" />
+    <Content Include="Content\image\imageclass\41khoa-hoc-lap-trinh-asp-net-mvc.jpg" />
+    <Content Include="Content\image\imageclass\41pexels-pixabay-36717.jpg" />
+    <Content Include="Content\image\imageclass\45windows-11-background.jpg" />
+    <Content Include="Content\image\imageclass\46ds.png" />
+    <Content Include="Content\image\imageclass\img_backtoschool.jpg" />
+    <Content Include="Content\image\imageclass\photo-1-16034517575521192609863.jpg" />
+    <Content Include="Content\image\imagelogin\photo-1-16034517575521192609863.jpg" />
+    <Content Include="Content\image\imagetinnhan\b7671b668a78e0208b9c2d1c36802ce820210622133307.gif" />
+    <Content Include="Content\image\imagetinnhan\b7671b668a78e0208b9c2d1c36802ce820210622134021.gif" />
+    <Content Include="Content\image\imagetinnhan\b7671b668a78e0208b9c2d1c36802ce820210622134104.gif" />
+    <Content Include="Content\image\imagetinnhan\b7671b668a78e0208b9c2d1c36802ce820210622134204.gif" />
+    <Content Include="Content\image\imagetinnhan\b7671b668a78e0208b9c2d1c36802ce820210622134342.gif" />
+    <Content Include="Content\image\imagetinnhan\kisspng-computer-icons-apprendimento-online-educational-te-learning-5abcb50f068469.409660961522316559026720210622133455.jpg" />
+    <Content Include="Content\image\imagetinnhan\library-owl20210622133334.jpg" />
+    <Content Include="Content\image\imagetinnhan\menu20210622225831.png" />
+    <Content Include="Content\image\imagetinnhan\pexels-pixabay-3671720210622133606.jpg" />
+    <Content Include="Content\image\imagetinnhan\windows-11-background20210626055104.jpg" />
+    <Content Include="favicon.ico" />
+    <Content Include="fonts\fontawesome-webfont.svg" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Global.asax" />
+    <Content Include="Content\Site.css" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="libman.json" />
+    <Content Include="fonts\FontAwesome.otf" />
+    <Content Include="fonts\fontawesome-webfont.woff" />
+    <Content Include="fonts\fontawesome-webfont.ttf" />
+    <Content Include="fonts\fontawesome-webfont.eot" />
+    <Content Include="Content\bieumaucauhoi.docx" />
+    <Content Include="Content\BTTL\10002atbmtt.docx" />
+    <Content Include="Content\BTTL\100035951071024_PhamThanhHau.docx" />
+    <Content Include="Content\BTTL\10004test.docx" />
+    <Content Include="Content\BTTL\100055951071024_PhamThanhHau.docx" />
+    <Content Include="Content\BTTL\10006Bieumaucauhoi.docx" />
+    <Content Include="Content\BTTL\100075951071024_PhamThanhHau.docx" />
+    <Content Include="Content\BTTL\100085951071024_PhamThanhHau.docx" />
+    <Content Include="Content\BTTL\100115951071024_PhamThanhHau.docx" />
+    <Content Include="Content\BTTL\100145951071024_PhamThanhHau.docx" />
+    <Content Include="Content\BTTL\100155951071024_PhamThanhHau.docx" />
+    <Content Include="Content\BTTL\100185951071024_PhamThanhHau.docx" />
+    <Content Include="Content\BTTL\10021atbmtt.docx" />
+    <Content Include="Content\BTTL\100225951071024_PhamThanhHau.docx" />
+    <Content Include="Content\BTTL\100235951071024_PhamThanhHau.docx" />
+    <Content Include="Content\BTTL\100245951071024_PhamThanhHau.docx" />
+    <Content Include="Content\BTTL\100275951071024_PhamThanhHau.docx" />
+    <Content Include="Content\BTTL\10032Bieumaucauhoi.docx" />
+    <Content Include="Content\BTTL\10033Bieumaucauhoi.docx" />
+    <Content Include="Content\BTTL\10038atbmtt.docx" />
+    <Content Include="Content\BTTL\100405951071024_PhamThanhHau.docx" />
+    <Content Include="Content\BTTL\100445951071024_PhamThanhHau.docx" />
+    <Content Include="Content\BTTL\10046Bieumaucauhoi.docx" />
+    <Content Include="Content\BTTL\1Bieumaucauhoi.docx" />
+    <Content Include="Content\BTTL\25951071024_PhamThanhHau.docx" />
+    <Content Include="Content\BTTL\3Bieumaucauhoi.docx" />
+    <Content Include="Content\FileBTTN\atbmtt.docx" />
+    <Content Include="Content\FileBTTN\filebieumau.docx" />
+    <Content Include="Content\FileBTTN\New Microsoft Word Document.docx" />
+    <Content Include="Content\FileBTTN\System.Web.HttpPostedFileWrapper" />
+    <Content Include="Content\FileBTTN\test.docx" />
+    <Content Include="Content\file\1.pdf" />
+    <Content Include="Content\file\1.xlsx" />
+    <Content Include="Content\file\1_1.pdf" />
+    <Content Include="Content\file\1_1.xlsx" />
+    <Content Include="Content\file\40.pdf" />
+    <Content Include="Content\file\40.xlsx" />
+    <Content Include="Content\file\41.pdf" />
+    <Content Include="Content\file\41.xlsx" />
+    <Content Include="Content\file\41_10111.pdf" />
+    <Content Include="Content\file\41_10111.xlsx" />
+    <Content Include="Content\file\41_10117.pdf" />
+    <Content Include="Content\file\41_10117.xlsx" />
+    <Content Include="Content\file\41_10118.pdf" />
+    <Content Include="Content\file\41_10118.xlsx" />
+    <Content Include="Content\file\41_20119.pdf" />
+    <Content Include="Content\file\41_20119.xlsx" />
+    <Content Include="Content\file\41_20120.pdf" />
+    <Content Include="Content\file\41_20120.xlsx" />
+    <Content Include="Content\file\41_20121.pdf" />
+    <Content Include="Content\file\41_20121.xlsx" />
+    <Content Include="Content\file\41_20122.pdf" />
+    <Content Include="Content\file\41_20122.xlsx" />
+    <Content Include="Content\file\41_20128.pdf" />
+    <Content Include="Content\file\41_20128.xlsx" />
+    <Content Include="Content\file\41_20129.pdf" />
+    <Content Include="Content\file\41_20129.xlsx" />
+    <Content Include="Content\file\41_20130.pdf" />
+    <Content Include="Content\file\41_20130.xlsx" />
+    <Content Include="Content\file\41_20141.pdf" />
+    <Content Include="Content\file\41_20141.xlsx" />
+    <Content Include="Content\file\41_20144.pdf" />
+    <Content Include="Content\file\41_20144.xlsx" />
+    <Content Include="Content\file\41_20145.pdf" />
+    <Content Include="Content\file\41_20145.xlsx" />
+    <Content Include="Content\file\41_20146.pdf" />
+    <Content Include="Content\file\41_20146.xlsx" />
+    <Content Include="Content\file\41_20147.pdf" />
+    <Content Include="Content\file\41_20147.xlsx" />
+    <Content Include="Content\file\41_20148.pdf" />
+    <Content Include="Content\file\41_20148.xlsx" />
+    <Content Include="Content\file\41_20156.pdf" />
+    <Content Include="Content\file\41_20156.xlsx" />
+    <Content Include="Content\file\41_20157.pdf" />
+    <Content Include="Content\file\41_20157.xlsx" />
+    <Content Include="Content\file\45.pdf" />
+    <Content Include="Content\file\45.xlsx" />
+    <Content Include="Content\file\45_20154.pdf" />
+    <Content Include="Content\file\45_20154.xlsx" />
+    <Content Include="Content\file\46.pdf" />
+    <Content Include="Content\file\46.xlsx" />
+    <Content Include="Content\file\49.pdf" />
+    <Content Include="Content\file\49.xlsx" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\1-120210701151938" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\1-220210701151938" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\1-320210701151938" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\1-420210701151938" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\1-520210701151938" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\1-620210701151938" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\1-720210701151938" />
+    <Content Include="Content\image\ImageCauhoiTracnghiem\1-820210701151938" />
+    <None Include="Scripts\jquery-3.4.1.intellisense.js" />
+    <Content Include="Scripts\jquery-3.4.1.js" />
+    <Content Include="Scripts\jquery-3.4.1.min.js" />
+    <Content Include="Scripts\jquery-3.4.1.slim.js" />
+    <Content Include="Scripts\jquery-3.4.1.slim.min.js" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.signalR-2.2.2.js" />
+    <Content Include="Scripts\jquery.signalR-2.2.2.min.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Scripts\summernote\plugin\summernote-ext-hello.js" />
+    <Content Include="Scripts\summernote\plugin\summernote-ext-hint.js" />
+    <Content Include="Scripts\summernote\plugin\summernote-ext-video.js" />
+    <Content Include="Scripts\summernote\summernote.css" />
+    <Content Include="Scripts\summernote\summernote.js" />
+    <Content Include="Scripts\summernote\summernote.min.js" />
+    <Content Include="Web.config" />
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\TrangChu\Index.cshtml" />
+    <Content Include="Views\TrangChu\menu.cshtml" />
+    <Content Include="Views\Login\Login.cshtml" />
+    <Content Include="Views\Library\Library.cshtml" />
+    <Content Include="Views\Library\Searchlibrary.cshtml" />
+    <Content Include="Views\Feedback\Sendfeedback.cshtml" />
+    <Content Include="Views\Account\ConfirmEmail.cshtml" />
+    <Content Include="Views\Account\EditAccount.cshtml" />
+    <Content Include="Views\Account\EditPass.cshtml" />
+    <Content Include="Views\Account\Forgotpass.cshtml" />
+    <Content Include="Views\Account\NewPass.cshtml" />
+    <Content Include="Views\Account\Register.cshtml" />
+    <Content Include="Views\Class\AddClass.cshtml" />
+    <Content Include="Views\Class\BaiTap.cshtml" />
+    <Content Include="Views\Class\BaiTapTeacher.cshtml" />
+    <Content Include="Views\Class\Diem.cshtml" />
+    <Content Include="Views\Class\Editclass.cshtml" />
+    <Content Include="Views\Class\Index.cshtml" />
+    <Content Include="Views\Class\Infordiem.cshtml" />
+    <Content Include="Views\Class\InforMess.cshtml" />
+    <Content Include="Views\Class\JoinClass.cshtml" />
+    <Content Include="Views\Class\LamBaiTN.cshtml" />
+    <Content Include="Views\Class\Mess.cshtml" />
+    <Content Include="Views\Class\SaveCauhoitracnghiem.cshtml" />
+    <Content Include="Views\Class\ShowBaiTap.cshtml" />
+    <Content Include="Views\Class\ShowBaiThiTN.cshtml" />
+    <Content Include="Views\Class\ShowcauhoiTracnghiem.cshtml" />
+    <Content Include="Views\Class\showcauhoituluan.cshtml" />
+    <Content Include="Views\Class\ShowInforBaiTapForTeacher.cshtml" />
+    <Content Include="Views\Class\ShowInforBaiTapTL.cshtml" />
+    <Content Include="Views\Class\ShowInforBaiTapTn.cshtml" />
+    <Content Include="Views\Class\ThanhVien.cshtml" />
+    <Content Include="Views\Shared\Layoutclass.cshtml" />
+    <Content Include="Views\Shared\LayoutHome.cshtml" />
+    <Content Include="Views\Shared\NotFound.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="Views\Email\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\bootstrap.min.css.map" />
+    <Content Include="Content\bootstrap.css.map" />
+    <Content Include="Content\bootstrap-theme.min.css.map" />
+    <Content Include="Content\bootstrap-theme.css.map" />
+    <None Include="packages.config" />
+    <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
+    <Content Include="Scripts\jquery-3.4.1.min.map" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>51178</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>https://localhost:44386/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>

@@ -1,0 +1,102 @@
+﻿@model  DOANTOTNGHIEP.Models.TaiKhoan
+
+<link href="~/Content/css/editaccount.css" rel="stylesheet" />
+
+<script type="text/javascript">
+    $(document).ready(function () {
+
+        $("#image").change(function () {
+            $("#hinhanh").remove();
+            var anh = $("#image").get(0);
+            $("#anh").before("<img src=" + URL.createObjectURL(anh.files[0]) + " height='100' width='180' style='border-radius:10px;' id='hinhanh' />");
+
+        });
+
+    });
+
+
+</script>
+<link href="~/Content/css/snow.css" rel="stylesheet" />
+<div class="frameaccount">
+    <div class="snowflakes" aria-hidden="true">
+        <div class="snowflake">.</div>
+        <div class="snowflake">.</div>
+        <div class="snowflake">.</div>
+        <div class="snowflake">.</div>
+        <div class="snowflake">.</div>
+        <div class="snowflake">.</div>
+        <div class="snowflake">.</div>
+        <div class="snowflake">.</div>
+        <div class="snowflake">.</div>
+        <div class="snowflake">.</div>
+    </div>
+
+
+    <div class="account">
+        @using (Html.BeginForm("Checkaccount", "Account", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            @Html.AntiForgeryToken()
+            <div class="diveditaccount"><label style="color:white">Edit Profile</label><br /><label style="color:white">Complete your profile</label></div>
+
+
+            <div></div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group bmd-form-group">
+                        <label class="bmd-label-floating" style=" color: white;">Username</label><br />
+
+                        @Html.TextBoxFor(model => model.TenDangNhap, new { @class = "text", placeholder = "ten dang nhap", @value = Model.TenDangNhap, @disabled = "disabled" })<br />
+
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group bmd-form-group" >
+                        <label class="bmd-label-floating" style=" color: white;" >Email address</label><br />
+                        @Html.TextBoxFor(model => model.Email, new { @class = "text", placeholder = "email", @pattern = "[^@\\s]+@[^@\\s]+\\.[^@\\s]+", @title = "Invalid email address", required = "required", @disabled = "disabled" })<br />
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group bmd-form-group">
+                        <label class="bmd-label-floating" style=" color: white;" >Fist Name</label><br />
+                        @Html.TextBoxFor(model => model.Ten, new { @class = "text", @autofocus = "autofocus", placeholder = "ten", @value = Model.Ten })<br />
+
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group bmd-form-group">
+                        <label class="bmd-label-floating" style=" color: white;" >Last Name</label><br />
+                        @Html.TextBoxFor(model => model.Ho, new { @class = "text", @autofocus = "autofocus", placeholder = "Ho", @value = Model.Ho })<br />
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group bmd-form-group">
+
+                        <img src=@Model.HinhAnh height="100" width="180" style="border-radius: 10px;" id="hinhanh" />
+                        <label class="glyphicon glyphicon-picture" for="image" id="anh" style=" color: white;font-size:30px"></label>
+                        <input type="file" id="image" style="display:none;" accept=".png, .jpg, .jpeg" name="file" />
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group bmd-form-group">
+                        <button type="submit" class="btn btn-primary " style="margin-top:20px;border-radius:50px">Update Profile</button>
+                    </div>
+                </div>
+            </div>
+
+
+
+            @Html.ValidationMessage("Erroreditaccount", new { @class = "text-danger", @color = "red" })
+
+
+        }
+
+    </div>
+
+
+
+
+</div>

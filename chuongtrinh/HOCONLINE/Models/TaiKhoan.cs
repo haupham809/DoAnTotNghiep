@@ -14,6 +14,7 @@ namespace HOCONLINE.Models
         {
             BaiTapTLs = new HashSet<BaiTapTL>();
             BaiTapTNs = new HashSet<BaiTapTN>();
+            documents = new HashSet<document>();
             Loimois = new HashSet<Loimoi>();
             LopHocs = new HashSet<LopHoc>();
             Messes = new HashSet<Mess>();
@@ -50,6 +51,9 @@ namespace HOCONLINE.Models
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<BaiTapTN> BaiTapTNs { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<document> documents { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Loimoi> Loimois { get; set; }
