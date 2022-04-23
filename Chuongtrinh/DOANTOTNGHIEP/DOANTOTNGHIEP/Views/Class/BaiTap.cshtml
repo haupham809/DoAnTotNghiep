@@ -4,8 +4,6 @@
     ViewData["Title"] = "Bài tập HS";
     Layout = "~/Views/Shared/Layoutclass.cshtml";
     var lophoc = Session["lophoc"] as DOANTOTNGHIEP.Models.LopHoc;
-    <script src="~/Scripts/jquery.signalR-2.4.2.min.js"></script>
-    <script src="~/signalr/hubs"></script>
     var user = Session["user"] as DOANTOTNGHIEP.Models.TaiKhoan;
     string nguoitao = user.TenDangNhap;
     DOANTOTNGHIEP.Models.ThongBao tb = new DOANTOTNGHIEP.Models.ThongBao();

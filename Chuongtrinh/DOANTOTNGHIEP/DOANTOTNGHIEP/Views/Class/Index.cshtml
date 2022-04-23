@@ -155,35 +155,38 @@
 
 
         <div class="dangtb">
-            @using (Html.BeginForm("DangTB", "Class", FormMethod.Post, new { enctype = "multipart/form-data" }))
-            {
 
-                <div class="row">
-                    <div class="col-md-1">
-                        <div class="form-group bmd-form-group">
-                            <img src=@user.HinhAnh width="30" height="30" style="border-radius:45px;" />
-                        </div>
-                    </div>
-                    <div class="navbar-left" style="margin-top:10px">
-                        <div class="form-group bmd-form-group">
-                            <div style="color:blueviolet;padding:10px">Thông báo nội dung nào đó cho lớp học của bạn</div>
-                        </div>
+
+            <div class="row">
+                <div class="col-md-1">
+                    <div class="form-group bmd-form-group">
+                        <img src=@user.HinhAnh width="30" height="30" style="border-radius:45px;" />
                     </div>
                 </div>
-
-                <div class="form-group bmd-form-group">
-
-                    <button class="glyphicon glyphicon-menu-down showthongbao"></button>
+                <div class="navbar-left" style="margin-top:10px">
+                    <div class="form-group bmd-form-group">
+                        <div style="color:blueviolet;padding:10px">Thông báo nội dung nào đó cho lớp học của bạn</div>
+                    </div>
                 </div>
-                <div class="hideDangThongBao" style="display:none; padding:20px">
-                    <textarea name="noidung" id="noidung" required></textarea>
+            </div>
+
+            <div class="form-group bmd-form-group">
+
+                <button class="glyphicon glyphicon-menu-down showthongbao" style="display:block !important"></button>
+            </div>
+           
+            <div class="hideDangThongBao" style="display:none; padding:20px">
+                @using (Html.BeginForm("DangTB", "Class", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                {
+                    <textarea name="noidung" id="noidung"></textarea>
                     <div><label class="101-1"></label></div> <br />
                     <label class="glyphicon glyphicon-paperclip themfiletb" for="101-1">  Thêm</label>
 
                     <input type="file" multiple name="file" style="display:none" id="101-1" class="fileupload glyphicon glyphicon-file" />
                     <button id="dang" class="navbar-right">Dang</button>
-                    <button class="glyphicon glyphicon-menu-up hidethongbao "></button>
-                </div>}
+                    }
+                    <button class="glyphicon glyphicon-menu-up hidethongbao " style="display:block !important"></button>
+                </div>
         </div>
 
 
@@ -193,7 +196,7 @@
                 {
                     if (i.MaBaiTap != null)
                     {
-                        <div class="thongbao">
+                        <div class="thongbao" style="border:0.2px solid black">
                             <a href="~/Class/ShowInforBaiTap/@i.MaBaiTap">
                                 <div class="thongbaobaitap">
                                     <table style="margin-bottom:20px;">
@@ -212,7 +215,7 @@
                     }
                     else if (i.MaBaiTap == null)
                     {
-                        <div class="thongbao">
+                        <div class="thongbao"  style="border:0.2px solid black">
 
                             <div id="@i.MaBaiDang">
 
@@ -281,7 +284,7 @@
                             <div class="suaThongBao-@i.MaBaiDang" style="display:none;padding:20px">
                                 @using (Html.BeginForm("EditThongBao", "Class", new { id = i.MaBaiDang }, FormMethod.Post, new { enctype = "multipart/form-data" }))
                                 {
-                                    <textarea name="suanoidungthongbao" required>@i.Thongtin</textarea>
+                                    <textarea name="suanoidungthongbao" >@i.Thongtin</textarea>
                                     foreach (var filetb in i.FileTBs)
                                     {
                                         <br /><a class="suafile_@i.MaBaiDang" href=@filetb.NoiLuu>@filetb.TenFile</a>

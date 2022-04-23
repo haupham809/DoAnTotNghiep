@@ -18,8 +18,6 @@
     <title></title>
 
     <link href="~/Content/css/Baitapgv.css" rel="stylesheet" />
-    <link href="~/Content/summernote/summernote.css" rel="stylesheet" />
-    <script src="~/Scripts/summernote/summernote.min.js"></script>
     <script type="text/javascript">
         $(document).ready(function () {
 
@@ -184,7 +182,7 @@
                 {
                     <div class="hideDangBaitapTL">
                         <input type="text" name="Chude" placeholder="Chủ đề" class="chudeTN" required />
-                        <textarea name="noidungbt" class="noidungTL" required></textarea>
+                        <textarea name="noidungbt" class="noidungTL" ></textarea>
                         <label>Ngày kết thúc :</label><input type="datetime-local" name="thoigiankethuc" class="thoigianTL" required style="margin-left:10px" min=@DateTime.UtcNow.ToString(string.Format("yyyy-MM-ddThh:mm")) />
                         <div><label class="101-1"></label></div>
                         <label class="glyphicon glyphicon-paperclip filebaitap" for="101-1">  Thêm</label>
@@ -197,7 +195,7 @@
                 {
             <div class="hideDangBaitapTN">
                 <input type="text" name="Chude" placeholder="Chủ đề" class="chudeTN" required />
-                <textarea style="max-width:100%;height:200px;width:100%" name="noidungbt" class="noidungTN" required></textarea>
+                <textarea style="max-width:100%;height:200px;width:100%" name="noidungbt" class="noidungTN" ></textarea>
                 <label>Ngày kết thúc :</label><input type="datetime-local" name="thoigiankethuc" class="thoigianTN" required style="margin-left:10px" min=@DateTime.UtcNow.ToString(string.Format("yyyy-MM-ddThh:mm")) />
                 <div><label class="101-2"></label></div>
                 <label class="glyphicon glyphicon-paperclip filebaitap" for="101-2">  Thêm</label>
@@ -209,7 +207,7 @@
             </div>
 
                 }
-                <button class="glyphicon glyphicon-menu-up hidedangbaitap"></button>
+                <button class="glyphicon glyphicon-menu-up hidedangbaitap" style="display:block !important"></button>
             </div>
 
 
@@ -218,9 +216,9 @@
                 foreach (var i in Model)
                 {
 
-                    <a href="~/Class/ShowInforBaiTap/@i.MaBaiTap" class=@i.MaBaiTap>
+                    <a href="~/Class/ShowInforBaiTap/@i.MaBaiTap" class=@i.MaBaiTap >
 
-                        <div id="baitap" class=@i.MaBaiTap>
+                        <div id="baitap" class=@i.MaBaiTap  style="border:0.2px solid black">
 
                             <table style="margin-bottom:20px;">
 
@@ -286,11 +284,11 @@
 
                         </div>
                     </a>
-                    <div class="hideSuaBaitap-@i.MaBaiTap" id="hideSuaBaiTap">
+                    <div class="hideSuaBaitap-@i.MaBaiTap" id="hideSuaBaiTap"  style="border:0.2px solid black">
                         @using (Html.BeginForm("Editbaitap", "Class", new { id = i.MaBaiTap }, FormMethod.Post, new { enctype = "multipart/form-data" }))
                         {
                             <input type="text" name="Chude" placeholder="Chủ đề" class="chudeTN" required value=@i.ChuDe />
-                            <textarea name="noidungbt" placeholder="Nội dung bài tập" class="noidungTN" required>@i.Thongtin</textarea>
+                            <textarea name="noidungbt" placeholder="Nội dung bài tập" class="noidungTN" >@i.Thongtin</textarea>
                             <label>Thoi gian ket thuc</label><input type="datetime-local" name="thoigiankethuc" class="thoigianTN" required style="margin-left:10px" value="@i.ThoiGianKetThuc.Value.ToString(string.Format("yyyy-MM-ddThh:mm"))" />
                             <button class="navbar-right dangTN">Edit</button>
                             <br />

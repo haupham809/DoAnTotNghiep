@@ -75,7 +75,7 @@ namespace DOANTOTNGHIEP.Controllers
             string email = "pthonlinesp@gmail.com";
             string password = "haupham809";
 
-            var loginInfo = new NetworkCredential(email, password);
+            /*var loginInfo = new NetworkCredential(email, password);
             var msg = new System.Net.Mail.MailMessage();
             var smtpClient = new SmtpClient("smtp.gmail.com", 587);
 
@@ -88,7 +88,7 @@ namespace DOANTOTNGHIEP.Controllers
             smtpClient.EnableSsl = true;
             smtpClient.UseDefaultCredentials = false;
             smtpClient.Credentials = loginInfo;
-            smtpClient.Send(msg);
+            smtpClient.Send(msg);*/
         }
     }
 

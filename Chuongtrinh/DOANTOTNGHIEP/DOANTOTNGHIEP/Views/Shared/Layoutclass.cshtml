@@ -15,7 +15,10 @@
 <link href="~/Content/font-awesome.min.css" rel="stylesheet" />
 <script type="text/javascript" async
         src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML">
-</script><script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+</script>
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+<link href="~/Content/bootstrap.css" rel="stylesheet" />
+<script src="~/Scripts/bootstrap.min.js"></script>
 <script src="~/Scripts/JS/JqueryClass.js"></script>
 <script src="~/Scripts/jquery.signalR-2.2.2.min.js"></script>
 <link href="~/Scripts/summernote/summernote.css" rel="stylesheet" />
@@ -42,22 +45,22 @@
 
     });
     function reset() {
-        $('.headthongbao').css("color", "black;");
+        $('.headthongbao').css("color", "white;");
         $('.headthongbao').css("background-color", "transparent");
 
-        $('.headbaitap').css("color", "black;");
+        $('.headbaitap').css("color", "white;");
         $('.headbaitap').css("background-color", "transparent");
 
-        $('.headthanhvien').css("color", "black;");
+        $('.headthanhvien').css("color", "white;");
         $('.headthanhvien').css("background-color", "transparent");
 
-        $('.headdiem').css("color", "black;");
+        $('.headdiem').css("color", "white;");
         $('.headdiem').css("background-color", "transparent");
 
-        $('.headmess').css("color", "black;");
+        $('.headmess').css("color", "white;");
         $('.headmess').css("background-color", "transparent");
 
-        $('.headthuvien').css("color", "black;");
+        $('.headthuvien').css("color", "white;");
         $('.headthuvien').css("background-color", "transparent");
 
     }
@@ -117,7 +120,6 @@
 
 
 </script>
-<link href="~/Content/bootstrap.css" rel="stylesheet" />
 <body>
     @Scripts.Render("~/bundles/jquery")
     @RenderSection("scripts", required: false)
@@ -132,12 +134,12 @@
                 </button>
 
 
-                <div class="navbar-left header" style="color:white;">
+                <div class="navbar-left header" style="color:white;height:50px">
                     <a href="~/TrangChu/Index" style="height:100%" class="navbar-brand">
-                        <img class="d-inline-block align-top" src="~/Content/image/Icon/classroom-icon-png-8.png" height="30" width="80" style=" margin-right:40px; " />
+                        <img class="d-inline-block align-top" src="~/Content/image/Icon/classroom-icon-png-8.png" height="25" width="80" style=" margin-right:40px; " />
                     </a>
 
-                    <button style="background-color:transparent;border:0px;font-size:25px;height:55px" class="glyphicon glyphicon-menu-hamburger btnmenu">
+                    <button style="background-color:transparent;border:0px;font-size:25px;height:50px" class="glyphicon glyphicon-menu-hamburger btnmenu">
                     </button>
                 </div>
 
@@ -146,16 +148,16 @@
 
 
                 <ul class="nav navbar-nav  " style="margin-left:25%;">
-                    <li>@Html.ActionLink("  ", "Index", "Class", new { id = malop }, new { @class = "fa fa-bell-o headthongbao", @style = "background-color:transparent;border:0px;font-size:20px;" })</li>
-                    <li>@Html.ActionLink("  ", "BaiTap", "Class", new { id = malop }, new { @class = "glyphicon glyphicon-list-alt headbaitap", @style = "background-color:transparent;border:0px;font-size:20px;" })</li>
-                    <li>@Html.ActionLink("  ", "ThanhVien", "Class", new { id = malop }, new { @class = "fa fa-users headthanhvien", @style = "background-color:transparent;border:0px;font-size:20px;" })</li>
-                    <li>@Html.ActionLink("  ", "Mess", "Class", new { id = malop }, new { @class = "fa fa-comments headmess", @style = "background-color:transparent;border:0px;font-size:20px;" })</li>
-                    <li>@Html.ActionLink("  ", "Diem", "Class", new { id = malop }, new { @class = "fa fa-newspaper-o headdiem", @style = "background-color:transparent;border:0px;font-size:20px;" })</li>
-                    <li>@Html.ActionLink("  ", "library", "Library", new { id = malop }, new { @class = "fa fa-book headthuvien  ", @style = "background-color:transparent;border:0px;font-size:20px;" })</li>
+                    <li>@Html.ActionLink("  ", "Index", "Class", new { id = malop }, new { @class = "fa fa-bell-o headthongbao", @style = "background-color:transparent;border:0px;font-size:20px;color:black;" })</li>
+                    <li>@Html.ActionLink("  ", "BaiTap", "Class", new { id = malop }, new { @class = "glyphicon glyphicon-list-alt headbaitap", @style = "background-color:transparent;border:0px;font-size:20px;color:black;" })</li>
+                    <li>@Html.ActionLink("  ", "ThanhVien", "Class", new { id = malop }, new { @class = "fa fa-users headthanhvien", @style = "background-color:transparent;border:0px;font-size:20px;color:black;" })</li>
+                    <li>@Html.ActionLink("  ", "Mess", "Class", new { id = malop }, new { @class = "fa fa-comments headmess", @style = "background-color:transparent;border:0px;font-size:20px;color:black;" })</li>
+                    <li>@Html.ActionLink("  ", "Diem", "Class", new { id = malop }, new { @class = "fa fa-newspaper-o headdiem", @style = "background-color:transparent;border:0px;font-size:20px;color:black;" })</li>
+                    <li>@Html.ActionLink("  ", "library", "Library", new { id = malop }, new { @class = "fa fa-book headthuvien  ", @style = "background-color:transparent;border:0px;font-size:20px;color:black;" })</li>
 
                 </ul>
 
-                <div class="navbar-right" style="margin-right:30px">
+                <div class="navbar-right" style="margin-right: 30px; height: 50px">
 
                     <ul class="nav navbar-nav">
 
@@ -243,7 +245,10 @@
 
 
 </body>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+<script src="~/Scripts/bootstrap.min.js"></script>
 <script src="~/Scripts/JS/JqueryClass.js"></script>
 <script src="~/Scripts/jquery.signalR-2.2.2.min.js"></script>
 <link href="~/Scripts/summernote/summernote.css" rel="stylesheet" />

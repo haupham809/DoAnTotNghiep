@@ -1,8 +1,6 @@
 ﻿@model List<DOANTOTNGHIEP.Models.ThanhVienLop>
 @{
     Layout = "~/Views/Shared/Layoutclass.cshtml";
-    <script src="~/Scripts/jquery.signalR-2.4.2.min.js"></script>
-    <script src="~/signalr/hubs"></script>
     var user = Session["user"] as DOANTOTNGHIEP.Models.TaiKhoan;
     string nguoitao = user.TenDangNhap;
     var malop = Session["malop"].ToString();
