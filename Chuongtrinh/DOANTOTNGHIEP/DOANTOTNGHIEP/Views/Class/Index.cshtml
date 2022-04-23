@@ -67,7 +67,11 @@
             });
 
 
-        });
+    });
+    function destroyload(a){
+        var myElement = $(a);
+        myElement.summernote('destroy');
+    }
     function load(a) {
         var myElement = $(a);
         myElement.summernote({
@@ -89,6 +93,8 @@
             maxHeight: null // set maximum height of editor
              // set focus to editable area after initializing summernote
         });
+
+        myElement.summernote('destroy');
     }
     function conformdelete() {
         var answer = window.confirm("Bạn có muốn xóa thông báo này không !");
