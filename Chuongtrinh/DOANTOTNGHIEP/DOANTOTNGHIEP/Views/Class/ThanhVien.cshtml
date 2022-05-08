@@ -17,15 +17,8 @@
             reset();
         $('.headthanhvien').css("color", "black");
             $('.headthanhvien').css("background-color", "white");
-            $('.moithamgia').click(function () {
-                $('.moithamgia').css("display", "none");
-                $('.divthamgia').css("display", "block");
-            });
-            $('.huy').click(function () {
-                $('.moithamgia').css("display", "block");
-                $('.divthamgia').css("display", "none");
-                $('label.result').remove();
-            });
+            
+            
 
             $('.join').click(function () {
                 var email = $('.emailthamgia').val();
@@ -63,15 +56,38 @@
 
 </head>
 <body class="container">
-    @if (Model[0].LopHoc.NguoiTao.Equals(nguoitao)) { 
-  
-    <button class="moithamgia" style=" background-image: linear-gradient(to right,#0404B4,#A901DB); padding: 5px; padding-left: 15px; padding-right: 15px; color: white; border-radius: 20px; margin: 2%">Mời tham gia</button>
-    <div class="divthamgia" style="display:none">
-        <input type="text" placeholder="Nhập email" style="border-radius:5px;outline:none; width:300px" class="emailthamgia" />
-        <button class="join" style=" background-image: linear-gradient(to right,#0404B4,#A901DB); padding: 5px; padding-left: 15px; padding-right: 15px; color: white; border-radius: 20px; margin: 2%">Mời tham gia</button>
-        <button class="huy" style=" background-image: linear-gradient(to right,#0404B4,#A901DB); padding: 5px; padding-left: 15px; padding-right: 15px; color: white; border-radius: 20px; margin: 2%">Hide</button><br  class="result"/>
-        
-    </div>  }
+    @if (Model[0].LopHoc.NguoiTao.Equals(nguoitao))
+    {
+
+        <button class="moithamgia btn btn-info btn-lg" data-toggle="modal" data-target="#myModal" style=" padding: 5px; padding-left: 15px; padding-right: 15px; color: white; border-radius: 20px; margin: 2%">Mời tham gia</button>
+        <div class="container">
+            
+            
+            <!-- Modal -->
+            <div class="modal fade" id="myModal" role="dialog">
+                <div class="modal-dialog">
+
+                    <!-- Modal content-->
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h4 class="modal-title">Mời tham gia lớp học</h4>
+                        </div>
+                        <div class="modal-body">
+                            <input type="text" placeholder="Nhập email" style="border-radius:5px;outline:none; width:300px" class="emailthamgia" />
+                            <br class="result" />
+                        </div>
+                        <div class="modal-footer">
+                            <button class="join btn btn-info btn-lg" style=" padding: 5px; padding-left: 15px; padding-right: 15px; color: white; border-radius: 20px; margin: 2%">Mời tham gia</button>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+          }
     <div style="margin-top:20px">
 
         <div><label>Giáo viên</label></div>
@@ -115,5 +131,6 @@
             </ul>
         </div>
     </div>
+    
 </body>
 </html>

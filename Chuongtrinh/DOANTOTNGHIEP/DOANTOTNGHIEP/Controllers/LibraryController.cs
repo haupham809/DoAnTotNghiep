@@ -8,6 +8,8 @@ using System.Text;
 using System.Web;
 using System.Web.Hosting;
 using System.Web.Mvc;
+using DOANTOTNGHIEP.Models;
+
 namespace DOANTOTNGHIEP.Controllers
 {
     public class LibraryController : Controller
@@ -105,6 +107,22 @@ namespace DOANTOTNGHIEP.Controllers
             ViewData["s"] = getfiletkb(cauhoi);
             return PartialView();
         }
+        [HttpPost]
+        public ActionResult Uploaddocument(HttpPostedFileBase[] file)
+        {
+            DB db = new DB();
+            var user = Session["user"] as DOANTOTNGHIEP.Models.TaiKhoan;
+            if (user == null) return RedirectToAction("Login", "Login");
+            if (Session["malop"] == null) return RedirectToAction("Index", "TrangChu");
+            string malop = Session["malop"].ToString();
+            var gv = db.LopHocs.SingleOrDefault(x => x.MaLop.ToString().Equals(malop) && x.NguoiTao.Equals(user.TenDangNhap));
+            if (gv == null)
+            {
+                return Library();
+            }
+            return Library();
+        }
+
 
     }
 

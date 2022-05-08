@@ -859,7 +859,7 @@ namespace DOANTOTNGHIEP.Controllers
 
             return RedirectToAction("BaiTap", new { id = malop });
         }
-
+       
         [HttpPost]
         public ActionResult DangBaiTapTN(HttpPostedFileBase file)
         {

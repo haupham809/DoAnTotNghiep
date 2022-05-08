@@ -207,7 +207,6 @@ C:\Users\HAU\Desktop\DoAnTotNghiep\Chuongtrinh\DOANTOTNGHIEP\DOANTOTNGHIEP\bin\S
 C:\Users\HAU\Desktop\DoAnTotNghiep\Chuongtrinh\DOANTOTNGHIEP\DOANTOTNGHIEP\bin\Spire.Doc.dll
 C:\Users\HAU\Desktop\DoAnTotNghiep\Chuongtrinh\DOANTOTNGHIEP\DOANTOTNGHIEP\bin\Spire.DocViewer.Forms.dll
 C:\Users\HAU\Desktop\DoAnTotNghiep\Chuongtrinh\DOANTOTNGHIEP\DOANTOTNGHIEP\bin\Spire.Email.dll
-C:\Users\HAU\Desktop\DoAnTotNghiep\Chuongtrinh\DOANTOTNGHIEP\DOANTOTNGHIEP\bin\Spire.License.dll
 C:\Users\HAU\Desktop\DoAnTotNghiep\Chuongtrinh\DOANTOTNGHIEP\DOANTOTNGHIEP\bin\Spire.OfficeViewer.Forms.dll
 C:\Users\HAU\Desktop\DoAnTotNghiep\Chuongtrinh\DOANTOTNGHIEP\DOANTOTNGHIEP\bin\Spire.Pdf.dll
 C:\Users\HAU\Desktop\DoAnTotNghiep\Chuongtrinh\DOANTOTNGHIEP\DOANTOTNGHIEP\bin\Spire.PdfViewer.Asp.dll
@@ -242,7 +241,6 @@ C:\Users\HAU\Desktop\DoAnTotNghiep\Chuongtrinh\DOANTOTNGHIEP\DOANTOTNGHIEP\bin\S
 C:\Users\HAU\Desktop\DoAnTotNghiep\Chuongtrinh\DOANTOTNGHIEP\DOANTOTNGHIEP\bin\Spire.Doc.xml
 C:\Users\HAU\Desktop\DoAnTotNghiep\Chuongtrinh\DOANTOTNGHIEP\DOANTOTNGHIEP\bin\Spire.DocViewer.Forms.xml
 C:\Users\HAU\Desktop\DoAnTotNghiep\Chuongtrinh\DOANTOTNGHIEP\DOANTOTNGHIEP\bin\Spire.Email.xml
-C:\Users\HAU\Desktop\DoAnTotNghiep\Chuongtrinh\DOANTOTNGHIEP\DOANTOTNGHIEP\bin\Spire.License.xml
 C:\Users\HAU\Desktop\DoAnTotNghiep\Chuongtrinh\DOANTOTNGHIEP\DOANTOTNGHIEP\bin\Spire.OfficeViewer.Forms.xml
 C:\Users\HAU\Desktop\DoAnTotNghiep\Chuongtrinh\DOANTOTNGHIEP\DOANTOTNGHIEP\bin\Spire.Pdf.xml
 C:\Users\HAU\Desktop\DoAnTotNghiep\Chuongtrinh\DOANTOTNGHIEP\DOANTOTNGHIEP\bin\Spire.PdfViewer.Asp.xml
