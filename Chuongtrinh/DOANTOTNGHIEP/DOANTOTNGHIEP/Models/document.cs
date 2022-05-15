@@ -26,6 +26,10 @@ namespace DOANTOTNGHIEP.Models
 
         public long? MaLop { get; set; }
 
+        public int? LuotTaiXuong { get; set; }
+
+        public DateTime? Ngaydang { get; set; }
+
         public virtual LopHoc LopHoc { get; set; }
 
         public virtual TaiKhoan TaiKhoan { get; set; }
