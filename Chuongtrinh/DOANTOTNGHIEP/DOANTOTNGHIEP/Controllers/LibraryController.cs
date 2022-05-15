@@ -10,6 +10,7 @@ using System.Web.Hosting;
 using System.Web.Mvc;
 using DOANTOTNGHIEP.Models;
 using System.IO;
+using DOANTOTNGHIEP.Models.GetData;
 
 namespace DOANTOTNGHIEP.Controllers
 {
@@ -156,13 +157,14 @@ namespace DOANTOTNGHIEP.Controllers
                 fileName = Path.GetFileNameWithoutExtension(filedocumentupload.FileName);
                 Extension = Path.GetExtension(filedocumentupload.FileName);
                 imageName = fileName + DateTime.Now.ToString("yyyyMMddHHmmss");
-                imageSavePath = Server.MapPath("~/Content/document/"+malop+"/"+user.TenDangNhap+"/") + imageName +Extension;
+                imageSavePath = Server.MapPath("~/Content/document/"+ Models.crypt.Encrypt.encryptfoder(malop).Replace("+", "").Replace("=", "").Replace("-", "").Replace("_", "") + "/" + Models.crypt.Encrypt.encryptfoder(user.TenDangNhap).Replace("+", "").Replace("=", "").Replace("-", "").Replace("_", "") + "/") + imageName +Extension;
                 filedocumentupload.SaveAs(imageSavePath);
                 document documentpdf = new document();
-                documentpdf.Vitriluu = "~/Content/document/" + malop + "/" + user.TenDangNhap + "/" + imageName + Extension;
+                documentpdf.Vitriluu = "/Content/document/" + Models.crypt.Encrypt.encryptfoder( malop).Replace("+", "").Replace("=", "").Replace("-", "").Replace("_", "") + "/" + Models.crypt.Encrypt.encryptfoder(user.TenDangNhap).Replace("+", "").Replace("=", "").Replace("-", "").Replace("_", "") + "/" + imageName + Extension;
                 documentpdf.Ten = tieude;
                 documentpdf.Nguoisohuu = user.TenDangNhap;
                 documentpdf.Noidung = "";
+                documentpdf.MaLop = Convert.ToInt64( malop);
                 db.documents.Add(documentpdf);
                 db.SaveChanges();
 

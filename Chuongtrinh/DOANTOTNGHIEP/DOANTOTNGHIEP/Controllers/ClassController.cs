@@ -155,14 +155,14 @@ namespace DOANTOTNGHIEP.Controllers
                 lp.Hinhanh = "/Content/image/imageclass/img_backtoschool.jpg";
                 db.LopHocs.Add(lp);
                 db.SaveChanges();
-                CreateFolder(Server.MapPath("~/Content/document/" + lp.MaLop));
+                CreateFolder(Server.MapPath("~/Content/document/" + Models.crypt.Encrypt.encryptfoder(lp.MaLop.ToString()).Replace("+","").Replace("=", "").Replace("-", "").Replace("_", "")));
                 ThanhVienLop tvl = new ThanhVienLop();
                 tvl.MaLop = lp.MaLop;
                 tvl.Mathanhvien = nguoitao;
                 tvl.NgayThamGia = DateTime.Now;
                 db.ThanhVienLops.Add(tvl);
                 db.SaveChanges();
-                CreateFolder(Server.MapPath("~/Content/document/" + lp.MaLop+"/"+tvl.Mathanhvien));
+                CreateFolder(Server.MapPath("~/Content/document/" + Models.crypt.Encrypt.encryptfoder(lp.MaLop.ToString()).Replace("+", "").Replace("=", "").Replace("-", "").Replace("_", "") + "/"+ Models.crypt.Encrypt.encryptfoder(tvl.Mathanhvien).Replace("+", "").Replace("=", "").Replace("-", "").Replace("_", "")));
                 return RedirectToAction("Index", "TrangChu");
             }
 

@@ -23,7 +23,8 @@
         });
         function actionshowviewpdf(link) {
             console.log(12313);
-            $(".viewshowpdf").attr('data', link);
+            $(".viewshowpdfdownload").attr('href', link );
+            $(".viewshowpdf").attr('src',  link + "#toolbar=0&navpanes=0&scrollbar=0");
         }
     </script>
 </head>
@@ -59,7 +60,7 @@
                             <div style="height:90%"><img src="@tl.anh" /></div>
                             <div style="height:10%"><label style="overflow:hidden; text-overflow:ellipsis;white-space:nowrap">@Html.Raw(@tl.ten)</label></div>
                         </div>
-                        <div style="height:10%;margin:2px auto"> <button class="btn btn-primary btn-block" onclick="actionshowviewpdf(`@tl.duongdan`)" data-toggle="modal" data-target="#modalshowviewpdf">View</button></div>
+                        <div style="height:10%;margin:2px auto"> <button class="btn btn-primary btn-block" onclick="actionshowviewpdf('@tl.duongdan')" data-toggle="modal" data-target="#modalshowviewpdf">View</button></div>
                     </div>
 
                 }
@@ -76,17 +77,22 @@
 
 
         <!-- Modal -->
-        <div class="modal fade" id="modalshowviewpdf" role="dialog">
-            <div class="modal-dialog">
+        <div class="modal fade" id="modalshowviewpdf" role="dialog"   style="margin:40px">
+            <div class="modal-dialog" style=" width: 100%; height: 95%; margin: 0; padding: 0;">
 
                 <!-- Modal content-->
-                <div class="modal-content" style="width: fit-content;">
+                <div class="modal-content" style="height: auto; min-height: 95%; border: 0 none; border-radius: 0; box-shadow: none;">
                     <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal">&times;</button>
-                        <h4 class="modal-title">Upload tài liệu</h4>
+                        <button type="button" class="close" data-dismiss="modal" style="font-size:50px">&times;</button>
+                        <a type="button" class="fa fa-download close viewshowpdfdownload" href="~/Content/BTTL/RLSV_CNTT59_2021-2022_HKy1.pdf" download style="font-size: 50px ;margin-right:100px"></a>
+                        <h2 class="modal-title">Show tài liệu</h2>
                     </div>
-                    <object type="application/pdf" data="#" class="viewshowpdf" style="width:80%;height:80%">
-                    </object>
+                        <iframe src="~/Content/BTTL/RLSV_CNTT59_2021-2022_HKy1.pdf#toolbar=0&navpanes=0&scrollbar=0"
+            frameBorder="0"
+            scrolling="auto"
+            height="100%"
+            width="100%" class="viewshowpdf"  ></iframe>
+                   
                 </div>
 
             </div>
