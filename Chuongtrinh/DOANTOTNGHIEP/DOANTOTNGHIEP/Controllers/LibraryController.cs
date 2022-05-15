@@ -9,6 +9,7 @@ using System.Web;
 using System.Web.Hosting;
 using System.Web.Mvc;
 using DOANTOTNGHIEP.Models;
+using System.IO;
 
 namespace DOANTOTNGHIEP.Controllers
 {
@@ -99,16 +100,40 @@ namespace DOANTOTNGHIEP.Controllers
         // GET: Library
         public ActionResult Library()
         {
+            DB db = new DB();
+            var user = Session["user"] as DOANTOTNGHIEP.Models.TaiKhoan;
+            if (user == null) return RedirectToAction("Login", "Login");
+            if (Session["malop"] == null) return RedirectToAction("Index", "TrangChu");
+            string malop = Session["malop"].ToString();
+            var gv = db.LopHocs.SingleOrDefault(x => x.MaLop.ToString().Equals(malop) && x.NguoiTao.Equals(user.TenDangNhap));
+            if (gv == null)
+            {
+                return RedirectToAction("Index", "TrangChu");
+            }
             return View();
         }
         public ActionResult Searchlibrary()
         {
+            DB db = new DB();
+            var user = Session["user"] as DOANTOTNGHIEP.Models.TaiKhoan;
             var cauhoi = Request.Form["noidungcantin"].ToString();
-            ViewData["s"] = getfiletkb(cauhoi);
+            string malop = Session["malop"].ToString();
+            var doccument = db.documents.Where(x => x.MaLop.ToString().Equals(malop)).ToList();
+            List<Tailieu> tailieu=new List<Tailieu>();
+            foreach(var filedoccument in doccument)
+            {
+                Tailieu tl = new  Tailieu();
+                tl.ten = filedoccument.Ten;
+                tl.anh = filedoccument.Image;
+                tl.duongdan = filedoccument.Vitriluu;
+                tailieu.Add(tl);
+
+            }
+            ViewData["s"] = tailieu;
             return PartialView();
         }
         [HttpPost]
-        public ActionResult Uploaddocument(HttpPostedFileBase[] file)
+        public ActionResult Uploaddocument(HttpPostedFileBase filedocumentupload)
         {
             DB db = new DB();
             var user = Session["user"] as DOANTOTNGHIEP.Models.TaiKhoan;
@@ -118,9 +143,32 @@ namespace DOANTOTNGHIEP.Controllers
             var gv = db.LopHocs.SingleOrDefault(x => x.MaLop.ToString().Equals(malop) && x.NguoiTao.Equals(user.TenDangNhap));
             if (gv == null)
             {
-                return Library();
+                return RedirectToAction("Index", "TrangChu");
             }
-            return Library();
+            string returnImagePath = string.Empty;
+            string fileName;
+            string Extension;
+            string imageName;
+            string imageSavePath;
+            string tieude = Request.Form["titledocument"];
+            if (filedocumentupload.ContentLength > 0)
+            {
+                fileName = Path.GetFileNameWithoutExtension(filedocumentupload.FileName);
+                Extension = Path.GetExtension(filedocumentupload.FileName);
+                imageName = fileName + DateTime.Now.ToString("yyyyMMddHHmmss");
+                imageSavePath = Server.MapPath("~/Content/document/"+malop+"/"+user.TenDangNhap+"/") + imageName +Extension;
+                filedocumentupload.SaveAs(imageSavePath);
+                document documentpdf = new document();
+                documentpdf.Vitriluu = "~/Content/document/" + malop + "/" + user.TenDangNhap + "/" + imageName + Extension;
+                documentpdf.Ten = tieude;
+                documentpdf.Nguoisohuu = user.TenDangNhap;
+                documentpdf.Noidung = "";
+                db.documents.Add(documentpdf);
+                db.SaveChanges();
+
+            }
+           
+            return RedirectToAction("Library", "Library");
         }
 
 

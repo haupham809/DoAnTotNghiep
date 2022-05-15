@@ -21,13 +21,17 @@
             $('.tl').fadeIn(3000);
             
         });
+        function actionshowviewpdf(link) {
+            console.log(12313);
+            $(".viewshowpdf").attr('data', link);
+        }
     </script>
 </head>
 
 <div id="tailieu">
-    @if(tailieu.Count == 0)
-            {
-    
+    @if (tailieu.Count == 0)
+    {
+
         <div style="width:100%;height:80%;text-align:center">
 
             <img src="~/Content/image/Icon/library-owl.jpg" style="width:30%" />
@@ -37,12 +41,12 @@
             </label>
 
         </div>
-  
-            }
 
-    
+    }
 
-    
+
+
+
     <div style="margin:5px auto" class="tl">
         @{
 
@@ -52,10 +56,10 @@
                 {
                     <div style="width:250px;float:left;height:320px;margin:25px;">
                         <div style="border-radius: 10px; background-image: linear-gradient(to top,#5DFFF9,#812EEF);height:90%;text-align:center;padding:10px">
-                            <div style="height:90%"> @Html.Raw(@tl.anh)</div>
+                            <div style="height:90%"><img src="@tl.anh" /></div>
                             <div style="height:10%"><label style="overflow:hidden; text-overflow:ellipsis;white-space:nowrap">@Html.Raw(@tl.ten)</label></div>
                         </div>
-                        <div style="height:10%;margin:2px auto">@Html.Raw(@tl.duongdan)</div>
+                        <div style="height:10%;margin:2px auto"> <button class="btn btn-primary btn-block" onclick="actionshowviewpdf(`@tl.duongdan`)" data-toggle="modal" data-target="#modalshowviewpdf">View</button></div>
                     </div>
 
                 }
@@ -66,6 +70,27 @@
             }
 
         }
+
+    </div>
+    <div class="container">
+
+
+        <!-- Modal -->
+        <div class="modal fade" id="modalshowviewpdf" role="dialog">
+            <div class="modal-dialog">
+
+                <!-- Modal content-->
+                <div class="modal-content" style="width: fit-content;">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">Upload tài liệu</h4>
+                    </div>
+                    <object type="application/pdf" data="#" class="viewshowpdf" style="width:80%;height:80%">
+                    </object>
+                </div>
+
+            </div>
+        </div>
 
     </div>
 </div>

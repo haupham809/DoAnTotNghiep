@@ -13,6 +13,7 @@ namespace DOANTOTNGHIEP.Models
         public LopHoc()
         {
             BaiTaps = new HashSet<BaiTap>();
+            documents = new HashSet<document>();
             Loimois = new HashSet<Loimoi>();
             Messes = new HashSet<Mess>();
             ThanhVienLops = new HashSet<ThanhVienLop>();
@@ -37,6 +38,9 @@ namespace DOANTOTNGHIEP.Models
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<BaiTap> BaiTaps { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<document> documents { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Loimoi> Loimois { get; set; }

@@ -119,6 +119,17 @@ namespace DOANTOTNGHIEP.Controllers
             }
             return View("JoinClass");
         }
+        public void CreateFolder(string strPath)
+        {
+            try
+            {
+                if (Directory.Exists(strPath) == false)
+                {
+                    Directory.CreateDirectory(strPath);
+                }
+            }
+            catch { }
+        }
         [HttpPost]
         //tao lop hoc
         public ActionResult createclass()
@@ -144,12 +155,14 @@ namespace DOANTOTNGHIEP.Controllers
                 lp.Hinhanh = "/Content/image/imageclass/img_backtoschool.jpg";
                 db.LopHocs.Add(lp);
                 db.SaveChanges();
+                CreateFolder(Server.MapPath("~/Content/document/" + lp.MaLop));
                 ThanhVienLop tvl = new ThanhVienLop();
                 tvl.MaLop = lp.MaLop;
                 tvl.Mathanhvien = nguoitao;
                 tvl.NgayThamGia = DateTime.Now;
                 db.ThanhVienLops.Add(tvl);
                 db.SaveChanges();
+                CreateFolder(Server.MapPath("~/Content/document/" + lp.MaLop+"/"+tvl.Mathanhvien));
                 return RedirectToAction("Index", "TrangChu");
             }
 
