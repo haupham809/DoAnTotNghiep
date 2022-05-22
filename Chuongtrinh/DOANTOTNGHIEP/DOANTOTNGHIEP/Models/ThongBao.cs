@@ -12,6 +12,7 @@ namespace DOANTOTNGHIEP.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public ThongBao()
         {
+            commentnotifications = new HashSet<commentnotification>();
             FileTBs = new HashSet<FileTB>();
         }
 
@@ -33,6 +34,9 @@ namespace DOANTOTNGHIEP.Models
         public long? MaBaiTap { get; set; }
 
         public virtual BaiTap BaiTap { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<commentnotification> commentnotifications { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<FileTB> FileTBs { get; set; }

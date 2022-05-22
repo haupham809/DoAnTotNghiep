@@ -16,7 +16,6 @@ namespace DOANTOTNGHIEP.Models
 
         public string Vitriluu { get; set; }
 
-        [StringLength(10)]
         public string Noidung { get; set; }
 
         [StringLength(20)]
@@ -29,6 +28,8 @@ namespace DOANTOTNGHIEP.Models
         public int? LuotTaiXuong { get; set; }
 
         public DateTime? Ngaydang { get; set; }
+
+        public int? Luotxem { get; set; }
 
         public virtual LopHoc LopHoc { get; set; }
 

@@ -14,11 +14,17 @@ namespace DOANTOTNGHIEP.Models
         {
             BaiTapTLs = new HashSet<BaiTapTL>();
             BaiTapTNs = new HashSet<BaiTapTN>();
+            commentbaitapTLs = new HashSet<commentbaitapTL>();
+            commentbaitapTNs = new HashSet<commentbaitapTN>();
+            commentnotifications = new HashSet<commentnotification>();
             documents = new HashSet<document>();
             Loimois = new HashSet<Loimoi>();
             LopHocs = new HashSet<LopHoc>();
             Messes = new HashSet<Mess>();
             Messes1 = new HashSet<Mess>();
+            replycomments = new HashSet<replycomment>();
+            replycommentBTTLs = new HashSet<replycommentBTTL>();
+            replycommentBTTNs = new HashSet<replycommentBTTN>();
             ThanhVienLops = new HashSet<ThanhVienLop>();
             ThongBaos = new HashSet<ThongBao>();
             TTBaiTapTLs = new HashSet<TTBaiTapTL>();
@@ -53,6 +59,15 @@ namespace DOANTOTNGHIEP.Models
         public virtual ICollection<BaiTapTN> BaiTapTNs { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<commentbaitapTL> commentbaitapTLs { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<commentbaitapTN> commentbaitapTNs { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<commentnotification> commentnotifications { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<document> documents { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
@@ -66,6 +81,15 @@ namespace DOANTOTNGHIEP.Models
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Mess> Messes1 { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<replycomment> replycomments { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<replycommentBTTL> replycommentBTTLs { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<replycommentBTTN> replycommentBTTNs { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ThanhVienLop> ThanhVienLops { get; set; }

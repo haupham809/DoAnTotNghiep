@@ -55,9 +55,9 @@
             {
                 foreach (var tl in tailieu)
                 {
-                    <div style="width:250px;float:left;height:320px;margin:25px;">
+                    <div style="width:250px;float:left;height:400px;margin:25px;">
                         <div style="border-radius: 10px; background-image: linear-gradient(to top,#5DFFF9,#812EEF);height:90%;text-align:center;padding:10px">
-                            <div style="height:90%"><img src="@tl.anh" /></div>
+                            <div style="height:90%"><img src="@tl.anh" style="max-height:auto;width:200px" /></div>
                             <div style="height:10%"><label style="overflow:hidden; text-overflow:ellipsis;white-space:nowrap">@Html.Raw(@tl.ten)</label></div>
                         </div>
                         <div style="height:10%;margin:2px auto"> <button class="btn btn-primary btn-block" onclick="actionshowviewpdf('@tl.duongdan')" data-toggle="modal" data-target="#modalshowviewpdf">View</button></div>

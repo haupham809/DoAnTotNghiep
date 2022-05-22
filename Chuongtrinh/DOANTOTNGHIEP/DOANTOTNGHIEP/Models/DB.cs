@@ -16,6 +16,9 @@ namespace DOANTOTNGHIEP.Models
         public virtual DbSet<BaiTapTL> BaiTapTLs { get; set; }
         public virtual DbSet<BaiTapTN> BaiTapTNs { get; set; }
         public virtual DbSet<CauHoi> CauHois { get; set; }
+        public virtual DbSet<commentbaitapTL> commentbaitapTLs { get; set; }
+        public virtual DbSet<commentbaitapTN> commentbaitapTNs { get; set; }
+        public virtual DbSet<commentnotification> commentnotifications { get; set; }
         public virtual DbSet<DapAn> DapAns { get; set; }
         public virtual DbSet<document> documents { get; set; }
         public virtual DbSet<FileBTTL> FileBTTLs { get; set; }
@@ -24,6 +27,9 @@ namespace DOANTOTNGHIEP.Models
         public virtual DbSet<LopHoc> LopHocs { get; set; }
         public virtual DbSet<Mess> Messes { get; set; }
         public virtual DbSet<Plagiarism> Plagiarism { get; set; }
+        public virtual DbSet<replycomment> replycomments { get; set; }
+        public virtual DbSet<replycommentBTTL> replycommentBTTLs { get; set; }
+        public virtual DbSet<replycommentBTTN> replycommentBTTNs { get; set; }
         public virtual DbSet<TaiKhoan> TaiKhoans { get; set; }
         public virtual DbSet<ThanhVienLop> ThanhVienLops { get; set; }
         public virtual DbSet<ThongBao> ThongBaos { get; set; }
@@ -47,14 +53,25 @@ namespace DOANTOTNGHIEP.Models
                 .WithOptional(e => e.BaiTap)
                 .HasForeignKey(e => e.MaBt);
 
+            modelBuilder.Entity<commentbaitapTL>()
+                .HasMany(e => e.replycommentBTTLs)
+                .WithOptional(e => e.commentbaitapTL)
+                .HasForeignKey(e => e.MaComment);
+
+            modelBuilder.Entity<commentbaitapTN>()
+                .HasMany(e => e.replycommentBTTNs)
+                .WithOptional(e => e.commentbaitapTN)
+                .HasForeignKey(e => e.MaComment);
+
+            modelBuilder.Entity<commentnotification>()
+                .HasMany(e => e.replycomments)
+                .WithOptional(e => e.commentnotification)
+                .HasForeignKey(e => e.Macomment);
+
             modelBuilder.Entity<DapAn>()
                 .HasMany(e => e.TTBaiTapTNs)
                 .WithOptional(e => e.DapAn)
                 .HasForeignKey(e => e.MaDapAnluaChon);
-
-            modelBuilder.Entity<document>()
-                .Property(e => e.Noidung)
-                .IsFixedLength();
 
             modelBuilder.Entity<LopHoc>()
                 .HasMany(e => e.Loimois)
@@ -75,6 +92,21 @@ namespace DOANTOTNGHIEP.Models
                 .HasMany(e => e.BaiTapTNs)
                 .WithOptional(e => e.TaiKhoan)
                 .HasForeignKey(e => e.NguoiNop);
+
+            modelBuilder.Entity<TaiKhoan>()
+                .HasMany(e => e.commentbaitapTLs)
+                .WithOptional(e => e.TaiKhoan)
+                .HasForeignKey(e => e.Nguoidang);
+
+            modelBuilder.Entity<TaiKhoan>()
+                .HasMany(e => e.commentbaitapTNs)
+                .WithOptional(e => e.TaiKhoan)
+                .HasForeignKey(e => e.Nguoidang);
+
+            modelBuilder.Entity<TaiKhoan>()
+                .HasMany(e => e.commentnotifications)
+                .WithOptional(e => e.TaiKhoan)
+                .HasForeignKey(e => e.Nguoidang);
 
             modelBuilder.Entity<TaiKhoan>()
                 .HasMany(e => e.documents)
@@ -102,6 +134,21 @@ namespace DOANTOTNGHIEP.Models
                 .HasForeignKey(e => e.NguoiNhan);
 
             modelBuilder.Entity<TaiKhoan>()
+                .HasMany(e => e.replycomments)
+                .WithOptional(e => e.TaiKhoan)
+                .HasForeignKey(e => e.Nguoidang);
+
+            modelBuilder.Entity<TaiKhoan>()
+                .HasMany(e => e.replycommentBTTLs)
+                .WithOptional(e => e.TaiKhoan)
+                .HasForeignKey(e => e.Nguoidang);
+
+            modelBuilder.Entity<TaiKhoan>()
+                .HasMany(e => e.replycommentBTTNs)
+                .WithOptional(e => e.TaiKhoan)
+                .HasForeignKey(e => e.Nguoidang);
+
+            modelBuilder.Entity<TaiKhoan>()
                 .HasMany(e => e.ThanhVienLops)
                 .WithRequired(e => e.TaiKhoan)
                 .HasForeignKey(e => e.Mathanhvien)
@@ -121,6 +168,11 @@ namespace DOANTOTNGHIEP.Models
                 .HasMany(e => e.TTBaiTapTNs)
                 .WithOptional(e => e.TaiKhoan)
                 .HasForeignKey(e => e.NguoiNop);
+
+            modelBuilder.Entity<ThongBao>()
+                .HasMany(e => e.commentnotifications)
+                .WithOptional(e => e.ThongBao)
+                .HasForeignKey(e => e.MaThongbao);
 
             modelBuilder.Entity<ThongBao>()
                 .HasMany(e => e.FileTBs)

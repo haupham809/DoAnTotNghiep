@@ -214,6 +214,9 @@
     <Compile Include="Models\BaiTapTL.cs" />
     <Compile Include="Models\BaiTapTN.cs" />
     <Compile Include="Models\CauHoi.cs" />
+    <Compile Include="Models\commentbaitapTL.cs" />
+    <Compile Include="Models\commentbaitapTN.cs" />
+    <Compile Include="Models\commentnotification.cs" />
     <Compile Include="Models\crypt\Encrypt.cs" />
     <Compile Include="Models\DapAn.cs" />
     <Compile Include="Models\DB.cs" />
@@ -228,6 +231,9 @@
     <Compile Include="Models\LopHoc.cs" />
     <Compile Include="Models\Mess.cs" />
     <Compile Include="Models\Plagiarism.cs" />
+    <Compile Include="Models\replycomment.cs" />
+    <Compile Include="Models\replycommentBTTL.cs" />
+    <Compile Include="Models\replycommentBTTN.cs" />
     <Compile Include="Models\sortmesstime.cs" />
     <Compile Include="Models\TaiKhoan.cs" />
     <Compile Include="Models\Tailieu.cs" />

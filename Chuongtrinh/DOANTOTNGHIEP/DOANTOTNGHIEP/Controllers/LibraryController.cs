@@ -11,6 +11,10 @@ using System.Web.Mvc;
 using DOANTOTNGHIEP.Models;
 using System.IO;
 using DOANTOTNGHIEP.Models.GetData;
+using Spire.Pdf;
+using System.Drawing;
+using System.Drawing.Imaging;
+
 
 namespace DOANTOTNGHIEP.Controllers
 {
@@ -163,15 +167,55 @@ namespace DOANTOTNGHIEP.Controllers
                 documentpdf.Vitriluu = "/Content/document/" + Models.crypt.Encrypt.encryptfoder( malop).Replace("+", "").Replace("=", "").Replace("-", "").Replace("_", "") + "/" + Models.crypt.Encrypt.encryptfoder(user.TenDangNhap).Replace("+", "").Replace("=", "").Replace("-", "").Replace("_", "") + "/" + imageName + Extension;
                 documentpdf.Ten = tieude;
                 documentpdf.Nguoisohuu = user.TenDangNhap;
-                documentpdf.Noidung = "";
+                documentpdf.Ngaydang = DateTime.Now;
+                documentpdf.LuotTaiXuong = 0;
+                documentpdf.Luotxem = 0;
+                documentpdf.Noidung = getdatapdf(documentpdf.Vitriluu);
+                documentpdf.Image = getimagepdf(documentpdf.Vitriluu, malop, user.TenDangNhap);
                 documentpdf.MaLop = Convert.ToInt64( malop);
                 db.documents.Add(documentpdf);
                 db.SaveChanges();
+              
 
             }
            
             return RedirectToAction("Library", "Library");
         }
+        public string getdatapdf(string filepdf)
+        {
+            PdfDocument doc = new PdfDocument();
+            doc.LoadFromFile(Server.MapPath(filepdf));
+            StringBuilder buffer = new StringBuilder();
+            IList<Image> images = new List<Image>();
+            foreach (PdfPageBase page in doc.Pages)
+            {
+                buffer.Append(page.ExtractText());
+            }
+            doc.Close();
+            return buffer.ToString();
+        }
+
+        public string getimagepdf(string  filepdf , string malop, string TenDangNhap )
+        {
+
+            PdfDocument doc = new PdfDocument();
+            doc.LoadFromFile(Server.MapPath(filepdf));
+            Image bmp = doc.SaveAsImage(0);
+            Image emf = doc.SaveAsImage(0, Spire.Pdf.Graphics.PdfImageType.Metafile);
+            Image zoomImg = new Bitmap((int)(emf.Size.Width * 2), (int)(emf.Size.Height * 2));
+            using (Graphics g = Graphics.FromImage(zoomImg))
+            {
+   
+                g.ScaleTransform(2.0f, 2.0f);
+                g.DrawImage(emf, new Rectangle(new Point(0, 0), emf.Size), new Rectangle(new Point(0, 0), emf.Size), GraphicsUnit.Pixel);
+            }
+            string extension = DateTime.Now.ToString("yyyyMMddHHmmss") + ".png";
+            string path = Server.MapPath("~/Content/document/" + Models.crypt.Encrypt.encryptfoder(malop).Replace("+", "").Replace("=", "").Replace("-", "").Replace("_", "") + "/" + Models.crypt.Encrypt.encryptfoder(TenDangNhap).Replace("+", "").Replace("=", "").Replace("-", "").Replace("_", "") + "/") + extension;
+            emf.Save(path, ImageFormat.Png);
+            return "/Content/document/" + Models.crypt.Encrypt.encryptfoder(malop).Replace("+", "").Replace("=", "").Replace("-", "").Replace("_", "") + "/" + Models.crypt.Encrypt.encryptfoder(TenDangNhap).Replace("+", "").Replace("=", "").Replace("-", "").Replace("_", "") + "/"+extension;
+
+        }
+
 
 
     }

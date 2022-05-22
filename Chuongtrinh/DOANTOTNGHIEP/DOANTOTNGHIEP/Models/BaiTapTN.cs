@@ -12,6 +12,7 @@ namespace DOANTOTNGHIEP.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public BaiTapTN()
         {
+            commentbaitapTNs = new HashSet<commentbaitapTN>();
             TTBaiTapTNs = new HashSet<TTBaiTapTN>();
         }
 
@@ -30,6 +31,9 @@ namespace DOANTOTNGHIEP.Models
         public int? Diem { get; set; }
 
         public virtual BaiTap BaiTap { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<commentbaitapTN> commentbaitapTNs { get; set; }
 
         public virtual TaiKhoan TaiKhoan { get; set; }
 
