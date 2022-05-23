@@ -18,7 +18,7 @@
     margin-bottom: 20px;
     padding: 20px;
     border-radius: 20px;
-    border: 0px solid black
+   
 }
 
 .ngaytao {
@@ -39,7 +39,6 @@
 
 .dangtb {
     width: 100%;
-    border: 2px solid black;
     border-radius: 5px;
     padding: 10px;
     margin-bottom: 40px;
@@ -96,7 +95,6 @@ textarea {
 
 .thongbao {
     width: 100%;
-    border: 0px solid black;
     border-radius: 5px;
     padding: 10px;
     margin-bottom: 30px;
@@ -110,7 +108,6 @@ hr {
 
 .filethongbao {
     padding: 10px;
-    border: 0px solid black;
     border-radius: 5px;
     margin-left: 20px;
     width: fit-content;

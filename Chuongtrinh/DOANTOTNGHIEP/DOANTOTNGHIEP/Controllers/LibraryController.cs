@@ -123,9 +123,19 @@ namespace DOANTOTNGHIEP.Controllers
             var user = Session["user"] as DOANTOTNGHIEP.Models.TaiKhoan;
             var cauhoi = Request.Form["noidungcantin"].ToString();
             string malop = Session["malop"].ToString();
-            var doccument = db.documents.Where(x => x.MaLop.ToString().Equals(malop)).ToList();
+            List<document> documents = new List<document>();
+            if(cauhoi.Replace("  ","").Length > 0)
+            {
+                documents = db.documents.Where(x => x.MaLop.ToString().Equals(malop) && x.Noidung.Replace("  ", " ").Contains(cauhoi.Replace("  ", " "))).ToList();
+
+            }
+            else
+            {
+                documents = db.documents.Where(x => x.MaLop.ToString().Equals(malop) ).ToList();
+
+            }
             List<Tailieu> tailieu=new List<Tailieu>();
-            foreach(var filedoccument in doccument)
+            foreach(var filedoccument in documents)
             {
                 Tailieu tl = new  Tailieu();
                 tl.ten = filedoccument.Ten;
@@ -170,7 +180,12 @@ namespace DOANTOTNGHIEP.Controllers
                 documentpdf.Ngaydang = DateTime.Now;
                 documentpdf.LuotTaiXuong = 0;
                 documentpdf.Luotxem = 0;
-                documentpdf.Noidung = getdatapdf(documentpdf.Vitriluu);
+                documentpdf.Noidung = getdatapdf(documentpdf.Vitriluu).Replace("\r", "").Replace("\n", "").Replace("Evaluation Warning : The document was created with Spire.PDF for .NET.","").Replace("  ", " ");
+                while (true)
+                {
+                    documentpdf.Noidung= documentpdf.Noidung.Replace("  ", " ");
+                    if (documentpdf.Noidung.IndexOf("  ") < 0) break;
+                }
                 documentpdf.Image = getimagepdf(documentpdf.Vitriluu, malop, user.TenDangNhap);
                 documentpdf.MaLop = Convert.ToInt64( malop);
                 db.documents.Add(documentpdf);
@@ -189,7 +204,7 @@ namespace DOANTOTNGHIEP.Controllers
             IList<Image> images = new List<Image>();
             foreach (PdfPageBase page in doc.Pages)
             {
-                buffer.Append(page.ExtractText());
+                buffer.Append(page.ExtractText().Replace("  ", " ").Replace("\r", "").Replace("\n", ""));
             }
             doc.Close();
             return buffer.ToString();
