@@ -171,19 +171,21 @@
         @{
 
 
-
+             
             <div class="showdangbaitap">
                 <h1>Bài Tập</h1>
-                <select class="luachonloaicauhoi">
+
+
+                <select class="form-control luachonloaicauhoi">
                     <option id="tracnghiem">Trắc nghiệm</option>
                     <option id="tuluan" class="tuluan">Tự luận</option>
                 </select>
                 @using (Html.BeginForm("DangBaiTapTL", "Class", FormMethod.Post, new { enctype = "multipart/form-data" }))
                 {
                     <div class="hideDangBaitapTL">
-                        <input type="text" name="Chude" placeholder="Chủ đề" class="chudeTN" required />
+                        <input type="text" name="Chude" placeholder="Chủ đề" class="form-control chudeTN" required />
                         <textarea name="noidungbt" class="noidungTL" ></textarea>
-                        <label>Ngày kết thúc :</label><input type="datetime-local" name="thoigiankethuc" class="thoigianTL" required style="margin-left:10px" min=@DateTime.UtcNow.ToString(string.Format("yyyy-MM-ddThh:mm")) />
+                        <label>Ngày kết thúc :</label><input type="datetime-local" name="thoigiankethuc" class="form-control thoigianTL" required style="margin-left:10px" min=@DateTime.UtcNow.ToString(string.Format("yyyy-MM-ddThh:mm")) />
                         <div><label class="101-1"></label></div>
                         <label class="glyphicon glyphicon-paperclip filebaitap" for="101-1">  Thêm</label>
                         <input type="file" id="101-1" class="fileupload" multiple name="file" style="display:none" />
@@ -194,9 +196,9 @@
                 @using (Html.BeginForm("DangBaiTapTN", "Class", FormMethod.Post, new { enctype = "multipart/form-data" }))
                 {
             <div class="hideDangBaitapTN">
-                <input type="text" name="Chude" placeholder="Chủ đề" class="chudeTN" required />
+                <input type="text" name="Chude" placeholder="Chủ đề" class="form-control  chudeTN" required />
                 <textarea style="max-width:100%;height:200px;width:100%" name="noidungbt" class="noidungTN" ></textarea>
-                <label>Ngày kết thúc :</label><input type="datetime-local" name="thoigiankethuc" class="thoigianTN" required style="margin-left:10px" min=@DateTime.UtcNow.ToString(string.Format("yyyy-MM-ddThh:mm")) />
+                <label>Ngày kết thúc :</label><input type="datetime-local" name="thoigiankethuc" class="form-control thoigianTN" required style="margin-left:10px" min=@DateTime.UtcNow.ToString(string.Format("yyyy-MM-ddThh:mm")) />
                 <div><label class="101-2"></label></div>
                 <label class="glyphicon glyphicon-paperclip filebaitap" for="101-2">  Thêm</label>
                 <a href="~/Content/Bieumaucauhoi.docx" class="fa fa-download filebieumau">  Biểu mẫu</a>
@@ -218,7 +220,7 @@
 
                     <a href="~/Class/ShowInforBaiTap/@i.MaBaiTap" class=@i.MaBaiTap >
 
-                        <div id="baitap" class=@i.MaBaiTap  style="border:0.2px solid black">
+                        <div id="baitap" class=@i.MaBaiTap  >
 
                             <table style="margin-bottom:20px;">
 
@@ -284,7 +286,7 @@
 
                         </div>
                     </a>
-                    <div class="hideSuaBaitap-@i.MaBaiTap" id="hideSuaBaiTap"  style="border:0.2px solid black">
+                    <div class="hideSuaBaitap-@i.MaBaiTap" id="hideSuaBaiTap"  >
                         @using (Html.BeginForm("Editbaitap", "Class", new { id = i.MaBaiTap }, FormMethod.Post, new { enctype = "multipart/form-data" }))
                         {
                             <input type="text" name="Chude" placeholder="Chủ đề" class="chudeTN" required value=@i.ChuDe />

@@ -2,8 +2,7 @@
     Layout = "~/Views/Shared/Layoutclass.cshtml";
     var baitracnhgiem = ViewData["baitracnghiem"] as List<DOANTOTNGHIEP.Models.BaiTapTN>;
     var baituluan = ViewData["baituluan"] as List<DOANTOTNGHIEP.Models.BaiTapTL>;
-    
-            
+    DOANTOTNGHIEP.Models.DB db = new DOANTOTNGHIEP.Models.DB();
 }
 
 <!DOCTYPE html>
@@ -34,213 +33,245 @@
 
         tbody.tr.th {
         }
+      
     </style>
+    <script type="text/javascript">
+        function checkdaovan() {
+            $("#modalloading").css("display","block")
+
+        }
+    </script>
 </head>
-<body class="container" style="margin-top:20px;">
+<body >
+    <div style="margin-top: 20px">
+        @if (baitracnhgiem != null)
+        {
+            <a href="~/Class/ShowcauhoiTracnghiem/@baitracnhgiem[0].MaBaiTap" class="chitiet">Xem chi tiết bài tập </a>
+            <a href=@ViewBag.excel style=" background-image: linear-gradient(to right,#0404B4,#A901DB); padding: 5px; padding-left: 15px; padding-right: 15px; color: white; border-radius: 5px; margin-right: 2%" download>Xuất excel </a>
+            <a href=@ViewBag.pdf style=" background-image: linear-gradient(to right,#0404B4,#A901DB); padding: 5px; padding-left: 15px; padding-right: 15px; color: white; border-radius: 5px; margin-right: 2%" download>Xuất PDF </a>
 
-    @if (baitracnhgiem != null)
-    {
-        <a href="~/Class/ShowcauhoiTracnghiem/@baitracnhgiem[0].MaBaiTap" class="chitiet">Xem chi tiết bài tập </a>
-        <a href=@ViewBag.excel style=" background-image: linear-gradient(to right,#0404B4,#A901DB); padding: 5px; padding-left: 15px; padding-right: 15px; color: white; border-radius: 5px; margin-right: 2%" download>Xuất excel </a>
-        <a href=@ViewBag.pdf style=" background-image: linear-gradient(to right,#0404B4,#A901DB); padding: 5px; padding-left: 15px; padding-right: 15px; color: white; border-radius: 5px; margin-right: 2%" download>Xuất PDF </a>
-
-        <table style="margin-top:10px;width:100%">
-            <thead>
-                <tr class="heade" role="row">
-
-
-
-
-
-                    <th>
-                        <label></label>
-
-                    <th>
-                        <label>Tên</label>
-                    </th>
-                    <th>
-                        <label>Ngày Nộp</label>
-                    </th>
-                    <th>
-                        <label>Ngày kết thúc</label>
-                    </th>
-                    <th>
-                        <label>Điểm</label>
-                    </th>
-                    <th>
-                        <label>Trạng Thái</label>
-                    </th>
-                    <th>
-
-                    </th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (var i in baitracnhgiem)
-                {
-
-
-                    <tr>
+            <table style="margin-top:10px;width:100%">
+                <thead>
+                    <tr class="heade" role="row">
 
 
 
 
 
-                        <th style="background-color:#E6E6E6;border:3px solid white">
-                            <img src=@i.TaiKhoan.HinhAnh width="40" height="40" style="border-radius:5px;" />
+                        <th>
+                            <label></label>
 
+                        <th>
+                            <label>Tên</label>
                         </th>
-                        <th style="background-color:#E6E6E6;border:3px solid white">
-                            <label>@i.TaiKhoan.Ho  @i.TaiKhoan.Ten</label>
-
+                        <th>
+                            <label>Ngày Nộp</label>
                         </th>
-                        <th style="background-color:#E6E6E6;border:3px solid white">
-                            @if (i.NgayNop != null)
-                            {
-                                <label>@i.NgayNop.Value.ToString(string.Format("HH:mm:ss dd/MM/yyyy"))</label>
-                            }
-
-
-
+                        <th>
+                            <label>Ngày kết thúc</label>
                         </th>
-                        <th style="background-color:#E6E6E6;border:3px solid white">
-                            <label>@i.BaiTap.ThoiGianKetThuc.Value.ToString(string.Format("HH:mm:ss dd/MM/yyyy"))</label>
-
+                        <th>
+                            <label>Điểm</label>
                         </th>
-                        <th style="background-color:#E6E6E6;border:3px solid white">
-                            <label>@i.Diem</label>
+                        <th>
+                            <label>Trạng Thái</label>
                         </th>
-                        <th style="background-color:#E6E6E6;border:3px solid white">
+                        <th>
 
-                            @{
-                                if (i.NgayNop == null)
-                                {
-                                    <label style="color:red">Chưa Nộp</label>
-                                }
-                                else if (i.NgayNop != null)
-                                {
-                                    if (i.BaiTap.ThoiGianKetThuc >= i.NgayNop)
-                                    {
-                                        <label>Đã nộp</label>
-                                    }
-                                    else if (i.BaiTap.ThoiGianKetThuc < i.NgayNop)
-                                    {
-                                        <label style="color:red">Nộp muộn</label>
-                                    }
-                                }
-                            }
-
-                        </th>
-                        <th style="background-color:#E6E6E6;border:3px solid white">
-                            <a href="~/Class/ShowInforTN/?ten=@i.NguoiNop&ma=@i.MaBaiNop" class="glyphicon glyphicon-edit"></a>
-                        </th>
-
-                    </tr>
-                }
-            </tbody>
-        </table>
-    }
-    @if (baituluan != null)
-    {
-        <a href="~/Class/showcauhoituluan/@baituluan[0].MaBaiTap" class="chitiet">Xem chi tiết bài tập </a>
-        <a href="@ViewBag.excel" style=" background-image: linear-gradient(to right,#0404B4,#A901DB); padding: 5px; padding-left: 15px; padding-right: 15px; color: white; border-radius: 5px; margin-right: 2%" download>Xuất excel </a>
-        <a href="@ViewBag.pdf" style=" background-image: linear-gradient(to right,#0404B4,#A901DB); padding: 5px; padding-left: 15px; padding-right: 15px; color: white; border-radius: 5px; margin-right: 2%" download>Xuất PDF </a>
-
-        <table style="margin-top:10px;width:100%">
-
-            <thead>
-                <tr class="heade" role="row">
-
-
-
-
-
-                    <th>
-                        <label></label>
-
-                    <th>
-                        <label>Tên</label>
-                    </th>
-                    <th>
-                        <label>Ngày Nộp</label>
-                    </th>
-                    <th>
-                        <label>Ngày kết thúc</label>
-                    </th>
-                    <th>
-                        <label>Điểm</label>
-                    </th>
-                    <th>
-                        <label>Trạng Thái</label>
-                    </th>
-                    <th></th>
-                </tr>
-            </thead>
-            <tbody>
-
-
-                @foreach (var i in baituluan)
-                {
-
-
-                    <tr>
-
-
-
-
-
-                        <th style="background-color:#E6E6E6;border:3px solid white">
-                            <img src=@i.TaiKhoan.HinhAnh width="40" height="40" style="border-radius:5px;" />
-
-                        </th>
-                        <th style="background-color:#E6E6E6;border:3px solid white">
-                            <label>@i.TaiKhoan.Ho  @i.TaiKhoan.Ten</label>
-
-                        </th>
-                        <th style="background-color:#E6E6E6;border:3px solid white">
-                            @if (i.NgayNop != null)
-                            {
-                                <label>@i.NgayNop.Value.ToString(string.Format("HH:mm:ss dd/MM/yyyy"))</label>
-                            }
-
-                        </th>
-                        <th style="background-color:#E6E6E6;border:3px solid white">
-                            <label>@i.BaiTap.ThoiGianKetThuc.Value.ToString(string.Format("HH:mm:ss dd/MM/yyyy"))</label>
-
-                        </th>
-                        <th style="background-color:#E6E6E6;border:3px solid white">
-                            <label>@i.Diem</label>
-
-                        </th>
-                        <th style="background-color:#E6E6E6;border:3px solid white">
-
-                            @{
-                                if (i.NgayNop == null)
-                                {
-                                    <label style="color:red">Chưa Nộp</label>
-                                }
-                                else if (i.NgayNop != null)
-                                {
-                                    if (i.BaiTap.ThoiGianKetThuc >= i.NgayNop)
-                                    {
-                                        <label>Đã nộp</label>
-                                    }
-                                    else if (i.BaiTap.ThoiGianKetThuc < i.NgayNop)
-                                    {
-                                        <label style="color:red">Nộp muộn</label>
-                                    }
-                                }
-                            }
-
-                        </th>
-                        <th style="background-color:#E6E6E6;border:3px solid white">
-                            <a href="~/Class/ShowInforTL/?ten=@i.NguoiNop&ma=@i.MaBaiNop" class="glyphicon glyphicon-edit"></a>
                         </th>
                     </tr>
-                }
-            </tbody>
-        </table>
+                </thead>
+                <tbody>
+                    @foreach (var i in baitracnhgiem)
+                    {
 
-    }
+
+                        <tr>
+
+
+
+
+
+                            <th style="background-color:#E6E6E6;border:3px solid white">
+                                <img src=@i.TaiKhoan.HinhAnh width="40" height="40" style="border-radius:5px;" />
+
+                            </th>
+                            <th style="background-color:#E6E6E6;border:3px solid white">
+                                <label>@i.TaiKhoan.Ho  @i.TaiKhoan.Ten</label>
+
+                            </th>
+                            <th style="background-color:#E6E6E6;border:3px solid white">
+                                @if (i.NgayNop != null)
+                                {
+                                    <label>@i.NgayNop.Value.ToString(string.Format("HH:mm:ss dd/MM/yyyy"))</label>
+                                }
+
+
+
+                            </th>
+                            <th style="background-color:#E6E6E6;border:3px solid white">
+                                <label>@i.BaiTap.ThoiGianKetThuc.Value.ToString(string.Format("HH:mm:ss dd/MM/yyyy"))</label>
+
+                            </th>
+                            <th style="background-color:#E6E6E6;border:3px solid white">
+                                <label>@i.Diem</label>
+                            </th>
+                            <th style="background-color:#E6E6E6;border:3px solid white">
+
+                                @{
+                                    if (i.NgayNop == null)
+                                    {
+                                        <label style="color:red">Chưa Nộp</label>
+                                    }
+                                    else if (i.NgayNop != null)
+                                    {
+                                        if (i.BaiTap.ThoiGianKetThuc >= i.NgayNop)
+                                        {
+                                            <label>Đã nộp</label>
+                                        }
+                                        else if (i.BaiTap.ThoiGianKetThuc < i.NgayNop)
+                                        {
+                                            <label style="color:red">Nộp muộn</label>
+                                        }
+                                    }
+                                }
+
+                            </th>
+                            <th style="background-color:#E6E6E6;border:3px solid white">
+                                <a href="~/Class/ShowInforTN/?ten=@i.NguoiNop&ma=@i.MaBaiNop" class="glyphicon glyphicon-edit"></a>
+                            </th>
+
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        }
+        @if (baituluan != null)
+        {
+            <a href="~/Class/showcauhoituluan/@baituluan[0].MaBaiTap" class="chitiet">Xem chi tiết bài tập </a>
+            <a href="@ViewBag.excel" style=" background-image: linear-gradient(to right,#0404B4,#A901DB); padding: 5px; padding-left: 15px; padding-right: 15px; color: white; border-radius: 5px; margin-right: 2%" download>Xuất excel </a>
+            <a href="@ViewBag.pdf" style=" background-image: linear-gradient(to right,#0404B4,#A901DB); padding: 5px; padding-left: 15px; padding-right: 15px; color: white; border-radius: 5px; margin-right: 2%" download>Xuất PDF </a>
+            <button onclick="checkdaovan()"  style=" background-image: linear-gradient(to right,#0404B4,#A901DB); padding: 5px; padding-left: 15px; padding-right: 15px; color: white; border-radius: 5px; margin-right: 2%">Kiểm Tra Đạo Văn </button>
+
+
+            <table style="margin-top:10px;width:100%">
+
+                <thead>
+                    <tr class="heade" role="row">
+
+
+
+
+
+                        <th>
+                            <label></label>
+
+                        <th>
+                            <label>Tên</label>
+                        </th>
+                        <th>
+                            <label>Ngày Nộp</label>
+                        </th>
+                        <th>
+                            <label>Ngày kết thúc</label>
+                        </th>
+                        <th>
+                            <label>Điểm</label>
+                        </th>
+                        <th>
+                            <label>Trạng Thái</label>
+                        </th>
+                        <th>
+                            <label>Đạo Văn</label>
+                        </th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+
+
+                    @foreach (var i in baituluan)
+                    {
+
+
+                        <tr>
+
+
+
+
+
+                            <th style="background-color:#E6E6E6;border:3px solid white">
+                                <img src=@i.TaiKhoan.HinhAnh width="40" height="40" style="border-radius:5px;" />
+
+                            </th>
+                            <th style="background-color:#E6E6E6;border:3px solid white">
+                                <label>@i.TaiKhoan.Ho  @i.TaiKhoan.Ten</label>
+
+                            </th>
+                            <th style="background-color:#E6E6E6;border:3px solid white">
+                                @if (i.NgayNop != null)
+                                {
+                                    <label>@i.NgayNop.Value.ToString(string.Format("HH:mm:ss dd/MM/yyyy"))</label>
+                                }
+
+                            </th>
+                            <th style="background-color:#E6E6E6;border:3px solid white">
+                                <label>@i.BaiTap.ThoiGianKetThuc.Value.ToString(string.Format("HH:mm:ss dd/MM/yyyy"))</label>
+
+                            </th>
+                            <th style="background-color:#E6E6E6;border:3px solid white">
+                                <label>@i.Diem</label>
+
+                            </th>
+                            <th style="background-color:#E6E6E6;border:3px solid white">
+
+                                @{
+                                    if (i.NgayNop == null)
+                                    {
+                                        <label style="color:red">Chưa Nộp</label>
+                                    }
+                                    else if (i.NgayNop != null)
+                                    {
+                                        if (i.BaiTap.ThoiGianKetThuc >= i.NgayNop)
+                                        {
+                                            <label>Đã nộp</label>
+                                        }
+                                        else if (i.BaiTap.ThoiGianKetThuc < i.NgayNop)
+                                        {
+                                            <label style="color:red">Nộp muộn</label>
+                                        }
+                                    }
+                                }
+
+                            </th>
+                            <th style="background-color:#E6E6E6;border:3px solid white">
+                                @{
+                                    var dbfile = i.TTBaiTapTLs.Where(x => x.MaBaiNop.Equals(i.MaBaiNop)).ToList();
+                                    foreach (var ifile in dbfile)
+                                    {
+                                        var dv = ifile.Plagiarism.Where(x => x.Mafile.Equals(ifile.Ma)).OrderBy(y => y.Percents).ToList();
+                                        foreach (var daovan in dv)
+                                        {
+                                            <label>@daovan.Percents</label>
+                                        }
+                                    }
+
+                                }
+                            </th>
+                            <th style="background-color:#E6E6E6;border:3px solid white">
+                                <a href="~/Class/ShowInforTL/?ten=@i.NguoiNop&ma=@i.MaBaiNop" class="glyphicon glyphicon-edit"></a>
+                            </th>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+
+        }
+        
+    </div>
+
+    
+
 </body>
+
 </html>

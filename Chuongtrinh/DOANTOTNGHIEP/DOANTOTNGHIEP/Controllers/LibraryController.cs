@@ -108,13 +108,13 @@ namespace DOANTOTNGHIEP.Controllers
             DB db = new DB();
             var user = Session["user"] as DOANTOTNGHIEP.Models.TaiKhoan;
             if (user == null) return RedirectToAction("Login", "Login");
-            if (Session["malop"] == null) return RedirectToAction("Index", "TrangChu");
+            /*if (Session["malop"] == null) return RedirectToAction("Index", "TrangChu");
             string malop = Session["malop"].ToString();
             var gv = db.LopHocs.SingleOrDefault(x => x.MaLop.ToString().Equals(malop) && x.NguoiTao.Equals(user.TenDangNhap));
             if (gv == null)
             {
                 return RedirectToAction("Index", "TrangChu");
-            }
+            }*/
             return View();
         }
         public ActionResult Searchlibrary()

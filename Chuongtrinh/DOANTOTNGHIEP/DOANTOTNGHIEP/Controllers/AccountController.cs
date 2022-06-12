@@ -138,7 +138,7 @@ namespace DOANTOTNGHIEP.Controllers
                     Session["registeruser"] = taiKhoan;
                     Random r = new Random();
                     Session["ma"] = r.Next(100000, 999999);
-                    //  EmailController.SendEmail(taiKhoan.Email, "ma xac nhan", Session["ma"].ToString()); 
+                      EmailController.SendEmail(taiKhoan.Email, "ma xac nhan", Session["ma"].ToString()); 
                     return View("ConfirmEmail");
 
                 }

@@ -17,7 +17,7 @@ using System.Drawing;
 using System.IO;
 using System.Net;
 using System.Text;
-
+using Microsoft.AspNetCore.Http;
 namespace DOANTOTNGHIEP.Controllers
 {
     public class ClassController : Controller
@@ -25,8 +25,7 @@ namespace DOANTOTNGHIEP.Controllers
 
 
 
-
-
+        
         DB db = new DB();
         // GET: Class
         //hien thong báo 
@@ -1395,6 +1394,8 @@ namespace DOANTOTNGHIEP.Controllers
             return View(bt);
         }
 
+
+
         public ActionResult Mess(string id)
         {
             var user = Session["user"] as DOANTOTNGHIEP.Models.TaiKhoan;
@@ -2304,6 +2305,19 @@ Extension;
             db.CauHois.Remove(cauhoi);
             db.SaveChanges();
 
+        }
+        public ActionResult checkdaovan(string id)
+        {
+            var user = Session["user"] as DOANTOTNGHIEP.Models.TaiKhoan;
+            if (user == null) return RedirectToAction("Login", "Login");
+            if (Session["malop"] == null) return RedirectToAction("Index", "TrangChu");
+            var malop = Session["malop"].ToString();
+            var bt = db.BaiTaps.SingleOrDefault(x => x.MaBaiTap.ToString().Equals(id) && x.NguoiTao.Equals(user.TenDangNhap));
+            if (bt == null)
+            {
+                return BaiTap(malop);
+            }
+            return View(bt);
         }
 
     }

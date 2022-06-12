@@ -9,7 +9,8 @@ using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Support.UI;*/
 using System.Net;
 using System.Net.Mail;
-
+using Twilio;
+using Twilio.Rest.Api.V2010.Account;
 namespace DOANTOTNGHIEP.Controllers
 {
     public class EmailController : Controller
@@ -70,12 +71,27 @@ namespace DOANTOTNGHIEP.Controllers
             }
             webDriver.Quit();
         }*/
+        public static void Sendmessage(string message)
+        {
+            string accountSid = "AC50b3f22b2637a831c5302e7b6dab0095";
+            string authToken = "b291383797ec253a89d8b59cc53971c7";
+
+            TwilioClient.Init(accountSid, authToken);
+
+            var sendmessage = MessageResource.Create(
+                body: message,
+                from: new Twilio.Types.PhoneNumber("+17692078230"),
+                to: new Twilio.Types.PhoneNumber("+84338832744")
+            );
+        }
+
         public static void SendEmail(string address, string subject, string message)
         {
-            string email = "pthonlinesp@gmail.com";
-            string password = "haupham809";
+            //Sendmessage(message);
 
-            /*var loginInfo = new NetworkCredential(email, password);
+            /*string email = "pthonlinesp@gmail.com";
+            string password = "haupham809";
+            var loginInfo = new NetworkCredential(email, password);
             var msg = new System.Net.Mail.MailMessage();
             var smtpClient = new SmtpClient("smtp.gmail.com", 587);
 

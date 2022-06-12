@@ -16,13 +16,12 @@
     </style>
     <script type="text/javascript">
         $(document).ready(function () {
-            $('.loader').css("display", "none");
+            $("#modalloading").css("display", "none")
             $('#tailieu').css("display", "block");
-            $('.tl').fadeIn(3000);
+            $('.tl').fadeIn(1000);
             
         });
         function actionshowviewpdf(link) {
-            console.log(12313);
             $(".viewshowpdfdownload").attr('href', link );
             $(".viewshowpdf").attr('src',  link + "#toolbar=0&navpanes=0&scrollbar=0");
         }
@@ -90,8 +89,8 @@
                         <iframe src="~/Content/BTTL/RLSV_CNTT59_2021-2022_HKy1.pdf#toolbar=0&navpanes=0&scrollbar=0"
             frameBorder="0"
             scrolling="auto"
-            height="100%"
-            width="100%" class="viewshowpdf"  ></iframe>
+            height="100"
+            width="100" class="viewshowpdf"  ></iframe>
                    
                 </div>
 

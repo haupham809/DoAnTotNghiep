@@ -171,16 +171,10 @@
             $('.headthuvien').css("color", "black");
             $('.headthuvien').css("background-color", "white");
 
-            $(window).on('load', function (event) {
-                $('body').removeClass('preloading');
-                // $('.load').delay(1000).fadeOut('fast');
-                $('.loader').delay(1000).fadeOut('fast');
-            });
-
-
             $('#search').trigger("click");
             $('#search').click(function () {
-                $('.loader').css("display", "block");
+                console.log("load")
+                $("#modalloading").css("display", "block")
                 $('#tailieu').css("display", "none");
             });
 
@@ -244,7 +238,7 @@
     <div style="width:100%;border-bottom:1px solid black">
 
         <div style="text-align:center;padding:10px;background-color:#292929;z-index:299;position:fixed;top:auto;right:0px;left:0px;display:grid;grid-template-columns:auto 50px;">
-            @using (Ajax.BeginForm("Searchlibrary", "Library", new AjaxOptions { HttpMethod = "POST", UpdateTargetId = "tailieu", InsertionMode = InsertionMode.Replace }))
+            @using (Ajax.BeginForm("Searchlibrary", "Library", new AjaxOptions { HttpMethod = "POST", UpdateTargetId = "tailieu", InsertionMode = InsertionMode.ReplaceWith }))
             {
                 <div style="flex:1">
                     <button type="submit" class="glyphicon glyphicon-search " style="font-size:20px;background-color:transparent;border:0px;color:white" id="search"></button>
@@ -325,10 +319,10 @@
     </div>
 
     <div>
-        <div class="loader" style="width:100%;height:100%;background-color:#292929;display:none">
+        @*<div class="loader" style="width:100%;height:100%;background-color:#292929;display:bl">
             <img src="~/Content/image/Icon/b7671b668a78e0208b9c2d1c36802ce8.gif" class="anhload" />
             <span class="fas fa-spinner xoay icon"></span>
-        </div>
+        </div>*@
         <div id="tailieu">
 
         </div>
