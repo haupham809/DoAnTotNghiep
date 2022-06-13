@@ -50,7 +50,7 @@ namespace DOANTOTNGHIEP.Models.GetData
                         {
                             slchuanop++;
                         }
-                        if (diemtn.NgayNop < i.ThoiGianKetThuc)
+                        if (diemtn.NgayNop > i.ThoiGianKetThuc)
                         {
                             slnopmuon++;
 
@@ -72,7 +72,7 @@ namespace DOANTOTNGHIEP.Models.GetData
                         {
                             slchuanop++;
                         }
-                        if (diemtn.NgayNop < i.ThoiGianKetThuc)
+                        if (diemtn.NgayNop > i.ThoiGianKetThuc)
                         {
                             slnopmuon++;
 

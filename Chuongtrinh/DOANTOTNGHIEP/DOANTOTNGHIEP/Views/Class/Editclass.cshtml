@@ -13,9 +13,7 @@
         height: 100%;
         position: fixed;
         display: block;
-        background: #040d21;
         background-size:cover;
-        background-image: url(https://github.githubassets.com/images/modules/site/home/hero-glow.svg);
         margin-top: -20px;
     }
 
@@ -26,7 +24,7 @@
         width: 30%;
         height: 80%;
         background: #5858FA;
-        background-color: rgba(0,0,0,0.3);
+        background-color: white;
         padding: 40px;
         border-radius: 10px;
         margin: 50px auto;
@@ -71,21 +69,10 @@
 
 
 </script>
-<link href="~/Content/css/snow.css" rel="stylesheet" />
+
 <div class="frameaccount">
 
-    <div class="snowflakes" aria-hidden="true">
-        <div class="snowflake">.</div>
-        <div class="snowflake">.</div>
-        <div class="snowflake">.</div>
-        <div class="snowflake">.</div>
-        <div class="snowflake">.</div>
-        <div class="snowflake">.</div>
-        <div class="snowflake">.</div>
-        <div class="snowflake">.</div>
-        <div class="snowflake">.</div>
-        <div class="snowflake">.</div>
-    </div>
+    
 
     <div class="account">
         @using (Html.BeginForm("Checkeditclass", "Class", FormMethod.Post, new { enctype = "multipart/form-data" }))

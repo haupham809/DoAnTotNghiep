@@ -1,22 +1,77 @@
 ﻿@model  DOANTOTNGHIEP.Models.TaiKhoan
 
-<link href="~/Content/css/editpass.css" rel="stylesheet" />
-<link href="~/Content/css/snow.css" rel="stylesheet" />
+<style>
+
+
+    .frameaccount {
+        width: 100%;
+        height: 100%;
+        position: fixed;
+        display: block;
+        margin-top: -20px;
+        background-size: cover
+    }
+
+    .account {
+        position: relative;
+        text-align: left;
+        border: 0px solid #000000;
+        min-width: 350px;
+        width: 30%;
+        height: 500px;
+        background: #5858FA;
+        background-color: white;
+        padding: 40px;
+        border-radius: 10px;
+        margin: 10% auto;
+        display: block;
+    }
+
+
+    .glyphicon-remove-circle:hover {
+        background-color: black;
+        border-radius: 10px;
+    }
+
+    .diveditpass {
+        background-image: linear-gradient(60deg, #5858FA, #081C46);
+        position: relative;
+        width: 90%;
+        right: 20px;
+        left: 20px;
+        top: -80px;
+        border-radius: 5px;
+        text-align: left;
+        padding: 20px
+    }
+
+    input {
+        border-radius: 5px;
+        width: 90%;
+        max-width: 90%;
+        outline: none;
+    }
+
+    input {
+        border-bottom: 1px solid #444;
+        padding: 12px 40px 12px 20px;
+       
+    }
+
+        
+
+        input:focus, input:focus::placeholder, input:focus + i {
+            color: #ff1464;
+        }
+
+
+
+
+</style>
 
 <div class="frameaccount">
 
-    <div class="snowflakes" aria-hidden="true">
-        <div class="snowflake">.</div>
-        <div class="snowflake">.</div>
-        <div class="snowflake">.</div>
-        <div class="snowflake">.</div>
-        <div class="snowflake">.</div>
-        <div class="snowflake">.</div>
-        <div class="snowflake">.</div>
-        <div class="snowflake">.</div>
-        <div class="snowflake">.</div>
-        <div class="snowflake">.</div>
-    </div>
+   
 
 
     <div class="account">
@@ -26,15 +81,15 @@
             <div class="diveditpass"><label style="color:white">Edit Password</label><br /><label style="color:white">Complete your Password</label></div>
 
             <div class="form-group bmd-form-group" style="margin-top:-20px">
-                <label class="bmd-label-floating" style=" color: white;">Old password</label><br />
+                <label class="bmd-label-floating" >Old password</label><br />
                 <input type="password" name="pass1" placeholder="Mật khẩu cũ"  required /><br />
             </div>
             <div class="form-group bmd-form-group">
-                <label class="bmd-label-floating" style=" color: white;">New password</label><br />
+                <label class="bmd-label-floating"  >New password</label><br />
                 <input type="password" name="pass2" required placeholder="Mật khẩu mới" pattern=".{5,20}" title="Minimum length  is 5 maximum length is 20" /><br />
             </div>
             <div class="form-group bmd-form-group">
-                <label class="bmd-label-floating" style=" color: white;">Confirm new password</label><br />
+                <label class="bmd-label-floating" >Confirm new password</label><br />
                 <input type="password" name="pass3" placeholder="Xác nhận mật khẩu mới" pattern=".{5,20}" title="Minimum length  is 5 maximum length is 20" required /><br />
             </div>
 

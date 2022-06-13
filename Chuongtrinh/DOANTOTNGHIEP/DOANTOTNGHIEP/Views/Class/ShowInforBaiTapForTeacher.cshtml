@@ -36,9 +36,22 @@
       
     </style>
     <script type="text/javascript">
-        function checkdaovan() {
-            $("#modalloading").css("display","block")
+        function checkdaovan(i) {
+            $("#modalloading").css("display", "block");
+            $.ajax({
+                url: '/Class/checkdaovan', type: 'post',
+                data: {
+                    mabaitap: i,
+                    
+                }
 
+            }).done(function (result) {
+                if (result == "true") {
+                    console.log(result)
+                }
+                $("#modalloading").css("display", "none");
+                
+            });
         }
     </script>
 </head>
@@ -151,7 +164,7 @@
             <a href="~/Class/showcauhoituluan/@baituluan[0].MaBaiTap" class="chitiet">Xem chi tiết bài tập </a>
             <a href="@ViewBag.excel" style=" background-image: linear-gradient(to right,#0404B4,#A901DB); padding: 5px; padding-left: 15px; padding-right: 15px; color: white; border-radius: 5px; margin-right: 2%" download>Xuất excel </a>
             <a href="@ViewBag.pdf" style=" background-image: linear-gradient(to right,#0404B4,#A901DB); padding: 5px; padding-left: 15px; padding-right: 15px; color: white; border-radius: 5px; margin-right: 2%" download>Xuất PDF </a>
-            <button onclick="checkdaovan()"  style=" background-image: linear-gradient(to right,#0404B4,#A901DB); padding: 5px; padding-left: 15px; padding-right: 15px; color: white; border-radius: 5px; margin-right: 2%">Kiểm Tra Đạo Văn </button>
+            <button onclick="checkdaovan(@baituluan[0].MaBaiTap)"  style=" background-image: linear-gradient(to right,#0404B4,#A901DB); padding: 5px; padding-left: 15px; padding-right: 15px; color: white; border-radius: 5px; margin-right: 2%">Kiểm Tra Đạo Văn </button>
 
 
             <table style="margin-top:10px;width:100%">

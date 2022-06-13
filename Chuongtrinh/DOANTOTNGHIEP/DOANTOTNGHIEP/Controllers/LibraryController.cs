@@ -180,7 +180,7 @@ namespace DOANTOTNGHIEP.Controllers
                 documentpdf.Ngaydang = DateTime.Now;
                 documentpdf.LuotTaiXuong = 0;
                 documentpdf.Luotxem = 0;
-                documentpdf.Noidung = getdatapdf(documentpdf.Vitriluu).Replace("\r", "").Replace("\n", "").Replace("Evaluation Warning : The document was created with Spire.PDF for .NET.","").Replace("  ", " ");
+                documentpdf.Noidung = getdatapdf(documentpdf.Vitriluu);
                 while (true)
                 {
                     documentpdf.Noidung= documentpdf.Noidung.Replace("  ", " ");
@@ -207,7 +207,7 @@ namespace DOANTOTNGHIEP.Controllers
                 buffer.Append(page.ExtractText().Replace("  ", " ").Replace("\r", "").Replace("\n", ""));
             }
             doc.Close();
-            return buffer.ToString();
+            return buffer.ToString().Replace("\r", "").Replace("\n", "").Replace("Evaluation Warning : The document was created with Spire.PDF for .NET.", "").Replace("  ", " ");
         }
 
         public string getimagepdf(string  filepdf , string malop, string TenDangNhap )

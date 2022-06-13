@@ -1191,6 +1191,13 @@ namespace DOANTOTNGHIEP.Controllers
             string nguoitao = user.TenDangNhap;
             var mabaitaptl = Session["mabaitaptl"].ToString();
             var bai = db.TTBaiTapTLs.Where(x => x.MaBaiNop.ToString().Equals(mabaitaptl)).ToList();
+            foreach(var x in bai)
+            {
+                if(x.Isplagiarism != null)
+                {
+                    return RedirectToAction("BaiTap", new { id = malop });
+                }
+            }
             db.TTBaiTapTLs.RemoveRange(bai);
             db.SaveChanges();
             foreach (var fil in file)
@@ -2306,18 +2313,87 @@ Extension;
             db.SaveChanges();
 
         }
-        public ActionResult checkdaovan(string id)
+        [HttpPost]
+        public JsonResult checkdaovan(string mabaitap)
         {
             var user = Session["user"] as DOANTOTNGHIEP.Models.TaiKhoan;
-            if (user == null) return RedirectToAction("Login", "Login");
-            if (Session["malop"] == null) return RedirectToAction("Index", "TrangChu");
+            
+            
             var malop = Session["malop"].ToString();
-            var bt = db.BaiTaps.SingleOrDefault(x => x.MaBaiTap.ToString().Equals(id) && x.NguoiTao.Equals(user.TenDangNhap));
-            if (bt == null)
+            var baitaptuluan = db.BaiTapTLs.Where(x => x.MaBaiTap.ToString().Equals(mabaitap) && x.Trangthai != null ).ToList().OrderBy(y=>y.NgayNop).ToList();
+            if (baitaptuluan.Count > 0)
             {
-                return BaiTap(malop);
+                List<TTBaiTapTL> thongtinbaitaptl = new List<TTBaiTapTL>();
+                List < TTBaiTapTL > thongtinbaitaptlcheck = new List<TTBaiTapTL>();
+                foreach (var bailam in baitaptuluan)
+                {
+                    var tttl=db.TTBaiTapTLs.SingleOrDefault(x=>x.MaBaiNop.ToString().Equals(bailam.MaBaiNop.ToString()));
+                    thongtinbaitaptl.Add(tttl);
+                    if(tttl.Isplagiarism == null)
+                    {
+                        thongtinbaitaptlcheck.Add(tttl);
+
+                    }
+
+                }
+                
+                foreach(var tttl in thongtinbaitaptlcheck)
+                {
+                    List<Kiemtradaovan> checkdaovan = new List<Kiemtradaovan>();
+                    foreach (var bailam in thongtinbaitaptl)
+                    {
+                        if (!bailam.NguoiNop.Equals(tttl.NguoiNop))
+                        {
+                            Kiemtradaovan kiemtradaovan = new Kiemtradaovan();
+                            kiemtradaovan.Tailieu1 = tttl;
+                            kiemtradaovan.Tailieu2 = bailam;
+                            kiemtradaovan.Percents = comparetwofilepdf(tttl.NoiLuu, bailam.NoiLuu);
+                            checkdaovan.Add(kiemtradaovan);
+
+                        }
+                    }
+
+                    foreach(var plagiarism in checkdaovan.OrderBy(x=>x.Percents))
+                    {
+                        Plagiarism plagiarism1 = new Plagiarism();
+                        plagiarism1.Mafile = plagiarism.Tailieu1.Ma;
+                        plagiarism1.Comparisonfile = plagiarism.Tailieu2.Ma;
+                        plagiarism1.Percents = plagiarism.Percents;
+                        db.Plagiarism.Add(plagiarism1);
+                        db.SaveChanges();
+                        
+
+                    }
+                    tttl.Isplagiarism = true;
+                    db.SaveChanges();
+
+                }
+                return Json("true");
+
+
             }
-            return View(bt);
+            return Json("false");
+            
+        }
+
+        public double comparetwofilepdf(string file1, string file2)
+        {
+            double percent = 50;
+            return percent;
+        }
+
+        public string getdatapdf(string filepdf)
+        {
+            PdfDocument doc = new PdfDocument();
+            doc.LoadFromFile(Server.MapPath(filepdf));
+            StringBuilder buffer = new StringBuilder();
+            IList<Image> images = new List<Image>();
+            foreach (PdfPageBase page in doc.Pages)
+            {
+                buffer.Append(page.ExtractText().Replace("  ", " ").Replace("\r", "").Replace("\n", ""));
+            }
+            doc.Close();
+            return buffer.ToString().Replace("\r", "").Replace("\n", "").Replace("Evaluation Warning : The document was created with Spire.PDF for .NET.", "").Replace("  ", " ");
         }
 
     }

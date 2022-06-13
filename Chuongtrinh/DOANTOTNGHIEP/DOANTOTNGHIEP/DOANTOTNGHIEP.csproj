@@ -286,6 +286,7 @@
     <Compile Include="Models\GetData\GetAccount.cs" />
     <Compile Include="Models\GetData\GetClass.cs" />
     <Compile Include="Models\GetData\Getdiem.cs" />
+    <Compile Include="Models\Kiemtradaovan.cs" />
     <Compile Include="Models\Loimoi.cs" />
     <Compile Include="Models\LopHoc.cs" />
     <Compile Include="Models\Mess.cs" />
@@ -348,7 +349,6 @@
     <Content Include="Content\BTTL\1pexels-pixabay-36717.jpg" />
     <Content Include="Content\chromdriver\1.exe" />
     <Content Include="Content\chromdriver\chromedriver.exe" />
-    <Content Include="Content\css\addclass.css" />
     <Content Include="Content\css\Baitapgv.css" />
     <Content Include="Content\css\Baitapsv.css" />
     <Content Include="Content\css\confirmemail.css" />
