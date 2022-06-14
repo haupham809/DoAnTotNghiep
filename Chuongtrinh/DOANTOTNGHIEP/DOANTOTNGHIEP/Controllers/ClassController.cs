@@ -2328,11 +2328,14 @@ Extension;
                 foreach (var bailam in baitaptuluan)
                 {
                     var tttl=db.TTBaiTapTLs.SingleOrDefault(x=>x.MaBaiNop.ToString().Equals(bailam.MaBaiNop.ToString()));
-                    thongtinbaitaptl.Add(tttl);
                     if(tttl.Isplagiarism == null)
                     {
                         thongtinbaitaptlcheck.Add(tttl);
 
+                    }
+                    else
+                    {
+                        thongtinbaitaptl.Add(tttl);
                     }
 
                 }
@@ -2352,8 +2355,9 @@ Extension;
 
                         }
                     }
+                    
 
-                    foreach(var plagiarism in checkdaovan.OrderBy(x=>x.Percents))
+                    foreach (var plagiarism in checkdaovan.OrderBy(x=>x.Percents))
                     {
                         Plagiarism plagiarism1 = new Plagiarism();
                         plagiarism1.Mafile = plagiarism.Tailieu1.Ma;
@@ -2364,8 +2368,17 @@ Extension;
                         
 
                     }
+                    if(thongtinbaitaptl.Count == 0)
+                    {
+                        Plagiarism plagiarism1 = new Plagiarism();
+                        plagiarism1.Mafile = tttl.Ma;
+                        plagiarism1.Percents = 0;
+                        db.Plagiarism.Add(plagiarism1);
+                        db.SaveChanges();
+                    }
                     tttl.Isplagiarism = true;
                     db.SaveChanges();
+                    thongtinbaitaptl.Add(tttl);
 
                 }
                 return Json("true");
@@ -2378,9 +2391,35 @@ Extension;
 
         public double comparetwofilepdf(string file1, string file2)
         {
-            double percent = 50;
+            double percent = 0;
+            var datafile1 = getdatapdf(file1).Split('.');
+            var datafile2 = getdatapdf(file2).Split('.');
+            List<double> per = new List<double>();
+            foreach (var compare1 in datafile1)
+            {
+                List<double> per1 = new List<double>();
+                foreach(var compare2 in datafile2)
+                {
+                    per1.Add(comparetwokeyword(compare1, compare2));
+                }
+                per.Add(per1.Max());
+            }
+            percent = per.Sum()/ datafile1.Length;
             return percent;
         }
+
+        public double comparetwokeyword(string keyword1 , string keyword2)
+        {
+            double percent = 0;
+            if (keyword1.Contains(keyword2)) {
+                percent = 100;
+            }
+
+            return percent;
+
+        }
+            
+
 
         public string getdatapdf(string filepdf)
         {
@@ -2393,7 +2432,13 @@ Extension;
                 buffer.Append(page.ExtractText().Replace("  ", " ").Replace("\r", "").Replace("\n", ""));
             }
             doc.Close();
-            return buffer.ToString().Replace("\r", "").Replace("\n", "").Replace("Evaluation Warning : The document was created with Spire.PDF for .NET.", "").Replace("  ", " ");
+            var noidung = buffer.ToString().Replace("\r", "").Replace("\n", "").Replace("Evaluation Warning : The document was created with Spire.PDF for .NET.", "").Replace("  ", " ");
+            while (true)
+            {
+                noidung = noidung.Replace("  ", " ");
+                if (noidung.IndexOf("  ") < 0) break;
+            }
+            return noidung;
         }
 
     }
