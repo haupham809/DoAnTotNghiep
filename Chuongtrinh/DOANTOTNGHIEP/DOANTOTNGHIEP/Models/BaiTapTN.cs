@@ -32,10 +32,10 @@ namespace DOANTOTNGHIEP.Models
 
         public virtual BaiTap BaiTap { get; set; }
 
+        public virtual TaiKhoan TaiKhoan { get; set; }
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<commentbaitapTN> commentbaitapTNs { get; set; }
-
-        public virtual TaiKhoan TaiKhoan { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<TTBaiTapTN> TTBaiTapTNs { get; set; }

@@ -182,12 +182,12 @@ namespace DOANTOTNGHIEP.Models
             modelBuilder.Entity<TTBaiTapTL>()
                 .HasMany(e => e.Plagiarism)
                 .WithOptional(e => e.TTBaiTapTL)
-                .HasForeignKey(e => e.Mafile);
+                .HasForeignKey(e => e.Comparisonfile);
 
             modelBuilder.Entity<TTBaiTapTL>()
                 .HasMany(e => e.Plagiarism1)
                 .WithOptional(e => e.TTBaiTapTL1)
-                .HasForeignKey(e => e.Comparisonfile);
+                .HasForeignKey(e => e.Mafile);
         }
     }
 }

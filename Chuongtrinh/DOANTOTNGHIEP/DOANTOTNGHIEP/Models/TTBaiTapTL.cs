@@ -34,6 +34,8 @@ namespace DOANTOTNGHIEP.Models
 
         public bool? Isplagiarism { get; set; }
 
+        public string Datafile { get; set; }
+
         public virtual BaiTapTL BaiTapTL { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

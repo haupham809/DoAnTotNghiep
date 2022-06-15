@@ -13,7 +13,7 @@
     <title></title>
     <style type="text/css">
         .heade {
-            background-color: white;
+            background-color: cornflowerblue;
             width: 100%
         }
 
@@ -21,15 +21,7 @@
             padding: 10px;
         }
 
-        .chitiet {
-            background-image: linear-gradient(to right,#0404B4,#A901DB);
-            padding: 5px;
-            padding-left: 15px;
-            padding-right: 15px;
-            color: white;
-            border-radius: 5px;
-            margin-right: 2%
-        }
+        .
 
         tbody.tr.th {
         }
@@ -47,12 +39,16 @@
 
             }).done(function (result) {
                 if (result == "true") {
-                    console.log(result)
-                }
+                  
+                } console.log(result)
+
                 $("#modalloading").css("display", "none");
                 location.reload();
                 
             });
+        }
+        function buttontoview(link) {
+            location.replace(link)
         }
     </script>
 </head>
@@ -162,13 +158,13 @@
         }
         @if (baituluan != null)
         {
-            <a href="~/Class/showcauhoituluan/@baituluan[0].MaBaiTap" class="chitiet">Xem chi tiết bài tập </a>
+            <button onclick="buttontoview(`showcauhoituluan/@baituluan[0].MaBaiTap`)"  style=" background-image: linear-gradient(to right,#0404B4,#A901DB); padding: 5px; padding-left: 15px; padding-right: 15px; color: white; border-radius: 5px; margin-right: 2%">Xem chi tiết bài tập </button>
             <a href="@ViewBag.excel" style=" background-image: linear-gradient(to right,#0404B4,#A901DB); padding: 5px; padding-left: 15px; padding-right: 15px; color: white; border-radius: 5px; margin-right: 2%" download>Xuất excel </a>
             <a href="@ViewBag.pdf" style=" background-image: linear-gradient(to right,#0404B4,#A901DB); padding: 5px; padding-left: 15px; padding-right: 15px; color: white; border-radius: 5px; margin-right: 2%" download>Xuất PDF </a>
             <button onclick="checkdaovan(@baituluan[0].MaBaiTap)"  style=" background-image: linear-gradient(to right,#0404B4,#A901DB); padding: 5px; padding-left: 15px; padding-right: 15px; color: white; border-radius: 5px; margin-right: 2%">Kiểm Tra Đạo Văn </button>
 
 
-            <table style="margin-top:10px;width:100%">
+            <table style="margin-top:10px;width:100%" class="table">
 
                 <thead>
                     <tr class="heade" role="row">
@@ -201,14 +197,14 @@
                         <th></th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody >
 
 
                     @foreach (var i in baituluan)
                     {
 
 
-                        <tr>
+                        <tr >
 
 
 
@@ -263,10 +259,11 @@
                                     var dbfile = i.TTBaiTapTLs.Where(x => x.MaBaiNop.Equals(i.MaBaiNop)).ToList();
                                     foreach (var ifile in dbfile)
                                     {
-                                        var dv = ifile.Plagiarism.Where(x => x.Mafile.Equals(ifile.Ma)).OrderBy(y => y.Percents).ToList();
+                                        var dv = ifile.Plagiarism1.Where(x => x.Mafile.Equals(ifile.Ma)).OrderBy(y => y.Percents).ToList();
                                         foreach (var daovan in dv)
                                         {
                                             <label>@daovan.Percents</label>
+                                            break;
                                         }
                                     }
 

@@ -1222,14 +1222,13 @@ namespace DOANTOTNGHIEP.Controllers
                     var ftb1 = db.TTBaiTapTLs.SingleOrDefault(x => x.Ma.ToString().Equals(bttl.Ma.ToString()));
                     ftb1.Tenfile = fil.FileName;
                     ftb1.NoiLuu = "/Content/BTTL/" + bttl.Ma.ToString() + fil.FileName;
-                    db.SaveChanges();
                     if (System.IO.File.Exists(path))
                     {
                         System.IO.File.Delete(path);
                     }
-
                     fil.SaveAs(path);
-
+                    ftb1.Datafile = getdatapdf(ftb1.NoiLuu);
+                    db.SaveChanges();
                 }
                 catch { }
 
@@ -1271,13 +1270,14 @@ namespace DOANTOTNGHIEP.Controllers
                     var ftb1 = db.TTBaiTapTLs.SingleOrDefault(x => x.Ma.ToString().Equals(bttl.Ma.ToString()));
                     ftb1.Tenfile = fil.FileName;
                     ftb1.NoiLuu = "/Content/BTTL/" + bttl.Ma.ToString() + fil.FileName;
-                    db.SaveChanges();
                     if (System.IO.File.Exists(path))
                     {
                         System.IO.File.Delete(path);
                     }
 
                     fil.SaveAs(path);
+                    ftb1.Datafile = getdatapdf(ftb1.NoiLuu);
+                    db.SaveChanges();
 
                 }
                 catch { }
@@ -2350,7 +2350,7 @@ Extension;
                             Kiemtradaovan kiemtradaovan = new Kiemtradaovan();
                             kiemtradaovan.Tailieu1 = tttl;
                             kiemtradaovan.Tailieu2 = bailam;
-                            kiemtradaovan.Percents = comparetwofilepdf(tttl.NoiLuu, bailam.NoiLuu);
+                            kiemtradaovan.Percents = comparetwofilepdf(tttl.Datafile, bailam.Datafile);
                             checkdaovan.Add(kiemtradaovan);
 
                         }
@@ -2376,31 +2376,43 @@ Extension;
                         db.Plagiarism.Add(plagiarism1);
                         db.SaveChanges();
                     }
-                    tttl.Isplagiarism = true;
+                    //tttl.Isplagiarism = true;
                     db.SaveChanges();
                     thongtinbaitaptl.Add(tttl);
 
                 }
-                return Json("true");
+                /*return Json("true");*/
 
 
             }
-            return Json("false");
+            var key1 = "muon so sanh hai cau giong nhau hay khoong ";
+
+                var key2 = "muon so sanh hai cau giong nhau" ;
+
+            float per = comparetsentence1(key1.ToLower().TrimEnd(' '), key2.ToLower().TrimEnd(' '));
+            return Json(per.ToString());
             
         }
 
-        public double comparetwofilepdf(string file1, string file2)
+        public float comparetwofilepdf(string file1, string file2)
         {
-            double percent = 0;
-            var datafile1 = getdatapdf(file1).Split('.');
-            var datafile2 = getdatapdf(file2).Split('.');
-            List<double> per = new List<double>();
+            float percent = 0;
+            var datafile1 = file1.ToLower().Split('.');
+            var datafile2 = file2.ToLower().Split('.');
+            List<float> per = new List<float>();
             foreach (var compare1 in datafile1)
             {
-                List<double> per1 = new List<double>();
+                List<float> per1 = new List<float>();
                 foreach(var compare2 in datafile2)
                 {
-                    per1.Add(comparetwokeyword(compare1, compare2));
+                    float percompare = comparetsentence(compare1.TrimStart(' ').TrimEnd(' '), compare2.TrimStart(' ').TrimEnd(' '));
+                    per1.Add(percompare);
+                    if(percompare == 100)
+                    {
+                        break;
+                    }
+                   
+                   
                 }
                 per.Add(per1.Max());
             }
@@ -2408,17 +2420,89 @@ Extension;
             return percent;
         }
 
-        public double comparetwokeyword(string keyword1 , string keyword2)
+        public float comparetsentence(string keyword1 , string keyword2)
         {
-            double percent = 0;
-            if (keyword1.Contains(keyword2)) {
+            float percent = 0;
+            if (keyword2.Contains(keyword1)) {
                 percent = 100;
+            }else {
+                percent = comparetsentence1(keyword1, keyword2);
             }
 
             return percent;
 
         }
+        //so sánh loại bỏ từ 
+        public float comparetsentence1(string keyword1, string keyword2)
+        {
+            float percent = 0;
+            if (keyword1.IndexOf(" ") > 1)
+            {
+                List<float> pers = new List<float>();
+                var index = 0;
+                foreach (var key in keyword1.Split(' '))
+                {
+                    if(key.Length > 0)
+                    {
+                        var i = 0;
+                        if (index+key.Length < keyword1.Length)
+                        {
+                            i = 1;
+                        }
+                       var k1 = keyword1.Remove(index, key.Length+i);
+                        var k2 = keyword2;
+                       
+                        if (k2.Contains(k1) )
+                        {
+                            pers.Add(Convert.ToSingle( Convert.ToSingle((keyword1.Split(' ').Length - 1) * 100) / keyword1.Split(' ').Length));
+                        }else if(k1.Contains(k2))
+                        {
+                            if(k2.Length != 0 )
+                            {
+                                var k3 = k1.Replace(k2, "").Replace("  ", " ").TrimStart(' ').TrimEnd(' ').Split(' ').Length;
+
+                                float p1 = (Convert.ToSingle(Convert.ToSingle((keyword1.Split(' ').Length - 1) * 100) / keyword1.Split(' ').Length))
+                                    - Convert.ToSingle(Convert.ToSingle(k3 * 100) / keyword1.Split(' ').Length);
+                                pers.Add(p1);
+
+                            }else
+                            {
+                                pers.Add(100);
+                            }
+                            
+
+                        }else
+                        {
+                            if (index != 0 || index + key.Length >= keyword1.Length)
+                            {
+                                var k3 = k1.Substring(0, index).TrimEnd(' ');
+                                var k4 =k1.Substring(index,k1.Length-index).TrimStart(' ');
+                                float pk1 = comparetsentence1(k3, keyword2);
+                                float pk2 = comparetsentence1(k4, keyword2);
+                                pers.Add(Convert.ToSingle((pk1+pk2)/2));
+                            }
+
+
+                        }
+                        
+                    }
+                    else
+                    {
+                        pers.Add(0);
+
+                    }
+
+                    index += key.Length+1;
+
+                }
+                percent=pers.Max();
+            }
             
+
+            return percent;
+
+        }
+
 
 
         public string getdatapdf(string filepdf)
