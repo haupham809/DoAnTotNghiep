@@ -17,7 +17,126 @@
     <meta name="viewport" content="width=device-width" />
     <title></title>
 
-    <link href="~/Content/css/Baitapgv.css" rel="stylesheet" />
+   <style>
+       .showdangbaitap {
+           width: 100%;
+           border: 0px solid black;
+           border-radius: 5px;
+           padding: 10px;
+           margin-bottom: 30px;
+           background-color: white
+       }
+
+       
+
+       .hideDangBaitapTL {
+           display: none;
+           width: 100%;
+           padding: 20px
+       }
+
+       .hideDangBaitapTN {
+           display: none;
+           width: 100%;
+           padding: 20px
+       }
+
+       input.chudeTN {
+           outline: none;
+           margin-bottom: 10px;
+           border-radius: 5px;
+           width: 400px;
+           max-width: 400px;
+       }
+
+       textarea {
+           max-width: 100%;
+           height: 200px;
+           width: 100%;
+           outline: none;
+           margin-bottom: 10px;
+           border-radius: 20px
+       }
+
+       .filebaitap {
+           border-radius: 20px;
+           
+           padding: 10px
+       }
+
+       .filebieumau {
+           border-radius: 20px;
+           background-color: cornflowerblue;
+           padding: 10px
+       }
+
+       .dangTN, .dangTL {
+          
+           padding: 5px;
+           padding-left: 15px;
+           padding-right: 15px;
+           color: white;
+           border-radius: 5px;
+           margin-right: 2%
+       }
+
+       .huySuaBaitap {
+           text-align: center;
+           margin: auto;
+           display: block;
+           background-color: transparent;
+           border: 0px
+       }
+
+       .hidedangbaitap {
+           text-align: center;
+           margin: auto;
+           display: none;
+           background-color: transparent;
+           border: 0px
+       }
+
+       .divfilebaitap {
+           padding: 10px;
+           border: 0px solid black;
+           border-radius: 5px;
+           margin-left: 20px;
+           width: fit-content;
+           margin-bottom: 5px
+       }
+
+       .imgfilebaitap {
+           background-color: transparent;
+           border: 0px;
+           background-size: cover
+       }
+
+       hr {
+           border: 0.5px solid black;
+           margin-bottom: 10px;
+           margin-top: 0px;
+       }
+
+       #hideSuaBaiTap {
+           width: 100%;
+           border: 0px solid black;
+           border-radius: 10px;
+           padding: 20px;
+           margin-bottom: 10px;
+           display: none;
+           background-color: white
+       }
+
+       #baitap {
+           width: 100%;
+           border: 0px solid black;
+           border-radius: 10px;
+           padding: 10px;
+           margin-bottom: 30px;
+           background-color: white
+       }
+
+   </style>
     <script type="text/javascript">
         $(document).ready(function () {
 
@@ -46,25 +165,22 @@
 
             });
 
-
-
-            $(".luachonloaicauhoi").click(function () {
-                var change = $(".luachonloaicauhoi option:selected").text();
-                if (change === "Tự luận") {
-
-                    $(".hideDangBaitapTN").css("display", "None");
-                    $(".hideDangBaitapTL").css("display", "block");
-                    $(".hidedangbaitap").css("display", "block");
-                }
-                else if (change === "Trắc nghiệm") {
-
-
-                    $(".hideDangBaitapTN").css("display", "block");
-                    $(".hideDangBaitapTL").css("display", "None");
-                    $(".hidedangbaitap").css("display", "block");
-                }
-
+           
+            $(".tracnghiem").click(function () {
+                $(".tracnghiem").css("border", "2px solid #C0C0C0")
+                $(".tuluan").css("border", "0px solid #C0C0C0")
+                $(".hideDangBaitapTN").css("display", "block");
+                $(".hideDangBaitapTL").css("display", "None");
+                $(".hidedangbaitap").css("display", "block");
             });
+            $(".tuluan").click(function () {
+                $(".tracnghiem").css("border", "0px solid #C0C0C0")
+                $(".tuluan").css("border", "2px solid #C0C0C0")
+                $(".hideDangBaitapTN").css("display", "None");
+                $(".hideDangBaitapTL").css("display", "block");
+                $(".hidedangbaitap").css("display", "block");
+            });
+            
 
 
             $(".dropdown-itemxoa").click(function () {
@@ -172,45 +288,63 @@
 
 
              
-            <div class="showdangbaitap">
-                <h1>Bài Tập</h1>
+                <div class="showdangbaitap">
+                    <h1>Bài Tập</h1>
+
+                        <ul class="nav nav-tabs">
+                                    <li class="nav-item">
+                                        <a class="nav-link active tracnghiem" aria-current="page" style="cursor:pointer" >Trắc nghiệm</a>
+                                    </li>
+                            <li class="nav-item">
+                                <a class="nav-link tuluan" style="cursor:pointer">Tự luận</a>
+                            </li>
+                        </ul>
+                    @using (Html.BeginForm("DangBaiTapTL", "Class", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                    {
+                        <div class="hideDangBaitapTL">
+                            <input type="text" name="Chude" placeholder="Chủ đề" class="form-control chudeTN" required />
+                            <textarea name="noidungbt" class="noidungTL"></textarea>
+                            <ul class="nav nav-tabs">
+                                <li class="nav-item">
+                                    <label>Hạn nộp :</label>
+                                </li>
+                                <li class="nav-item">
+                                    <input type="datetime-local" name="thoigiankethuc" class="form-control thoigianTL" required style="margin-left:10px" min=@DateTime.UtcNow.ToString(string.Format("yyyy-MM-ddThh:mm")) />
+                                </li>
+                            </ul>
+                             <div><label class="101-1"></label></div>
+                            <label class="btn btn-primary glyphicon glyphicon-paperclip filebaitap" for="101-1">  Thêm</label>
+                            <input type="file" id="101-1" class="fileupload" multiple name="file" style="display:none" />
+                            <button id="dang" class="btn btn-primary navbar-right dangTL">Đăng</button>
+
+                        </div>
+                    }
+                    @using (Html.BeginForm("DangBaiTapTN", "Class", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                    {
+                        <div class="hideDangBaitapTN">
+                            <input type="text" name="Chude" placeholder="Chủ đề" class="form-control  chudeTN" required />
+                            <textarea style="max-width:100%;height:200px;width:100%" name="noidungbt" class="noidungTN"></textarea>
+                            <ul class="nav nav-tabs">
+                                <li class="nav-item">
+                                    <label>hạn làm :</label>
+                                </li>
+                                <li class="nav-item">
+                                    <input type="datetime-local" name="thoigiankethuc" class="form-control thoigianTN" required style="margin-left:10px" min=@DateTime.UtcNow.ToString(string.Format("yyyy-MM-ddThh:mm")) />
+                                </li>
+                            </ul>
+                            
+                            <div><label class="101-2"></label></div>
+                            <label class="btn btn-primary glyphicon glyphicon-paperclip filebaitap" for="101-2">  Thêm</label>
+                            <a href="~/Content/Bieumaucauhoi.docx" class="btn btn-info fa fa-download filebieumau">  Biểu mẫu</a>
+                            <input type="file" name="file" class="fileuploadtn" required id="101-2" style="display:none" accept=".docx" />
+                            <button class="btn btn-primary navbar-right dangTN">Xem đề</button>
 
 
-                <select class="form-control luachonloaicauhoi">
-                    <option id="tracnghiem">Trắc nghiệm</option>
-                    <option id="tuluan" class="tuluan">Tự luận</option>
-                </select>
-                @using (Html.BeginForm("DangBaiTapTL", "Class", FormMethod.Post, new { enctype = "multipart/form-data" }))
-                {
-                    <div class="hideDangBaitapTL">
-                        <input type="text" name="Chude" placeholder="Chủ đề" class="form-control chudeTN" required />
-                        <textarea name="noidungbt" class="noidungTL" ></textarea>
-                        <label>Ngày kết thúc :</label><input type="datetime-local" name="thoigiankethuc" class="form-control thoigianTL" required style="margin-left:10px" min=@DateTime.UtcNow.ToString(string.Format("yyyy-MM-ddThh:mm")) />
-                        <div><label class="101-1"></label></div>
-                        <label class="glyphicon glyphicon-paperclip filebaitap" for="101-1">  Thêm</label>
-                        <input type="file" id="101-1" class="fileupload" multiple name="file" style="display:none" />
-                        <button id="dang" class="navbar-right dangTL">Đăng</button>
+                        </div>
 
-                    </div>
-                }
-                @using (Html.BeginForm("DangBaiTapTN", "Class", FormMethod.Post, new { enctype = "multipart/form-data" }))
-                {
-            <div class="hideDangBaitapTN">
-                <input type="text" name="Chude" placeholder="Chủ đề" class="form-control  chudeTN" required />
-                <textarea style="max-width:100%;height:200px;width:100%" name="noidungbt" class="noidungTN" ></textarea>
-                <label>Ngày kết thúc :</label><input type="datetime-local" name="thoigiankethuc" class="form-control thoigianTN" required style="margin-left:10px" min=@DateTime.UtcNow.ToString(string.Format("yyyy-MM-ddThh:mm")) />
-                <div><label class="101-2"></label></div>
-                <label class="glyphicon glyphicon-paperclip filebaitap" for="101-2">  Thêm</label>
-                <a href="~/Content/Bieumaucauhoi.docx" class="fa fa-download filebieumau">  Biểu mẫu</a>
-                <input type="file" name="file" class="fileuploadtn" required id="101-2" style="display:none" accept=".docx" />
-                <button class="navbar-right dangTN">Xem đề</button>
-
-
-            </div>
-
-                }
-                <button class="glyphicon glyphicon-menu-up hidedangbaitap" style="display:none !important"></button>
-            </div>
+                    }
+                    <button class="glyphicon glyphicon-menu-up hidedangbaitap" style="display:none !important"></button>
+                </div>
 
 
             if (Model != null)
@@ -232,8 +366,8 @@
                                     <th><img class="navbar-link" src=@i.LopHoc.TaiKhoan.HinhAnh width="50" height="50" style="border-radius:45px;" /></th>
                                     <th style="padding-left:10px;width:100%">
                                         <label style="font-size:20px;">Chủ đề:@i.ChuDe</label><br />
-                                        <label style="font-size:10px;">@i.ThoiGianDang.Value.ToString(string.Format("HH:mm dd/MM/yyyy"))</label>
-                                        <label style="font-size:10px; float:right;margin-left:400px;">Ngày kết thúc: @i.ThoiGianKetThuc.Value.ToString(string.Format("HH:mm:ss dd/MM/yyyy"))</label><br />
+                                         <label style="font-size:10px;">@i.ThoiGianDang.Value.ToString(string.Format("HH:mm dd/MM/yyyy")) ~ @i.ThoiGianKetThuc.Value.ToString(string.Format("HH:mm dd/MM/yyyy"))</label>
+                                        <br />
                                     </th>
                                     <th style="z-index:5">
                                         <div class="navbar-right dropdown " style="margin-bottom:40px">

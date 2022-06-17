@@ -17,7 +17,53 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title></title>
-    <link href="~/Content/css/Baitapsv.css" rel="stylesheet" />
+    <style>
+        .thongbaomoi {
+            display: none;
+            border-radius: 10px;
+            background-image: linear-gradient(to left, #1A6EFF, pink);
+            text-align: center;
+            width: 10%;
+            margin: 5px auto;
+            position: fixed;
+            right: 10px;
+            left: 10px;
+            z-index: 9999;
+        }
+
+
+
+        .divbaitap {
+            width: 100%;
+            border: 0px solid black;
+            border-radius: 5px;
+            padding: 10px;
+            margin-bottom: 10px;
+            background-color: white
+        }
+
+        .divfilebaitap {
+            padding: 10px;
+            border: 0px solid black;
+            border-radius: 5px;
+            margin-left: 20px;
+            width: fit-content;
+            margin-bottom: 5px
+        }
+
+        .imgfilebaitap {
+            background-color: transparent;
+            border: 0px;
+            background-size: cover
+        }
+
+        .ngayhethanbaitap {
+            font-size: 10px;
+            float: right;
+            margin-left: 80%;
+        }
+
+    </style>
     <script type="text/javascript">
 
         $(document).ready(function () {
@@ -214,8 +260,8 @@
                                     <th><img class="navbar-link" src=@i.LopHoc.TaiKhoan.HinhAnh width="40" height="40" style="border-radius:45px;" /></th>
                                     <th style="padding-left:10px;width:100%">
                                         <label style="font-size:20px;">Chủ đề:@i.ChuDe</label><br />
-                                        <label style="font-size:10px;">@i.ThoiGianDang.Value.ToString(string.Format("HH:mm dd/MM/yyyy"))</label>
-                                        <label class="ngayhethanbaitap">Ngày kết thúc: @i.ThoiGianKetThuc.Value.ToString(string.Format("HH:mm:ss dd/MM/yyyy"))</label><br />
+                                        <label style="font-size:10px;">@i.ThoiGianDang.Value.ToString(string.Format("HH:mm dd/MM/yyyy")) ~ @i.ThoiGianKetThuc.Value.ToString(string.Format("HH:mm dd/MM/yyyy"))</label>
+                                        
                                     </th>
                                 </tr>
                             </table>

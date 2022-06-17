@@ -147,6 +147,18 @@ namespace DOANTOTNGHIEP.Controllers
             List<document> docs = new List<document>();
             if (cauhoi.Replace("  ", "").Length > 0)
             {
+                for(var i =0;i< cauhoi.Replace("  ", " ").TrimEnd(' ').TrimStart(' ').Split(' ').ToList().Count; i++)
+                {
+                    var s = cauhoi.Replace("  ", " ").TrimEnd(' ').TrimStart(' ').Split(' ').ToArray()[i];
+                    for (var j = i+1; j < cauhoi.Replace("  ", " ").TrimEnd(' ').TrimStart(' ').Split(' ').ToList().Count; j++)
+                    {
+                        var v = s + " " + cauhoi.Replace("  ", " ").TrimEnd(' ').TrimStart(' ').Split(' ').ToArray()[j];
+                        documents = db.documents.Where(x => x.MaLop.ToString().Equals(malop) && x.Noidung.Replace("  ", " ").Contains(v)).ToList();
+                        docs.AddRange(documents);
+                        s = v;
+                    }
+
+                }
                 foreach(var v in cauhoi.Replace("  ", " ").TrimEnd(' ').TrimStart(' ').Split(' ').ToList())
                 {
                     documents = db.documents.Where(x => x.MaLop.ToString().Equals(malop) && x.Noidung.Replace("  ", " ").Contains(v)).ToList();

@@ -121,7 +121,7 @@
         $("#btngui").click(function () {
             var nn ="@Model.TenDangNhap";
             var tn = $("#tinnhan").val();
-            if (tn.length > 0) {
+            if (tn.length > 0 && tn.indexOf("<p><br></p>") < 0) {
             $.ajax({
                 url: '/Class/SaveInforMess', type: 'post',
                 data: {
@@ -136,10 +136,11 @@
 
         });
 
-
+        
 
     });
 
+    
     $(function () {
 
         loadClient();
@@ -160,7 +161,7 @@
           $("#btngui").click(function () {
 
                 var tinnhan = $("#tinnhan").val();
-                if (tinnhan != ''  ) {
+              if (tinnhan != '' && tinnhan.indexOf("<p><br></p>") < 0) {
                     mess.server.messages("@nguoitao",'@Model.TenDangNhap',"@malop", $("#tinnhan").val());
                     mess.server.classnames("@nguoitao",'@Model.TenDangNhap',"@malop");
                     $('#tinnhan').summernote('code','');
@@ -201,7 +202,6 @@
         }
 
     }
-
     function load1() {
         document.emojiSource = '../../Scripts/emoji/img';
         document.emojiButton = 'glyphicon glyphicon-heart';
@@ -215,6 +215,21 @@
 
                         uploadImage(files[i]);
                     }
+                },
+                onKeydown: function (e) {
+                    var tinnhan = $("#tinnhan").val();
+                    if (e.keyCode == 13) {
+                        var checkenter = $('#checkenter:checked').length;
+
+                        if (checkenter == 1) {
+                            $("#btngui").trigger('click');
+
+                        }
+                        
+                        
+                    } 
+                    
+                    
                 }
             },
             toolbar: [
@@ -291,6 +306,12 @@
     <div id="nhan">
 
         <div class="noidungtinnhan">
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="checkenter" id="checkenter">
+                <label class="form-check-label" for="checkenter">
+                   enter to send message
+                </label>
+            </div>
             <textarea id="tinnhan" required></textarea>
         </div>
         <div class="nutgui" style="text-align:center">

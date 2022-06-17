@@ -49,17 +49,10 @@
     input {
         border-radius: 5px;
         width: 90%;
-        max-width: 90%;
+        max-width: 100%;
         outline: none;
     }
 
-    input {
-        border-bottom: 1px solid #444;
-        padding: 12px 40px 12px 20px;
-       
-    }
-
-       
 
         input:focus, input:focus::placeholder, input:focus + i {
             color: #ff1464;
@@ -76,6 +69,7 @@
         });
 
     });
+    
 
 
 </script>
@@ -94,31 +88,31 @@
             <div class="row">
                 <div class="col-md-6">
                     <div class="form-group bmd-form-group">
-                        <label class="bmd-label-floating" style=" color: white;">Username</label><br />
+                        <label class="bmd-label-floating" >Username</label><br />
 
-                        @Html.TextBoxFor(model => model.TenDangNhap, new { @class = "text", placeholder = "ten dang nhap", @value = Model.TenDangNhap, @disabled = "disabled" })<br />
+                        @Html.TextBoxFor(model => model.TenDangNhap, new { @class = "text form-control", placeholder = "ten dang nhap", @value = Model.TenDangNhap, @disabled = "disabled" })<br />
 
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="form-group bmd-form-group" >
-                        <label class="bmd-label-floating" style=" color: white;" >Email address</label><br />
-                        @Html.TextBoxFor(model => model.Email, new { @class = "text", placeholder = "email", @pattern = "[^@\\s]+@[^@\\s]+\\.[^@\\s]+", @title = "Invalid email address", required = "required", @disabled = "disabled" })<br />
+                        <label class="bmd-label-floating"  >Email address</label><br />
+                        @Html.TextBoxFor(model => model.Email, new { @class = "text form-control", placeholder = "email", @pattern = "[^@\\s]+@[^@\\s]+\\.[^@\\s]+", @title = "Invalid email address", required = "required", @disabled = "disabled" })<br />
                     </div>
                 </div>
             </div>
             <div class="row">
                 <div class="col-md-6">
                     <div class="form-group bmd-form-group">
-                        <label class="bmd-label-floating" style=" color: white;" >Fist Name</label><br />
-                        @Html.TextBoxFor(model => model.Ten, new { @class = "text", @autofocus = "autofocus", placeholder = "ten", @value = Model.Ten })<br />
+                        <label class="bmd-label-floating"  >Fist Name</label><br />
+                        @Html.TextBoxFor(model => model.Ten, new { @class = "text form-control", @autofocus = "autofocus", placeholder = "ten", @value = Model.Ten })<br />
 
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="form-group bmd-form-group">
-                        <label class="bmd-label-floating" style=" color: white;" >Last Name</label><br />
-                        @Html.TextBoxFor(model => model.Ho, new { @class = "text", @autofocus = "autofocus", placeholder = "Ho", @value = Model.Ho })<br />
+                        <label class="bmd-label-floating"  >Last Name</label><br />
+                        @Html.TextBoxFor(model => model.Ho, new { @class = "text form-control", @autofocus = "autofocus", placeholder = "Ho", @value = Model.Ho })<br />
                     </div>
                 </div>
             </div>
@@ -126,14 +120,13 @@
                 <div class="col-md-6">
                     <div class="form-group bmd-form-group">
 
-                        <img src=@Model.HinhAnh height="100" width="180" style="border-radius: 10px;" id="hinhanh" />
-                        <label class="glyphicon glyphicon-picture" for="image" id="anh" style=" color: white;font-size:30px"></label>
+                        <img src=@Model.HinhAnh height="100" width="180" style="border-radius: 10px;" id="hinhanh" onclick="$('#image').trigger('click')" />
                         <input type="file" id="image" style="display:none;" accept=".png, .jpg, .jpeg" name="file" />
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="form-group bmd-form-group">
-                        <button type="submit" class="btn btn-primary " style="margin-top:20px;border-radius:50px">Update Profile</button>
+                        <button type="submit" class="btn btn-primary " >Update Profile</button>
                     </div>
                 </div>
             </div>

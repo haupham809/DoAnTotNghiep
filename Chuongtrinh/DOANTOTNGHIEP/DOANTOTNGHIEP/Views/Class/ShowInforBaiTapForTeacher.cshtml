@@ -39,11 +39,11 @@
 
             }).done(function (result) {
                 if (result == "true") {
-                  
-                } console.log(result)
+                    location.reload();
+                }
 
                 $("#modalloading").css("display", "none");
-                location.reload();
+                
                 
             });
         }
@@ -53,7 +53,7 @@
     </script>
 </head>
 <body >
-    <div style="margin-top: 20px">
+    <div style="margin: 20px">
         @if (baitracnhgiem != null)
         {
             <a href="~/Class/ShowcauhoiTracnghiem/@baitracnhgiem[0].MaBaiTap" class="chitiet">Xem chi tiết bài tập </a>
@@ -158,10 +158,10 @@
         }
         @if (baituluan != null)
         {
-            <button onclick="buttontoview(`showcauhoituluan/@baituluan[0].MaBaiTap`)"  style=" background-image: linear-gradient(to right,#0404B4,#A901DB); padding: 5px; padding-left: 15px; padding-right: 15px; color: white; border-radius: 5px; margin-right: 2%">Xem chi tiết bài tập </button>
-            <a href="@ViewBag.excel" style=" background-image: linear-gradient(to right,#0404B4,#A901DB); padding: 5px; padding-left: 15px; padding-right: 15px; color: white; border-radius: 5px; margin-right: 2%" download>Xuất excel </a>
-            <a href="@ViewBag.pdf" style=" background-image: linear-gradient(to right,#0404B4,#A901DB); padding: 5px; padding-left: 15px; padding-right: 15px; color: white; border-radius: 5px; margin-right: 2%" download>Xuất PDF </a>
-            <button onclick="checkdaovan(@baituluan[0].MaBaiTap)"  style=" background-image: linear-gradient(to right,#0404B4,#A901DB); padding: 5px; padding-left: 15px; padding-right: 15px; color: white; border-radius: 5px; margin-right: 2%">Kiểm Tra Đạo Văn </button>
+            <button onclick="buttontoview(`showcauhoituluan/@baituluan[0].MaBaiTap`)" type="button" class="btn btn-primary">Xem chi tiết bài tập </button>
+            <button onclick="checkdaovan(@baituluan[0].MaBaiTap)" type="button" class="btn btn-primary">Kiểm Tra Đạo Văn </button>
+            <a href="@ViewBag.excel" class="link-info" style="margin-left:10px;font-size:20px" download>Xuất excel </a>
+            <a href="@ViewBag.pdf" class="link-info" style="margin-left:10px;font-size:20px" download>Xuất PDF </a>
 
 
             <table style="margin-top:10px;width:100%" class="table">
@@ -197,14 +197,14 @@
                         <th></th>
                     </tr>
                 </thead>
-                <tbody >
+                <tbody>
 
 
                     @foreach (var i in baituluan)
                     {
 
 
-                        <tr >
+                        <tr>
 
 
 
@@ -262,7 +262,7 @@
                                         var dv = ifile.Plagiarism1.Where(x => x.Mafile.Equals(ifile.Ma)).OrderBy(y => y.Percents).ToList();
                                         foreach (var daovan in dv)
                                         {
-                                            <label>@daovan.Percents</label>
+                                            <label>@String.Format("{0:0.00}", @daovan.Percents)</label>
                                             break;
                                         }
                                     }
@@ -278,7 +278,7 @@
             </table>
 
         }
-        
+
     </div>
 
     

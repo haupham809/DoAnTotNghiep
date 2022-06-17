@@ -2377,44 +2377,38 @@ Extension;
                         db.Plagiarism.Add(plagiarism1);
                         db.SaveChanges();
                     }
-                    //tttl.Isplagiarism = true;
+                    tttl.Isplagiarism = true;
                     db.SaveChanges();
                     thongtinbaitaptl.Add(tttl);
 
                 }
-                /*return Json("true");*/
+                return Json("true");
 
 
             }
-            var key1 = "muon so sanh hai cau giong nhau hay khoong ";
+            var key1 = "muon so sanh hai sanh hai nhau so sanh hai ";
 
-                var key2 = "muon so sanh hai cau giong nhau" ;
+            var key2 = "muon so sanh hai cau giong nhau";
 
             float per = comparetsentence1(key1.ToLower().TrimEnd(' '), key2.ToLower().TrimEnd(' '));
-            return Json(per.ToString());
-            
+            return Json("false");
+
         }
 
         public float comparetwofilepdf(string file1, string file2)
         {
             float percent = 0;
-            var datafile1 = file1.ToLower().Replace("…","").Replace("..", "").Replace(" ","").Split('.');
-            var datafile2 = file2.ToLower().Replace("…", "").Replace("..", "").Replace(" ", "").Split('.');
+            var datafile1 = file1.ToLower().Replace("…","").Replace("..", "").Split('.');
+            var datafile2 = file2.ToLower().Replace("…", "").Replace("..", "").Split('.');
             List<float> per = new List<float>();
             foreach (var compare1 in datafile1)
             {
                 List<float> per1 = new List<float>();
                 foreach(var compare2 in datafile2)
                 {
-                    DateTime now = DateTime.Now;
-                    Debug.WriteLine(now.ToString("dd-MM-yyyy HH:mm:ss"));
-                    Debug.WriteLine(compare1); 
-                    Debug.WriteLine(compare2);
                     float percompare = comparetsentence(compare1.TrimStart(' ').TrimEnd(' '), compare2.TrimStart(' ').TrimEnd(' '));
-                    Debug.WriteLine(percompare.ToString());
-                    Debug.WriteLine(now.ToString("dd-MM-yyyy HH:mm:ss"));     
                     per1.Add(percompare);
-                    if(percompare == 100)
+                    if(percompare >= 100)
                     {
                         break;
                     }
@@ -2442,95 +2436,88 @@ Extension;
         //so sánh loại bỏ từ 
         public float comparetsentence1(string keyword1, string keyword2)
         {
+           
             float percent = 0;
             if (keyword1.IndexOf(" ") > 1)
             {
                 List<float> pers = new List<float>();
-                var index = 0;
-                var indexkey = 0;
-                foreach (var key in keyword1.Split(' '))
+                List<string> alike = new List<string>();
+                List<int> indexalike = new List<int>();
+                int indexs1 = 0;
+                foreach (string s1 in keyword1.Split(' '))
                 {
-                    if (keyword2.Contains(key))
+                    
+                    foreach (string s2 in keyword2.Split(' '))
                     {
-                        indexkey++;
-                    }
-                }
-                if(indexkey <= 0 || indexkey < keyword1.Split(' ').Length / 3)
-                {
-                    return percent;
-                }
-                foreach (var key in keyword1.Split(' '))
-                {
-                    if(key.Length > 0)
-                    {
-                        var i = 0;
-                        if (index+key.Length < keyword1.Length)
+                        if (s1.Equals(s2) )
                         {
-                            i = 1;
+                            alike.Add(s1);
+                            indexalike.Add(indexs1);
+                            break;
+
                         }
-                       var k1 = keyword1.Remove(index, key.Length+i);
-                        var k2 = keyword2;
-                       
-                        if (k2.Contains(k1) )
+                    }
+                    indexs1 += s1.Length + 1;
+
+                }
+                List<string> keyalike =new List<string>();
+                string s = "";
+                for(var i =0;i< alike.Count; i++)
+                {
+                    if (i > 0)
+                    {
+                        if (indexalike[i - 1] + alike[i-1].Length+1 == indexalike[i])
                         {
-                            pers.Add(Convert.ToSingle( Convert.ToSingle((keyword1.Split(' ').Length - 1) * 100) / keyword1.Split(' ').Length));
-                        }else if(k1.Contains(k2))
-                        {
-                            if(k2.Length != 0 )
+                            
+                            
+                            if (i == alike.Count - 1 && (s + " " + alike[i]).Split(' ').Length >= 2 && keyword2.Contains(s + " " + alike[i]) )
                             {
-                                var k3 = k1.Replace(k2, "").Replace("  ", " ").TrimStart(' ').TrimEnd(' ').Split(' ').Length;
-
-                                float p1 = (Convert.ToSingle(Convert.ToSingle((keyword1.Split(' ').Length - 1) * 100) / keyword1.Split(' ').Length))
-                                    - Convert.ToSingle(Convert.ToSingle(k3 * 100) / keyword1.Split(' ').Length);
-                                pers.Add(p1);
-
+                                s = s + " " + alike[i];
+                                keyalike.Add(s);
+                                s = "";
+                            }else if( s.Split(' ').Length >= 2 && keyword2.Contains(s) && !keyword2.Contains(s + " " + alike[i])){
+                                keyalike.Add(s);
+                                s = alike[i];
+                            }else if(keyword2.Contains(s + " " + alike[i]))
+                            {
+                                if(s.Length == 0)
+                                {
+                                    s =  alike[i];
+                                }else
+                                {
+                                    s = s + " " + alike[i];
+                                }
+                                
                             }else
                             {
-                                pers.Add(100);
-                            }
-                            
+                                s = alike[i];
 
-                        }else
+                            }
+                        }
+                        else
                         {
-                            if (index != 0 || index + key.Length >= keyword1.Length)
+                            if(s.Split(' ').Length >= 2 && keyword2.Contains(s))
                             {
-                                var k3 = keyword1.Substring(0, index).TrimEnd(' ');
-                                var k4 = keyword1.Substring(index, keyword1.Length - index).TrimStart(' ');
-                                Debug.WriteLine(k3);
-                                Debug.WriteLine(k4);
-                                Debug.WriteLine(keyword2);
-                                float pk1 = 0;
-                                float pk2 = 0;
-                                if(k3.Length >=  keyword2.Length && k4.Length >= keyword2.Length)
-                                {
-                                    pk1 = comparetsentence1(k3, keyword2);
-                                    pk2 = comparetsentence1(k4, keyword2);
+                                keyalike.Add(s);
+                               
 
-                                }
-                                pers.Add(Convert.ToSingle((pk1 + pk2) / 2));
                             }
-
+                            s = alike[i];
 
                         }
-                        
-                    }
-                    else
-                    {
-                        pers.Add(0);
 
-                    }
-
-                    index += key.Length+1;
-                    if (pers.Count > 0 && pers.Last() == 100)
+                    }else
                     {
-                        break;
+                        s= alike[i];
                     }
                 }
-                if(pers.Count > 0)
+                int numberalike = 0;
+                foreach(var i in keyalike)
                 {
-                    percent = pers.Max();
-
+                    numberalike += i.Split(' ').Length;
                 }
+                percent =Convert.ToSingle(Convert.ToSingle(numberalike*100)/ keyword1.Split(' ').Length);
+
             }
             
 
