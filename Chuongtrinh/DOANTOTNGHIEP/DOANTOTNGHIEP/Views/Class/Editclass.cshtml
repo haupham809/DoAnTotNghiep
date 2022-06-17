@@ -66,6 +66,9 @@
         });
 
     });
+    function uploadimageclass(){
+        $("#image").trigger("click");
+    }
 
 
 </script>
@@ -97,9 +100,8 @@
 
             <div class="form-group bmd-form-group">
 
-                <img src=@Model.Hinhanh height="100" style="border-radius: 10px;max-width:100%" id="hinhanh" />
+                <img src=@Model.Hinhanh height="100" style="border-radius: 10px;max-width:100%" id="hinhanh" onclick="uploadimageclass()" />
                 <br />
-                <label class="glyphicon glyphicon-picture" for="image" id="anh" style="font-size:30px;color:white;"></label>
                 <input type="file" id="image" style="display:none;" accept=".png, .jpg, .jpeg" name="file" />
             </div>
 

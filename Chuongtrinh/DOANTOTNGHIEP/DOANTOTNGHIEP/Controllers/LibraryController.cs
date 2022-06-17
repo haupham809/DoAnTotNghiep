@@ -121,7 +121,7 @@ namespace DOANTOTNGHIEP.Controllers
         {
             DB db = new DB();
             var user = Session["user"] as DOANTOTNGHIEP.Models.TaiKhoan;
-            var cauhoi = Request.Form["noidungcantin"].ToString();
+            var cauhoi = Request.Form["noidungcantin"].ToString().ToLower();
             string malop = Session["malop"].ToString();
             List<document> documents = new List<document>();
             if(cauhoi.Replace("  ","").Length > 0)
@@ -143,6 +143,28 @@ namespace DOANTOTNGHIEP.Controllers
                 tl.duongdan = filedoccument.Vitriluu;
                 tailieu.Add(tl);
 
+            }
+            List<document> docs = new List<document>();
+            if (cauhoi.Replace("  ", "").Length > 0)
+            {
+                foreach(var v in cauhoi.Replace("  ", " ").TrimEnd(' ').TrimStart(' ').Split(' ').ToList())
+                {
+                    documents = db.documents.Where(x => x.MaLop.ToString().Equals(malop) && x.Noidung.Replace("  ", " ").Contains(v)).ToList();
+                    docs.AddRange(documents);
+                }
+
+            }
+            foreach(var filedoccument in docs)
+            {
+                if(tailieu.Where(x=>x.duongdan.Equals(filedoccument.Vitriluu)  ).ToList().Count == 0)
+                {
+                    Tailieu tl = new Tailieu();
+                    tl.ten = filedoccument.Ten;
+                    tl.anh = filedoccument.Image;
+                    tl.duongdan = filedoccument.Vitriluu;
+                    tailieu.Add(tl);
+
+                }
             }
             ViewData["s"] = tailieu;
             return PartialView();

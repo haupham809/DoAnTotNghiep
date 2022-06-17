@@ -18,6 +18,7 @@ using System.IO;
 using System.Net;
 using System.Text;
 using Microsoft.AspNetCore.Http;
+using System.Diagnostics;
 namespace DOANTOTNGHIEP.Controllers
 {
     public class ClassController : Controller
@@ -2397,15 +2398,21 @@ Extension;
         public float comparetwofilepdf(string file1, string file2)
         {
             float percent = 0;
-            var datafile1 = file1.ToLower().Split('.');
-            var datafile2 = file2.ToLower().Split('.');
+            var datafile1 = file1.ToLower().Replace("…","").Replace("..", "").Replace(" ","").Split('.');
+            var datafile2 = file2.ToLower().Replace("…", "").Replace("..", "").Replace(" ", "").Split('.');
             List<float> per = new List<float>();
             foreach (var compare1 in datafile1)
             {
                 List<float> per1 = new List<float>();
                 foreach(var compare2 in datafile2)
                 {
+                    DateTime now = DateTime.Now;
+                    Debug.WriteLine(now.ToString("dd-MM-yyyy HH:mm:ss"));
+                    Debug.WriteLine(compare1); 
+                    Debug.WriteLine(compare2);
                     float percompare = comparetsentence(compare1.TrimStart(' ').TrimEnd(' '), compare2.TrimStart(' ').TrimEnd(' '));
+                    Debug.WriteLine(percompare.ToString());
+                    Debug.WriteLine(now.ToString("dd-MM-yyyy HH:mm:ss"));     
                     per1.Add(percompare);
                     if(percompare == 100)
                     {
@@ -2440,6 +2447,18 @@ Extension;
             {
                 List<float> pers = new List<float>();
                 var index = 0;
+                var indexkey = 0;
+                foreach (var key in keyword1.Split(' '))
+                {
+                    if (keyword2.Contains(key))
+                    {
+                        indexkey++;
+                    }
+                }
+                if(indexkey <= 0 || indexkey < keyword1.Split(' ').Length / 3)
+                {
+                    return percent;
+                }
                 foreach (var key in keyword1.Split(' '))
                 {
                     if(key.Length > 0)
@@ -2475,11 +2494,20 @@ Extension;
                         {
                             if (index != 0 || index + key.Length >= keyword1.Length)
                             {
-                                var k3 = k1.Substring(0, index).TrimEnd(' ');
-                                var k4 =k1.Substring(index,k1.Length-index).TrimStart(' ');
-                                float pk1 = comparetsentence1(k3, keyword2);
-                                float pk2 = comparetsentence1(k4, keyword2);
-                                pers.Add(Convert.ToSingle((pk1+pk2)/2));
+                                var k3 = keyword1.Substring(0, index).TrimEnd(' ');
+                                var k4 = keyword1.Substring(index, keyword1.Length - index).TrimStart(' ');
+                                Debug.WriteLine(k3);
+                                Debug.WriteLine(k4);
+                                Debug.WriteLine(keyword2);
+                                float pk1 = 0;
+                                float pk2 = 0;
+                                if(k3.Length >=  keyword2.Length && k4.Length >= keyword2.Length)
+                                {
+                                    pk1 = comparetsentence1(k3, keyword2);
+                                    pk2 = comparetsentence1(k4, keyword2);
+
+                                }
+                                pers.Add(Convert.ToSingle((pk1 + pk2) / 2));
                             }
 
 
@@ -2493,9 +2521,16 @@ Extension;
                     }
 
                     index += key.Length+1;
+                    if (pers.Count > 0 && pers.Last() == 100)
+                    {
+                        break;
+                    }
+                }
+                if(pers.Count > 0)
+                {
+                    percent = pers.Max();
 
                 }
-                percent=pers.Max();
             }
             
 
