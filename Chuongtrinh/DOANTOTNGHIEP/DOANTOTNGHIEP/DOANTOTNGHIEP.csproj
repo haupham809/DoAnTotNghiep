@@ -356,7 +356,6 @@
     <Content Include="Content\css\newpass.css" />
     <Content Include="Content\css\register.css" />
     <Content Include="Content\css\showbaitap.css" />
-    <Content Include="Content\css\thongbao.css" />
     <Content Include="Content\FileBTTL\381.txt" />
     <Content Include="Content\file\sample.html" />
     <Content Include="Content\file\sample_files\Sheet1.html" />

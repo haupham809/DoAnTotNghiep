@@ -9,7 +9,125 @@
     var malop = Session["malop"].ToString();
 
 }
-<link href="~/Content/css/thongbao.css" rel="stylesheet" />
+<style>
+    .thongbaomoi {
+        display: none;
+        border-radius: 10px;
+        background-image: linear-gradient(to left, #1A6EFF, pink);
+        text-align: center;
+        width: 10%;
+        margin: 5px auto;
+        position: fixed;
+        right: 10px;
+        left: 10px;
+        z-index: 9999;
+    }
+
+    .anhnguoidung {
+        height: 200px;
+        background-size: cover;
+        margin-top: 20px;
+        margin-bottom: 20px;
+        padding: 20px;
+        border-radius: 20px;
+    }
+
+    .ngaytao {
+        font-size: 20px
+    }
+
+    .malop {
+        font-size: 15px
+    }
+
+    .editclass {
+        background-color: transparent;
+        border: 0px;
+        margin: 20px;
+        font-size: 20px;
+        color: black
+    }
+
+    .dangtb {
+        width: 100%;
+        border-radius: 5px;
+        padding: 10px;
+        margin-bottom: 40px;
+        background-color: white;
+        display: block !important
+    }
+
+    .showthongbao {
+        text-align: center;
+        margin: auto;
+        display: block !important;
+        background-color: transparent;
+        border: 0px
+    }
+
+    .thongbaobaitap {
+        width: 100%;
+        border: 0px solid black;
+        border-radius: 5px;
+        padding: 10px;
+        margin-bottom: 30px;
+        background-color: white
+    }
+
+
+
+    .hidethongbao {
+        text-align: center;
+        margin: auto;
+        display: block !important;
+        background-color: transparent;
+        border: 0px
+    }
+
+   
+
+    textarea {
+        max-width: 100%;
+        height: 200px;
+        width: 100%
+    }
+
+    .thongbao {
+        width: 100%;
+        border-radius: 5px;
+        padding: 10px;
+        margin-bottom: 30px;
+        background-color: white;
+    }
+
+    hr {
+        border: 0.5px solid #848484;
+        margin: 5px;
+    }
+
+    .filethongbao {
+        padding: 10px;
+        border-radius: 5px;
+        margin-left: 20px;
+        width: fit-content;
+        margin-bottom: 5px
+    }
+
+    .anhfilethongbao {
+        background-color: transparent;
+        border: 0px;
+        background-size: cover
+    }
+
+    .huysuaThongBao {
+        text-align: center;
+        margin: auto;
+        display: block;
+        background-color: transparent;
+        border: 0px
+    }
+
+</style>
 <script type="text/javascript">
 
     $(document).ready(function () {
@@ -74,6 +192,7 @@
     }
     function load(a) {
         var myElement = $(a);
+        myElement.summernote('destroy');
         myElement.summernote({
             // set editor height
             placeholder: 'Nhập thông tin bạn muốn đăng',
@@ -94,7 +213,7 @@
              // set focus to editable area after initializing summernote
         });
 
-       @* myElement.summernote('destroy');*@
+        
     }
     function conformdelete() {
         var answer = window.confirm("Bạn có muốn xóa thông báo này không !");
@@ -186,10 +305,10 @@
                 {
                     <textarea name="noidung" id="noidung"></textarea>
                     <div><label class="101-1"></label></div> <br />
-                    <label class="glyphicon glyphicon-paperclip themfiletb" for="101-1">  Thêm</label>
+                    <label class="btn btn-info glyphicon glyphicon-paperclip themfiletb" for="101-1">  Thêm</label>
 
                     <input type="file" multiple name="file" style="display:none" id="101-1" class="fileupload glyphicon glyphicon-file" />
-                    <button id="dang" class="navbar-right">Dang</button>
+                    <button id="dang" class="btn btn-primary navbar-right">Đăng</button>
                     }
                     <button class="glyphicon glyphicon-menu-up hidethongbao " style="display:block !important"></button>
                 </div>
@@ -290,27 +409,28 @@
                             <div class="suaThongBao-@i.MaBaiDang" style="display:none;padding:20px">
                                 @using (Html.BeginForm("EditThongBao", "Class", new { id = i.MaBaiDang }, FormMethod.Post, new { enctype = "multipart/form-data" }))
                                 {
-                                    <textarea name="suanoidungthongbao" >@i.Thongtin</textarea>
+                                    <textarea name="suanoidungthongbao">@i.Thongtin</textarea>
                                     foreach (var filetb in i.FileTBs)
                                     {
                                         <br /><a class="suafile_@i.MaBaiDang" href=@filetb.NoiLuu>@filetb.TenFile</a>
                                     }
                                     <div><label class=file-@i.MaBaiDang></label></div> <br />
-                                    <label class="glyphicon glyphicon-paperclip themfiletb" for=file-@i.MaBaiDang>  Thêm</label>
+                                    <label class=" btn btn-info glyphicon glyphicon-paperclip themfiletb" for=file-@i.MaBaiDang>  Thêm</label>
 
                                     <input type="file" multiple name="file" id=file-@i.MaBaiDang class="suafileupload glyphicon glyphicon-file" style="display:none" />
 
 
 
-                                    <button class="navbar-right" id="dang">Sửa</button>
+                                    <button class="btn btn-primary navbar-right" id="dang">Sửa</button>
 
 
                                 }
-                                <button class="glyphicon glyphicon-menu-up huysuaThongBao " id="@i.MaBaiDang"></button>
+                            <div class="col-md-12 text-center">
+                                <button class=" glyphicon glyphicon-menu-up huysuaThongBao " id="@i.MaBaiDang"></button>
+                            </div>
+                                </div>
 
                             </div>
-
-                        </div>
                     }
 
                 }

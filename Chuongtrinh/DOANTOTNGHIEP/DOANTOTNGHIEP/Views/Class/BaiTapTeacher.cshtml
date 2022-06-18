@@ -72,12 +72,9 @@
 
        .dangTN, .dangTL {
           
-           padding: 5px;
-           padding-left: 15px;
-           padding-right: 15px;
-           color: white;
-           border-radius: 5px;
-           margin-right: 2%
+           margin:20px;
+           margin-right:30px !important;
+
        }
 
        .huySuaBaitap {
@@ -420,46 +417,44 @@
 
                         </div>
                     </a>
-                    <div class="hideSuaBaitap-@i.MaBaiTap" id="hideSuaBaiTap"  >
+                    <div class="hideSuaBaitap-@i.MaBaiTap" id="hideSuaBaiTap">
                         @using (Html.BeginForm("Editbaitap", "Class", new { id = i.MaBaiTap }, FormMethod.Post, new { enctype = "multipart/form-data" }))
                         {
-                            <input type="text" name="Chude" placeholder="Chủ đề" class="chudeTN" required value=@i.ChuDe />
-                            <textarea name="noidungbt" placeholder="Nội dung bài tập" class="noidungTN" >@i.Thongtin</textarea>
-                            <label>Thoi gian ket thuc</label><input type="datetime-local" name="thoigiankethuc" class="thoigianTN" required style="margin-left:10px" value="@i.ThoiGianKetThuc.Value.ToString(string.Format("yyyy-MM-ddThh:mm"))" />
-                            <button class="navbar-right dangTN">Edit</button>
+                            <input type="text" name="Chude" placeholder="Chủ đề" class="form-control chudeTN" required value=@i.ChuDe />
+                            <textarea name="noidungbt" placeholder="Nội dung bài tập" class="noidungTN">@i.Thongtin</textarea>
+                            <ul class="nav nav-tabs">
+                                <li class="nav-item">
+                                    <label>Thoi gian ket thuc :</label>
+                                </li>
+                                <li class="nav-item">
+                                    <input type="datetime-local" name="thoigiankethuc" class="form-control thoigianTN" required style="margin-left:10px" value="@i.ThoiGianKetThuc.Value.ToString(string.Format("yyyy-MM-ddThh:mm"))" />
+                                </li>
+                            </ul>
+                            <button class="btn btn-primary navbar-right dangTN">Edit</button>
                             <br />
                             <br />
                         }
-                        <button class="huySuaBaitap glyphicon glyphicon-menu-up" id=@i.MaBaiTap></button>
+                        <div class="col-md-12 text-center">
+                            <button class="huySuaBaitap glyphicon glyphicon-menu-up justify-content-center" id=@i.MaBaiTap></button>
+                        </div>
                     </div>
 
-                }
-            }
+                        }
+                        }
 
 
-            if (Model.Count == 0)
-            {
-                <div style="width:100%;height:100%;text-align:center">
-                    <img src="~/Content/image/Icon/empty_states_students.png" />
-                    <br />
-
-
-
-                    <label style="font-size:20px">
-                        Lớp học của bạn không có bất kỳ bài tập nào.<br />
-                        Vui lòng thêm bài tập mới.
-                    </label>
+                        if (Model.Count == 0)
+                        {
+                        <div style="width:100%;height:100%;text-align:center">
+                            <img src="~/Content/image/Icon/empty_states_students.png" />
+                            <br />
 
 
 
-
-
-
-
-                </div>
-            }
-
-        }
+                            <label style="font-size:20px">
+                                Lớp học của bạn không có bất kỳ bài tập nào.<br />
+                                Vui lòng thêm bài tập mới.
+                            </label>
 
 
 
@@ -467,8 +462,19 @@
 
 
 
+                        </div>
+                        }
+
+                        }
 
 
-    </div>
+
+
+
+
+
+
+
+                    </div>
 </body>
 </html>
