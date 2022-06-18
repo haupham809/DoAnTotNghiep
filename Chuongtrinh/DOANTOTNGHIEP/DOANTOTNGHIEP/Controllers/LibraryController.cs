@@ -124,15 +124,9 @@ namespace DOANTOTNGHIEP.Controllers
             var cauhoi = Request.Form["noidungcantin"].ToString().ToLower();
             string malop = Session["malop"].ToString();
             List<document> documents = new List<document>();
-            if(cauhoi.Replace("  ","").Length > 0)
+            if(cauhoi.Replace("  ","").Length == 0)
             {
-                documents = db.documents.Where(x => x.MaLop.ToString().Equals(malop) && x.Noidung.Replace("  ", " ").Contains(cauhoi.Replace("  ", " "))).ToList();
-
-            }
-            else
-            {
-                documents = db.documents.Where(x => x.MaLop.ToString().Equals(malop) ).ToList();
-
+                documents = db.documents.Where(x => x.MaLop.ToString().Equals(malop)).ToList();
             }
             List<Tailieu> tailieu=new List<Tailieu>();
             foreach(var filedoccument in documents)
@@ -145,6 +139,7 @@ namespace DOANTOTNGHIEP.Controllers
 
             }
             List<document> docs = new List<document>();
+            List<string> keyseach = new List<string>();
             if (cauhoi.Replace("  ", "").Length > 0)
             {
                 for(var i =0;i< cauhoi.Replace("  ", " ").TrimEnd(' ').TrimStart(' ').Split(' ').ToList().Count; i++)
@@ -153,18 +148,21 @@ namespace DOANTOTNGHIEP.Controllers
                     for (var j = i+1; j < cauhoi.Replace("  ", " ").TrimEnd(' ').TrimStart(' ').Split(' ').ToList().Count; j++)
                     {
                         var v = s + " " + cauhoi.Replace("  ", " ").TrimEnd(' ').TrimStart(' ').Split(' ').ToArray()[j];
-                        documents = db.documents.Where(x => x.MaLop.ToString().Equals(malop) && x.Noidung.Replace("  ", " ").Contains(v)).ToList();
-                        docs.AddRange(documents);
+                        keyseach.Add(v);
                         s = v;
                     }
 
                 }
                 foreach(var v in cauhoi.Replace("  ", " ").TrimEnd(' ').TrimStart(' ').Split(' ').ToList())
                 {
-                    documents = db.documents.Where(x => x.MaLop.ToString().Equals(malop) && x.Noidung.Replace("  ", " ").Contains(v)).ToList();
-                    docs.AddRange(documents);
+                    keyseach.Add(v);
                 }
 
+            }
+            foreach(var v in keyseach.OrderByDescending(x=>x.TrimEnd(' ').TrimStart(' ').Split(' ').Length))
+            {
+                documents = db.documents.Where(x => x.MaLop.ToString().Equals(malop) && x.Noidung.Replace("  ", " ").Contains(v)).ToList();
+                docs.AddRange(documents);
             }
             foreach(var filedoccument in docs)
             {
