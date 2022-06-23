@@ -56,9 +56,10 @@
     <div style="margin: 20px">
         @if (baitracnhgiem != null)
         {
-            <a href="~/Class/ShowcauhoiTracnghiem/@baitracnhgiem[0].MaBaiTap" class="chitiet">Xem chi tiết bài tập </a>
-            <a href=@ViewBag.excel style=" background-image: linear-gradient(to right,#0404B4,#A901DB); padding: 5px; padding-left: 15px; padding-right: 15px; color: white; border-radius: 5px; margin-right: 2%" download>Xuất excel </a>
-            <a href=@ViewBag.pdf style=" background-image: linear-gradient(to right,#0404B4,#A901DB); padding: 5px; padding-left: 15px; padding-right: 15px; color: white; border-radius: 5px; margin-right: 2%" download>Xuất PDF </a>
+            <button onclick="buttontoview(`ShowcauhoiTracnghiem/@baitracnhgiem[0].MaBaiTap`)" type="button" class="btn btn-primary">Xem chi tiết bài tập </button>
+            <a href="@ViewBag.excel" class="link-info" style="margin-left:10px;font-size:20px" download>Xuất excel </a>
+            <a href="@ViewBag.pdf" class="link-info" style="margin-left:10px;font-size:20px" download>Xuất PDF </a>
+
 
             <table style="margin-top:10px;width:100%">
                 <thead>

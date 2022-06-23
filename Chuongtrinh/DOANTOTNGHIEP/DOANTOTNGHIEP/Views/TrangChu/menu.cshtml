@@ -62,13 +62,10 @@
             $('.menu').css("display", "none");
             $('.menuleft').css("margin-left", "-250px");
         });
-        $('.btnanmenu').cli(function () {
-            $('.menu').css("display", "none");
-            $('.menuleft').css("margin-left", "-250px");
-        });
+        
 
     });
-    $(".menu").click
+   @* $(".menu").click
         (
             function (e) {
                 if (e.target.className !== "menuleft" && e.target.className !== "ttlop"  ) {
@@ -77,8 +74,16 @@
                     $('.menuleft').css("margin-left", "-250px");
                 }
             }
-        );
-
+        );*@
+    function showsubmenu(ma) {
+        
+        if ($("#" + ma).css("display") == "block") {
+            $("#" + ma).css("display", "none");
+        } else {
+            $("#" + ma).css("display", "block");
+        }
+       
+    }
 </script>
 <div class="menu" style="width:100%;height:100%;background-color:rgb(0,0,0,0.5);position: fixed;left:0px;top:0;">
     <div class="menuleft ">
@@ -87,7 +92,7 @@
             <a href="~/TrangChu/Index" style="max-height: 50px; padding: 15px 15px; " class="navbar-header">
                 <img class="d-inline-block align-top" src="~/Content/image/Icon/classroom-icon-png-8.png" height="25" width="80" style="margin-right:80px;" />
             </a>
-            <button style="background-color:transparent;border:0px;font-size:25px;height:50px" class="glyphicon glyphicon-menu-hamburger btnmenu">
+            <button style="background-color:transparent;border:0px;font-size:25px;height:50px" class="glyphicon glyphicon-menu-hamburger btnanmenu">
             </button>
         </div>
 
@@ -101,15 +106,50 @@
 
                 foreach (var i in Model)
                 {
-                    <a class="nav-link" href="~/Class/Index/@i.MaLop" style="font-size:20px;color:black;text-decoration:none;">
-                        <div style="padding:10px;padding-left:30px;overflow:hidden;text-overflow: ellipsis; white-space: nowrap;padding-right:20px" class="lop">
+                        <div>
 
 
-                            @i.TenLop
+                            <button class="btn btn-light menuleft_@i.MaLop" style="font-size:20px;color:black;text-decoration:none;width:100%;text-align:left" onclick="showsubmenu(`submenu_@i.MaLop`)">
+                                @i.TenLop
+                                <i class="fa fa-caret-down" style="text-align:right"></i>
+                            </button>
+                            <div id="submenu_@i.MaLop" style="display:none" >
 
+
+                                <a class="nav-link" href="~/Class/Index/@i.MaLop" style="font-size:15px;color:black;text-decoration:none;">
+                                    <div style="padding:10px;padding-left:30px;overflow:hidden;text-overflow: ellipsis; white-space: nowrap;padding-right:20px" class="lop">
+                                        Thông báo
+                                    </div>
+                                </a>
+                                <a class="nav-link" href="~/Class/BaiTap/@i.MaLop" style="font-size:15px;color:black;text-decoration:none;">
+                                    <div style="padding:10px;padding-left:30px;overflow:hidden;text-overflow: ellipsis; white-space: nowrap;padding-right:20px" class="lop">
+                                        bài tập
+                                    </div>
+                                </a>
+                                <a class="nav-link" href="~/Class/ThanhVien/@i.MaLop" style="font-size:15px;color:black;text-decoration:none;">
+                                    <div style="padding:10px;padding-left:30px;overflow:hidden;text-overflow: ellipsis; white-space: nowrap;padding-right:20px" class="lop">
+                                        Thành viên
+                                    </div>
+                                </a>
+                                <a class="nav-link" href="~/Class/Mess/@i.MaLop" style="font-size:15px;color:black;text-decoration:none;">
+                                    <div style="padding:10px;padding-left:30px;overflow:hidden;text-overflow: ellipsis; white-space: nowrap;padding-right:20px" class="lop">
+                                        Tin nhắn
+                                    </div>
+                                </a>
+                                <a class="nav-link" href="~/Class/Diem/@i.MaLop" style="font-size:15px;color:black;text-decoration:none;">
+                                    <div style="padding:10px;padding-left:30px;overflow:hidden;text-overflow: ellipsis; white-space: nowrap;padding-right:20px" class="lop">
+                                        Thống kê
+                                    </div>
+                                </a>
+                                <a class="nav-link" href="~/Library/library/@i.MaLop" style="font-size:15px;color:black;text-decoration:none;">
+                                    <div style="padding:10px;padding-left:30px;overflow:hidden;text-overflow: ellipsis; white-space: nowrap;padding-right:20px" class="lop">
+                                        Tài liệu
+                                    </div>
+                                </a>
+                            </div>
 
                         </div>
-                    </a>
+                   
                 }
             }
 

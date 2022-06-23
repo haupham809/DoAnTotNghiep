@@ -28,10 +28,27 @@ namespace DOANTOTNGHIEP.Controllers
 
         
         DB db = new DB();
+        public void checkcookieuser()
+        {
+            DB db = new DB();
+            var user = Request.Cookies["user"];
+            if (user != null && user["TenDangNhap"].ToString().Length > 0 && user["Matkhau"].ToString().Length > 0)
+            {
+                var tendangnhap = Models.crypt.Encrypt.Decryptuser(user["TenDangNhap"].ToString());
+                var matkhau = user["Matkhau"].ToString();
+                var TK = db.TaiKhoans.SingleOrDefault(x => x.TenDangNhap.Equals(tendangnhap) && x.MatKhau.Equals(matkhau));
+                if (TK != null)
+                {
+                    Session["user"] = TK;
+                }
+
+            }
+        }
         // GET: Class
         //hien thong báo 
         public ActionResult Index(string id)
         {
+            checkcookieuser();
             var user = Session["user"] as DOANTOTNGHIEP.Models.TaiKhoan;
             if (user == null) return RedirectToAction("Login", "Login");
             var lop = db.ThanhVienLops.SingleOrDefault(x => x.MaLop.ToString().Equals(id) && x.Mathanhvien.Equals(user.TenDangNhap));
@@ -64,6 +81,7 @@ namespace DOANTOTNGHIEP.Controllers
         //tham gia lop hoc
         public ActionResult checkclass()
         {
+            checkcookieuser();
             var user = Session["user"] as DOANTOTNGHIEP.Models.TaiKhoan;
             if (user == null) return RedirectToAction("Login", "Login");
             string nguoitao = user.TenDangNhap;
@@ -134,6 +152,7 @@ namespace DOANTOTNGHIEP.Controllers
         //tao lop hoc
         public ActionResult createclass()
         {
+            checkcookieuser();
             var user = Session["user"] as DOANTOTNGHIEP.Models.TaiKhoan;
             if (user == null) return RedirectToAction("Login", "Login");
             string nguoitao = user.TenDangNhap;
@@ -171,6 +190,7 @@ namespace DOANTOTNGHIEP.Controllers
         [HttpGet]
         public ActionResult Editclass()
         {
+            checkcookieuser();
             var user = Session["user"] as DOANTOTNGHIEP.Models.TaiKhoan;
             if (user == null) return RedirectToAction("Login", "Login");
             string nguoitao = user.TenDangNhap;
@@ -189,6 +209,7 @@ namespace DOANTOTNGHIEP.Controllers
         [HttpPost]
         public ActionResult Checkeditclass(LopHoc s, HttpPostedFileBase file)
         {
+            checkcookieuser();
             var user = Session["user"] as DOANTOTNGHIEP.Models.TaiKhoan;
             if (user == null) return RedirectToAction("Login", "Login");
             string nguoitao = user.TenDangNhap;
@@ -216,6 +237,7 @@ namespace DOANTOTNGHIEP.Controllers
         //diem
         public ActionResult Diem(string id)
         {
+            checkcookieuser();
             var user = Session["user"] as DOANTOTNGHIEP.Models.TaiKhoan;
             if (user == null) return RedirectToAction("Login", "Login");
 
@@ -238,6 +260,7 @@ namespace DOANTOTNGHIEP.Controllers
 
         public ActionResult Infordiem(string id)
         {
+            checkcookieuser();
             var user = Session["user"] as DOANTOTNGHIEP.Models.TaiKhoan;
             if (user == null) return RedirectToAction("Login", "Login");
             if (Session["malop"] == null) return RedirectToAction("Index", "TrangChu");
@@ -259,6 +282,7 @@ namespace DOANTOTNGHIEP.Controllers
         // thong tin bai tap da nop
         public ActionResult Bainop()
         {
+            checkcookieuser();
             var user = Session["user"] as DOANTOTNGHIEP.Models.TaiKhoan;
             if (user == null) return RedirectToAction("Login", "Login");
             if (Session["malop"] == null) return RedirectToAction("Index", "TrangChu");
@@ -270,9 +294,7 @@ namespace DOANTOTNGHIEP.Controllers
         //bai tap chua nop
         public ActionResult Baichuanop()
         {
-
-
-
+            checkcookieuser();
             var user = Session["user"] as DOANTOTNGHIEP.Models.TaiKhoan;
             if (user == null) return RedirectToAction("Login", "Login");
             if (Session["malop"] == null) return RedirectToAction("Index", "TrangChu");
@@ -285,6 +307,7 @@ namespace DOANTOTNGHIEP.Controllers
 
         public ActionResult Bainopmuon()
         {
+            checkcookieuser();
             var user = Session["user"] as DOANTOTNGHIEP.Models.TaiKhoan;
             if (user == null) return RedirectToAction("Login", "Login");
             if (Session["malop"] == null) return RedirectToAction("Index", "TrangChu");
@@ -297,7 +320,7 @@ namespace DOANTOTNGHIEP.Controllers
         //bagn thong tin tao lop
         public ActionResult AddClass()
         {
-
+            checkcookieuser();
             var user = Session["user"] as DOANTOTNGHIEP.Models.TaiKhoan;
             if (user == null) return RedirectToAction("Login", "Login");
             return View();
@@ -305,6 +328,7 @@ namespace DOANTOTNGHIEP.Controllers
         //bang thong tin tham gia lop
         public ActionResult JoinClass()
         {
+            checkcookieuser();
             var user = Session["user"] as DOANTOTNGHIEP.Models.TaiKhoan;
             if (user == null) return RedirectToAction("Login", "Login");
             return View();
@@ -312,6 +336,7 @@ namespace DOANTOTNGHIEP.Controllers
         // bang thong tin tat ca bai tap
         public ActionResult BaiTap(string id)
         {
+            checkcookieuser();
             var user = Session["user"] as DOANTOTNGHIEP.Models.TaiKhoan;
             if (user == null) return RedirectToAction("Login", "Login");
             if (Session["malop"] == null && id == null) return RedirectToAction("Index", "TrangChu");
@@ -337,7 +362,7 @@ namespace DOANTOTNGHIEP.Controllers
         }
         public ActionResult BaiTapTeacher(List<BaiTap> baitap)
         {
-
+            checkcookieuser();
             var user = Session["user"] as DOANTOTNGHIEP.Models.TaiKhoan;
             if (user == null) return RedirectToAction("Login", "Login");
             if (Session["malop"] == null) return RedirectToAction("Index", "TrangChu");
@@ -345,6 +370,7 @@ namespace DOANTOTNGHIEP.Controllers
         }
         public ActionResult deletebaitap(string id)
         {
+            checkcookieuser();
             var user = Session["user"] as DOANTOTNGHIEP.Models.TaiKhoan;
             if (user == null) return RedirectToAction("Login", "Login");
             if (Session["malop"] == null) return RedirectToAction("Index", "TrangChu");
@@ -411,6 +437,7 @@ namespace DOANTOTNGHIEP.Controllers
         }
         public ActionResult Editbaitap(string id)
         {
+            checkcookieuser();
             var user = Session["user"] as DOANTOTNGHIEP.Models.TaiKhoan;
             if (user == null) return RedirectToAction("Login", "Login");
             if (Session["malop"] == null) return RedirectToAction("Index", "TrangChu");
@@ -443,6 +470,7 @@ namespace DOANTOTNGHIEP.Controllers
         }
         public ActionResult Editbaitaptl(string id, HttpPostedFileBase[] file)
         {
+            checkcookieuser();
             var user = Session["user"] as DOANTOTNGHIEP.Models.TaiKhoan;
             if (user == null) return RedirectToAction("Login", "Login");
             if (Session["malop"] == null) return RedirectToAction("Index", "TrangChu");
@@ -524,6 +552,7 @@ namespace DOANTOTNGHIEP.Controllers
 
         public ActionResult Editbaitaptn(string id, HttpPostedFileBase[] file)
         {
+            checkcookieuser();
             var user = Session["user"] as DOANTOTNGHIEP.Models.TaiKhoan;
             if (user == null) return RedirectToAction("Login", "Login");
             if (Session["malop"] == null) return RedirectToAction("Index", "TrangChu");
@@ -557,7 +586,7 @@ namespace DOANTOTNGHIEP.Controllers
 
         public ActionResult ShowBaiTap(BaiTap baitap)
         {
-
+            checkcookieuser();
             var user = Session["user"] as DOANTOTNGHIEP.Models.TaiKhoan;
             if (user == null) return RedirectToAction("Login", "Login");
             if (Session["malop"] == null) return RedirectToAction("Index", "TrangChu");
@@ -566,6 +595,7 @@ namespace DOANTOTNGHIEP.Controllers
         //chi tiec bai tap 
         public ActionResult ShowInforBaiTap(string id, string ma)
         {
+            checkcookieuser();
             var user = Session["user"] as DOANTOTNGHIEP.Models.TaiKhoan;
             if (user == null) return RedirectToAction("Login", "Login");
             string nguoitao = user.TenDangNhap;
@@ -627,6 +657,7 @@ namespace DOANTOTNGHIEP.Controllers
         }
         public ActionResult ShowInforBaiTapForTeacher()
         {
+            checkcookieuser();
             var user = Session["user"] as DOANTOTNGHIEP.Models.TaiKhoan;
             if (user == null) return RedirectToAction("Login", "Login");
             var id = Session["mabaitap"].ToString();
@@ -659,6 +690,7 @@ namespace DOANTOTNGHIEP.Controllers
         }
         public ActionResult ShowInforTL(string ten, string ma)
         {
+            checkcookieuser();
             var user = Session["user"] as DOANTOTNGHIEP.Models.TaiKhoan;
             if (user == null) return RedirectToAction("Login", "Login");
             if (Session["malop"] == null) return RedirectToAction("Index", "TrangChu");
@@ -676,7 +708,7 @@ namespace DOANTOTNGHIEP.Controllers
         }
         public ActionResult ShowInforTN(string ten, string ma)
         {
-
+            checkcookieuser();
             var user = Session["user"] as DOANTOTNGHIEP.Models.TaiKhoan;
             if (user == null) return RedirectToAction("Login", "Login");
             if (Session["malop"] == null) return RedirectToAction("Index", "TrangChu");
@@ -694,6 +726,7 @@ namespace DOANTOTNGHIEP.Controllers
         }
         public ActionResult chambaitl(BaiTapTL baitap)
         {
+            checkcookieuser();
             var user = Session["user"] as DOANTOTNGHIEP.Models.TaiKhoan;
             if (user == null) return RedirectToAction("Login", "Login");
             if (Session["malop"] == null) return RedirectToAction("Index", "TrangChu");
@@ -710,6 +743,7 @@ namespace DOANTOTNGHIEP.Controllers
 
         public ActionResult ThanhVien(string id)
         {
+            checkcookieuser();
             var user = Session["user"] as DOANTOTNGHIEP.Models.TaiKhoan;
             if (user == null) return RedirectToAction("Login", "Login");
             if (id != null)
@@ -731,6 +765,7 @@ namespace DOANTOTNGHIEP.Controllers
         [ValidateInput(false)]
         public ActionResult DangTB(HttpPostedFileBase[] file)
         {
+            checkcookieuser();
             var user = Session["user"] as DOANTOTNGHIEP.Models.TaiKhoan;
             if (user == null) return RedirectToAction("Login", "Login");
             if (Session["malop"] == null) return RedirectToAction("Index", "TrangChu");
@@ -787,7 +822,7 @@ namespace DOANTOTNGHIEP.Controllers
         [HttpPost]
         public ActionResult DangBaiTapTL(HttpPostedFileBase[] file)
         {
-
+            checkcookieuser();
             var user = Session["user"] as DOANTOTNGHIEP.Models.TaiKhoan;
             if (user == null) return RedirectToAction("Login", "Login");
             if (Session["malop"] == null) return RedirectToAction("Index", "TrangChu");
@@ -876,6 +911,7 @@ namespace DOANTOTNGHIEP.Controllers
         [HttpPost]
         public ActionResult DangBaiTapTN(HttpPostedFileBase file)
         {
+            checkcookieuser();
             var user = Session["user"] as DOANTOTNGHIEP.Models.TaiKhoan;
             if (user == null) return RedirectToAction("Login", "Login");
             if (Session["malop"] == null) return RedirectToAction("Index", "TrangChu");
@@ -921,6 +957,7 @@ namespace DOANTOTNGHIEP.Controllers
         }
         public List<CauHoi> docfiletracnghiem(string file)
         {
+            checkcookieuser();
             var user = Session["user"] as DOANTOTNGHIEP.Models.TaiKhoan;
             string nguoitao = user.TenDangNhap;
             List<CauHoi> cauhoi = new List<CauHoi>();
@@ -1024,6 +1061,7 @@ namespace DOANTOTNGHIEP.Controllers
         }
         public ActionResult luucauhoitracnghiem()
         {
+            checkcookieuser();
             var user = Session["user"] as DOANTOTNGHIEP.Models.TaiKhoan;
             if (user == null) return RedirectToAction("Login", "Login");
             if (Session["malop"] == null) return RedirectToAction("Index", "TrangChu");
@@ -1088,6 +1126,7 @@ namespace DOANTOTNGHIEP.Controllers
         [ValidateInput(false)]
         public ActionResult EditThongBao(string id, HttpPostedFileBase[] file)
         {
+            checkcookieuser();
             var user = Session["user"] as DOANTOTNGHIEP.Models.TaiKhoan;
             if (user == null) return RedirectToAction("Login", "Login");
             if (Session["malop"] == null) return RedirectToAction("Index", "TrangChu");
@@ -1156,7 +1195,7 @@ namespace DOANTOTNGHIEP.Controllers
         }
         public ActionResult DeleteThongBao(string id)
         {
-
+            checkcookieuser();
             var user = Session["user"] as DOANTOTNGHIEP.Models.TaiKhoan;
             if (user == null) return RedirectToAction("Login", "Login");
             if (Session["malop"] == null) return RedirectToAction("Index", "TrangChu");
@@ -1184,7 +1223,7 @@ namespace DOANTOTNGHIEP.Controllers
         [HttpPost]
         public ActionResult editnopbaitap(HttpPostedFileBase[] file)
         {
-
+            checkcookieuser();
             var user = Session["user"] as DOANTOTNGHIEP.Models.TaiKhoan;
             if (user == null) return RedirectToAction("Login", "Login");
             if (Session["malop"] == null) return RedirectToAction("Index", "TrangChu");
@@ -1242,7 +1281,7 @@ namespace DOANTOTNGHIEP.Controllers
         [HttpPost]
         public ActionResult nopbaitapTL(HttpPostedFileBase[] file)
         {
-
+            checkcookieuser();
             var user = Session["user"] as DOANTOTNGHIEP.Models.TaiKhoan;
             if (user == null) return RedirectToAction("Login", "Login");
             if (Session["malop"] == null) return RedirectToAction("Index", "TrangChu");
@@ -1291,6 +1330,7 @@ namespace DOANTOTNGHIEP.Controllers
         }
         public ActionResult LamBaiTN(string id)
         {
+            checkcookieuser();
             var user = Session["user"] as DOANTOTNGHIEP.Models.TaiKhoan;
             if (user == null) return RedirectToAction("Login", "Login");
             if (Session["malop"] == null) return RedirectToAction("Index", "TrangChu");
@@ -1300,6 +1340,7 @@ namespace DOANTOTNGHIEP.Controllers
         }
         public void Luucauhoikhilam(string macauhoi, string madapan)
         {
+            checkcookieuser();
             var user = Session["user"] as DOANTOTNGHIEP.Models.TaiKhoan;
             if (user == null) RedirectToAction("Login", "Login");
             if (Session["malop"] == null) RedirectToAction("Index", "TrangChu");
@@ -1333,6 +1374,7 @@ namespace DOANTOTNGHIEP.Controllers
         //luu bai thi sau khi lam
         public ActionResult LuuBaiTN()
         {
+            checkcookieuser();
             var user = Session["user"] as DOANTOTNGHIEP.Models.TaiKhoan;
             if (user == null) return RedirectToAction("Login", "Login");
             if (Session["malop"] == null) return RedirectToAction("Index", "TrangChu");
@@ -1361,6 +1403,7 @@ namespace DOANTOTNGHIEP.Controllers
         }
         public ActionResult ShowBaiThiTN(string id)
         {
+            checkcookieuser();
             var user = Session["user"] as DOANTOTNGHIEP.Models.TaiKhoan;
             if (user == null) return RedirectToAction("Login", "Login");
             if (Session["malop"] == null) return RedirectToAction("Index", "TrangChu");
@@ -1376,6 +1419,7 @@ namespace DOANTOTNGHIEP.Controllers
         }
         public ActionResult ShowcauhoiTracnghiem(string id)
         {
+            checkcookieuser();
             var user = Session["user"] as DOANTOTNGHIEP.Models.TaiKhoan;
             if (user == null) return RedirectToAction("Login", "Login");
             if (Session["malop"] == null) return RedirectToAction("Index", "TrangChu");
@@ -1390,6 +1434,7 @@ namespace DOANTOTNGHIEP.Controllers
         }
         public ActionResult showcauhoituluan(string id)
         {
+            checkcookieuser();
             var user = Session["user"] as DOANTOTNGHIEP.Models.TaiKhoan;
             if (user == null) return RedirectToAction("Login", "Login");
             if (Session["malop"] == null) return RedirectToAction("Index", "TrangChu");
@@ -1406,6 +1451,7 @@ namespace DOANTOTNGHIEP.Controllers
 
         public ActionResult Mess(string id)
         {
+            checkcookieuser();
             var user = Session["user"] as DOANTOTNGHIEP.Models.TaiKhoan;
             if (user == null) return RedirectToAction("Login", "Login");
             Session["malop"] = id;
@@ -1488,6 +1534,7 @@ namespace DOANTOTNGHIEP.Controllers
         [HttpPost]
         public ActionResult InforMess(string id)
         {
+            checkcookieuser();
             var user = Session["user"] as DOANTOTNGHIEP.Models.TaiKhoan;
             if (user == null) return RedirectToAction("Login", "Login");
             if (Session["malop"] == null) return RedirectToAction("Index", "TrangChu");
@@ -1528,6 +1575,7 @@ Extension;
         [ValidateInput(false)]
         public void SaveInforMess(string nguoinhan, string tinnhan)
         {
+            checkcookieuser();
             var user = Session["user"] as DOANTOTNGHIEP.Models.TaiKhoan;
             string nguoitao = user.TenDangNhap;
             string malop = Session["malop"].ToString();
@@ -2317,9 +2365,8 @@ Extension;
         [HttpPost]
         public JsonResult checkdaovan(string mabaitap)
         {
+            checkcookieuser();
             var user = Session["user"] as DOANTOTNGHIEP.Models.TaiKhoan;
-            
-            
             var malop = Session["malop"].ToString();
             var baitaptuluan = db.BaiTapTLs.Where(x => x.MaBaiTap.ToString().Equals(mabaitap) && x.Trangthai != null ).ToList().OrderBy(y=>y.NgayNop).ToList();
             if (baitaptuluan.Count > 0)

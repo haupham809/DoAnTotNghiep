@@ -349,74 +349,76 @@
                 foreach (var i in Model)
                 {
 
-                    <a href="~/Class/ShowInforBaiTap/@i.MaBaiTap" class=@i.MaBaiTap >
+    <a href="~/Class/ShowInforBaiTap/@i.MaBaiTap" class=@i.MaBaiTap>
 
-                        <div id="baitap" class=@i.MaBaiTap  >
+        <div id="baitap" class=@i.MaBaiTap>
 
-                            <table style="margin-bottom:20px;">
-
-
-
-                                <tr>
-
-
-                                    <th><img class="navbar-link" src=@i.LopHoc.TaiKhoan.HinhAnh width="50" height="50" style="border-radius:45px;" /></th>
-                                    <th style="padding-left:10px;width:100%">
-                                        <label style="font-size:20px;">Chủ đề:@i.ChuDe</label><br />
-                                         <label style="font-size:10px;">@i.ThoiGianDang.Value.ToString(string.Format("HH:mm dd/MM/yyyy")) ~ @i.ThoiGianKetThuc.Value.ToString(string.Format("HH:mm dd/MM/yyyy"))</label>
-                                        <br />
-                                    </th>
-                                    <th style="z-index:5">
-                                        <div class="navbar-right dropdown " style="margin-bottom:40px">
-                                            <i class="glyphicon glyphicon-option-vertical" id="menu " data-toggle="dropdown" style="margin-right:10px" aria-haspopup="true" aria-expanded="false"></i>
-                                            <div class="dropdown-menu " aria-labelledby="menu ">
-                                                <ul class="nav">
-                                                    <li><a class="dropdown-itemxoa" href="#" id="@i.MaBaiTap" >xoa</a></li>
-                                                    <li><a class="dropdown-itemsua" id=@i.MaBaiTap>sua</a></li>
-                                                </ul>
-                                            </div>
-
-                                        </div>
-                                    </th>
-                                </tr>
+            <table style="margin-bottom:20px;">
 
 
 
-                            </table>
-                            <div>@Html.Raw(@i.Thongtin)</div><br />  @{
-                                if (i.FileBTTLs.Count > 0)
-                                {
-                                    <hr />}
-                                foreach (var filetb in i.FileBTTLs)
-                                {
-
-                                    if (@filetb.TenFile.IndexOf(".png") == @filetb.TenFile.Length - 4 || @filetb.TenFile.IndexOf(".jpg") == @filetb.TenFile.Length - 4)
-                                    {
-                                        <div class="divfilebaitap">
-                                            <img class="imgfilebaitap" src="@filetb.NoiLuu" width="50" height="30">
-                                            <a href=@filetb.NoiLuu download>@filetb.TenFile</a>
-                                        </div>
-
-                                    }
-                                    else
-                                    {
+                <tr>
 
 
-                                        <div class="divfilebaitap">
-                                            <img class="imgfilebaitap" src="~/Content/image/Icon/unnamed.png" width="40" height="30">
-                                             <a href=@filetb.NoiLuu download style="margin-left:20px">@filetb.TenFile</a>
-                                        </div> }
-
-
-                                }
-                            }
-
-
-
-
+                    <th><img class="navbar-link" src=@i.LopHoc.TaiKhoan.HinhAnh width="50" height="50" style="border-radius:45px;" /></th>
+                    <th style="padding-left:10px;width:100%">
+                        <label style="font-size:20px;">Chủ đề:@i.ChuDe</label><br />
+                        <label style="font-size:10px;">@i.ThoiGianDang.Value.ToString(string.Format("HH:mm dd/MM/yyyy")) ~ @i.ThoiGianKetThuc.Value.ToString(string.Format("HH:mm dd/MM/yyyy"))</label>
+                        <br />
+                    </th>
+                    <th style="z-index:5">
+                        <div class="navbar-right dropdown " style="margin-bottom:40px">
+                            <i class="glyphicon glyphicon-option-vertical" id="menu " data-toggle="dropdown" style="margin-right:10px" aria-haspopup="true" aria-expanded="false"></i>
+                            <div class="dropdown-menu " aria-labelledby="menu ">
+                                <ul class="nav">
+                                    <li><a class="dropdown-itemxoa" href="#" id="@i.MaBaiTap">xoa</a></li>
+                                    <li><a class="dropdown-itemsua" id=@i.MaBaiTap>sua</a></li>
+                                </ul>
+                            </div>
 
                         </div>
-                    </a>
+                    </th>
+                </tr>
+
+
+
+            </table>
+            <hr />
+            <div>@Html.Raw(@i.Thongtin)</div><br />  @{
+                if (i.FileBTTLs.Count > 0)
+                {
+                    <hr />}
+                foreach (var filetb in i.FileBTTLs)
+                {
+
+                    if (@filetb.TenFile.IndexOf(".png") == @filetb.TenFile.Length - 4 || @filetb.TenFile.IndexOf(".jpg") == @filetb.TenFile.Length - 4)
+                    {
+                        <div class="divfilebaitap">
+                            <img class="imgfilebaitap" src="@filetb.NoiLuu" width="50" height="30">
+                            <a href=@filetb.NoiLuu download>@filetb.TenFile</a>
+                        </div>
+
+                    }
+                    else
+                    {
+
+
+                        <div class="divfilebaitap">
+                            <img class="imgfilebaitap" src="~/Content/image/Icon/unnamed.png" width="40" height="30">
+                            <a href=@filetb.NoiLuu download style="margin-left:20px">@filetb.TenFile</a>
+                        </div> }
+
+
+                }
+            }
+
+
+
+
+
+        </div>
+        <hr />
+    </a>
                     <div class="hideSuaBaitap-@i.MaBaiTap" id="hideSuaBaiTap">
                         @using (Html.BeginForm("Editbaitap", "Class", new { id = i.MaBaiTap }, FormMethod.Post, new { enctype = "multipart/form-data" }))
                         {

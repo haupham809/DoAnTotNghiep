@@ -54,7 +54,8 @@
         padding: 10px;
         margin-bottom: 40px;
         background-color: white;
-        display: block !important
+        display: block !important;
+        border:  0.1px solid #848484;
     }
 
     .showthongbao {
@@ -70,7 +71,6 @@
         border: 0px solid black;
         border-radius: 5px;
         padding: 10px;
-        margin-bottom: 30px;
         background-color: white
     }
 
@@ -96,12 +96,12 @@
         width: 100%;
         border-radius: 5px;
         padding: 10px;
-        margin-bottom: 30px;
+        margin-bottom: 10px;
         background-color: white;
+        border: 0.1px solid #848484;
     }
 
     hr {
-        border: 0.5px solid #848484;
         margin: 5px;
     }
 
@@ -273,13 +273,13 @@
 
 
     </div>
-    <div style="width:90%;margin:auto;display:block">
+    <div style="width:100%;margin:auto;display:block">
 
 
 
 
 
-        <div class="dangtb" style="border:0pc solid white;">
+        <div class="dangtb" >
 
 
             <div class="row">
@@ -319,7 +319,7 @@
             {
                 foreach (var i in Model)
                 {
-                    if (i.MaBaiTap != null)
+                    @*if (i.MaBaiTap != null)
                     {
                         <div class="thongbao" >
                             <a href="~/Class/ShowInforBaiTap/@i.MaBaiTap">
@@ -333,12 +333,14 @@
                                             </th>
                                         </tr>
                                     </table>
+                                    <hr />
                                     <div>@Html.Raw(@i.Thongtin)</div>
+
                                 </div>
                             </a>
                         </div>
-                    }
-                    else if (i.MaBaiTap == null)
+                    }*@
+                   if (i.MaBaiTap == null)
                     {
                         <div class="thongbao"  >
 
@@ -372,6 +374,7 @@
 
                                     </tr>
                                 </table>
+                                <hr />
                                 <div>@Html.Raw(@i.Thongtin)</div>
                                 @{
                                     if (i.FileTBs.Count > 0)
@@ -396,11 +399,14 @@
                                             <div class="filethongbao">
                                                 <img class="anhfilethongbao" src="~/Content/image/Icon/unnamed.png" width="40" height="30">
                                                 <a href=@filetb.NoiLuu download style="margin-left:20px">@filetb.TenFile</a>
-                                            </div> }
+                                            </div>
+                                        }
 
 
                                     }
                                 }
+                                <hr />
+                                <label class="fa  fa-comments" style="font-size:20px"></label>
                             </div>
 
 
