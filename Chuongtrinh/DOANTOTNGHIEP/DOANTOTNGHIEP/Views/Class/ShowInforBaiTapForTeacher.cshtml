@@ -12,21 +12,11 @@
     <meta name="viewport" content="width=device-width" />
     <title></title>
     <style type="text/css">
-        .heade {
-            background-color: cornflowerblue;
-            width: 100%
-        }
-
-        th {
-            padding: 10px;
-        }
-
-        .
-
+        
         tbody.tr.th {
         }
-      
     </style>
+
     <script type="text/javascript">
         function checkdaovan(i) {
             $("#modalloading").css("display", "block");
@@ -34,7 +24,7 @@
                 url: '/Class/checkdaovan', type: 'post',
                 data: {
                     mabaitap: i,
-                    
+
                 }
 
             }).done(function (result) {
@@ -43,51 +33,58 @@
                 }
 
                 $("#modalloading").css("display", "none");
-                
-                
+
+
             });
         }
         function buttontoview(link) {
             location.replace(link)
         }
+        $(document).ready(function () {
+            $('.table_id').DataTable({
+                "language": {
+                    "url": "//cdn.datatables.net/plug-ins/1.11.3/i18n/vi.json"
+                }
+            });
+        });
     </script>
 </head>
-<body >
+<body>
     <div style="margin: 20px">
         @if (baitracnhgiem != null)
-        {
-            <button onclick="buttontoview(`ShowcauhoiTracnghiem/@baitracnhgiem[0].MaBaiTap`)" type="button" class="btn btn-primary">Xem chi tiết bài tập </button>
-            <a href="@ViewBag.excel" class="link-info" style="margin-left:10px;font-size:20px" download>Xuất excel </a>
-            <a href="@ViewBag.pdf" class="link-info" style="margin-left:10px;font-size:20px" download>Xuất PDF </a>
+        {<div style="margin-bottom:30px">
+                <button onclick="buttontoview(`ShowcauhoiTracnghiem/@baitracnhgiem[0].MaBaiTap`)" type="button" class="btn btn-primary">Xem chi tiết bài tập </button>
+                <a href="@ViewBag.excel" class="link-info" style="margin-left:10px;font-size:20px" download>Xuất excel </a>
+                <a href="@ViewBag.pdf" class="link-info" style="margin-left:10px;font-size:20px" download>Xuất PDF </a>
+            </div>
 
-
-            <table style="margin-top:10px;width:100%">
+            <table style="margin-top:30px;width:100%" class="table_id">
                 <thead>
-                    <tr class="heade" role="row">
+                    <tr class="bg-primary" role="row" >
 
 
 
 
 
-                        <th>
+                        <th style="border:1px solid white">
                             <label></label>
 
-                        <th>
+                        <th style="border:1px solid white">
                             <label>Tên</label>
                         </th>
-                        <th>
+                        <th style="border:1px solid white">
                             <label>Ngày Nộp</label>
                         </th>
-                        <th>
+                        <th style="border:1px solid white">
                             <label>Ngày kết thúc</label>
                         </th>
-                        <th>
+                        <th style="border:1px solid white">
                             <label>Điểm</label>
                         </th>
-                        <th>
+                        <th style="border:1px solid white">
                             <label>Trạng Thái</label>
                         </th>
-                        <th>
+                        <th style="border:1px solid white">
 
                         </th>
                     </tr>
@@ -103,15 +100,15 @@
 
 
 
-                            <th style="background-color:#E6E6E6;border:3px solid white">
+                            <th>
                                 <img src=@i.TaiKhoan.HinhAnh width="40" height="40" style="border-radius:5px;" />
 
                             </th>
-                            <th style="background-color:#E6E6E6;border:3px solid white">
+                            <th>
                                 <label>@i.TaiKhoan.Ho  @i.TaiKhoan.Ten</label>
 
                             </th>
-                            <th style="background-color:#E6E6E6;border:3px solid white">
+                            <th>
                                 @if (i.NgayNop != null)
                                 {
                                     <label>@i.NgayNop.Value.ToString(string.Format("HH:mm:ss dd/MM/yyyy"))</label>
@@ -120,14 +117,14 @@
 
 
                             </th>
-                            <th style="background-color:#E6E6E6;border:3px solid white">
+                            <th>
                                 <label>@i.BaiTap.ThoiGianKetThuc.Value.ToString(string.Format("HH:mm:ss dd/MM/yyyy"))</label>
 
                             </th>
-                            <th style="background-color:#E6E6E6;border:3px solid white">
+                            <th>
                                 <label>@i.Diem</label>
                             </th>
-                            <th style="background-color:#E6E6E6;border:3px solid white">
+                            <th>
 
                                 @{
                                     if (i.NgayNop == null)
@@ -148,7 +145,7 @@
                                 }
 
                             </th>
-                            <th style="background-color:#E6E6E6;border:3px solid white">
+                            <th>
                                 <a href="~/Class/ShowInforTN/?ten=@i.NguoiNop&ma=@i.MaBaiNop" class="glyphicon glyphicon-edit"></a>
                             </th>
 
@@ -159,43 +156,46 @@
         }
         @if (baituluan != null)
         {
-            <button onclick="buttontoview(`showcauhoituluan/@baituluan[0].MaBaiTap`)" type="button" class="btn btn-primary">Xem chi tiết bài tập </button>
-            <button onclick="checkdaovan(@baituluan[0].MaBaiTap)" type="button" class="btn btn-primary">Kiểm Tra Đạo Văn </button>
-            <a href="@ViewBag.excel" class="link-info" style="margin-left:10px;font-size:20px" download>Xuất excel </a>
-            <a href="@ViewBag.pdf" class="link-info" style="margin-left:10px;font-size:20px" download>Xuất PDF </a>
+            <div style="margin-bottom:30px">
 
 
-            <table style="margin-top:10px;width:100%" class="table">
+                <button onclick="buttontoview(`showcauhoituluan/@baituluan[0].MaBaiTap`)" type="button" class="btn btn-primary">Xem chi tiết bài tập </button>
+                <button onclick="checkdaovan(@baituluan[0].MaBaiTap)" type="button" class="btn btn-primary">Kiểm Tra Đạo Văn </button>
+                <a href="@ViewBag.excel" class="link-info" style="margin-left:10px;font-size:20px" download>Xuất excel </a>
+                <a href="@ViewBag.pdf" class="link-info" style="margin-left:10px;font-size:20px" download>Xuất PDF </a>
+            </div>
 
-                <thead>
-                    <tr class="heade" role="row">
+            <table style="margin-top:10px;width:100%" class="table table-hover table_id">
+
+                <thead class="table-primary">
+                    <tr  role="row" class="bg-primary" >
 
 
 
 
 
-                        <th>
+                        <th style="border:1px solid white">
                             <label></label>
 
-                        <th>
+                        <th style="border:1px solid white">
                             <label>Tên</label>
                         </th>
-                        <th>
+                        <th style="border:1px solid white">
                             <label>Ngày Nộp</label>
                         </th>
-                        <th>
+                        <th style="border:1px solid white">
                             <label>Ngày kết thúc</label>
                         </th>
-                        <th>
+                        <th style="border:1px solid white">
                             <label>Điểm</label>
                         </th>
-                        <th>
+                        <th style="border:1px solid white">
                             <label>Trạng Thái</label>
                         </th>
-                        <th>
+                        <th style="border:1px solid white">
                             <label>Đạo Văn</label>
                         </th>
-                        <th></th>
+                        <th style="border:1px solid white"></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -211,30 +211,30 @@
 
 
 
-                            <th style="background-color:#E6E6E6;border:3px solid white">
+                            <th>
                                 <img src=@i.TaiKhoan.HinhAnh width="40" height="40" style="border-radius:5px;" />
 
                             </th>
-                            <th style="background-color:#E6E6E6;border:3px solid white">
+                            <th>
                                 <label>@i.TaiKhoan.Ho  @i.TaiKhoan.Ten</label>
 
                             </th>
-                            <th style="background-color:#E6E6E6;border:3px solid white">
+                            <th>
                                 @if (i.NgayNop != null)
                                 {
                                     <label>@i.NgayNop.Value.ToString(string.Format("HH:mm:ss dd/MM/yyyy"))</label>
                                 }
 
                             </th>
-                            <th style="background-color:#E6E6E6;border:3px solid white">
+                            <th>
                                 <label>@i.BaiTap.ThoiGianKetThuc.Value.ToString(string.Format("HH:mm:ss dd/MM/yyyy"))</label>
 
                             </th>
-                            <th style="background-color:#E6E6E6;border:3px solid white">
+                            <th>
                                 <label>@i.Diem</label>
 
                             </th>
-                            <th style="background-color:#E6E6E6;border:3px solid white">
+                            <th>
 
                                 @{
                                     if (i.NgayNop == null)
@@ -255,22 +255,27 @@
                                 }
 
                             </th>
-                            <th style="background-color:#E6E6E6;border:3px solid white">
-                                @{
-                                    var dbfile = i.TTBaiTapTLs.Where(x => x.MaBaiNop.Equals(i.MaBaiNop)).ToList();
-                                    foreach (var ifile in dbfile)
-                                    {
-                                        var dv = ifile.Plagiarism1.Where(x => x.Mafile.Equals(ifile.Ma)).OrderBy(y => y.Percents).ToList();
-                                        foreach (var daovan in dv)
-                                        {
-                                            <label>@String.Format("{0:0.00}", @daovan.Percents)</label>
-                                            break;
-                                        }
-                                    }
+                            <th>
+                                <a href="~/Class/kiemtradaovan/?ma=@i.MaBaiNop">
 
-                                }
+
+
+                                    @{
+                                        var dbfile = i.TTBaiTapTLs.Where(x => x.MaBaiNop.Equals(i.MaBaiNop)).ToList();
+                                        foreach (var ifile in dbfile)
+                                        {
+                                            var dv = ifile.Plagiarism1.Where(x => x.Mafile.Equals(ifile.Ma)).OrderBy(y => y.Percents).ToList();
+                                            foreach (var daovan in dv)
+                                            {
+                                                <label>@String.Format("{0:0.00}", @daovan.Percents)</label>
+                                                break;
+                                            }
+                                        }
+
+                                    }
+                                </a>
                             </th>
-                            <th style="background-color:#E6E6E6;border:3px solid white">
+                            <th>
                                 <a href="~/Class/ShowInforTL/?ten=@i.NguoiNop&ma=@i.MaBaiNop" class="glyphicon glyphicon-edit"></a>
                             </th>
                         </tr>
@@ -282,7 +287,7 @@
 
     </div>
 
-    
+
 
 </body>
 

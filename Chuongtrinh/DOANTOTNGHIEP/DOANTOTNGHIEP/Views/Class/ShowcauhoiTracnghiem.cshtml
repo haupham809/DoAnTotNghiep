@@ -25,30 +25,16 @@
             border-radius: 20px
         }
 
-        .filebaitap {
-            border-radius: 20px;
-            background-image: linear-gradient(to right,#FF00BF,#D8D8D8);
-            padding: 10px
-        }
+
 
         .dangTN {
-            background-image: linear-gradient(to right,#0404B4,#A901DB);
-            padding: 5px;
-            padding-left: 15px;
-            padding-right: 15px;
-            color: white;
-            border-radius: 20px;
-            margin-right: 2%
+            margin: 20px;
+            margin-right: 30px !important;
         }
 
         .save {
-            background-image: linear-gradient(to right,#0404B4,#A901DB);
-            padding: 5px;
-            padding-left: 15px;
-            padding-right: 15px;
-            color: white;
-            border-radius: 20px;
-            margin-right: 2%
+            margin: 20px;
+      
         }
 
         .huySuaBaitap {
@@ -98,20 +84,24 @@
 
         #hideSuaBaiTap {
             width: 100%;
-            border: 1px solid black;
+            box-shadow: 10px 5px 5px rgb(0 0 0 / 20%);
+            background: white;
             border-radius: 10px;
             padding: 20px;
             margin-bottom: 10px;
             display: none;
+            margin-top: 10px;
         }
 
         #addcauhoi {
             width: 100%;
-            border: 1px solid black;
+            margin-top: 10px;
             border-radius: 10px;
             padding: 20px;
             margin-bottom: 10px;
             display: none;
+            box-shadow: 10px 5px 5px rgb(0 0 0 / 20%);
+            background: white;
         }
 
         #baitap {
@@ -130,24 +120,27 @@
 
         .noidung {
             width: 100%;
-            border: 1px solid #000000;
             border-radius: 10px;
             margin-top: 10px;
-            padding: 10px;
+            padding: 30px;
+            box-shadow: 10px 5px 5px rgb(0 0 0 / 20%);
+            background: white;
         }
 
         #cauhoi {
             padding: 10px;
-            margin-left: 20px;
-            border: 0.5px solid black;
             border-radius: 5px;
-            margin-bottom: 10px
+            margin-bottom: 10px;
+            box-shadow: 10px 5px 5px rgb(0 0 0 / 10%);
+            background:white;
+
         }
 
         .danhsachcauhoi {
             padding: 30px;
             margin: auto;
-            border: 0.5px solid black;
+            box-shadow: 10px 5px 5px rgb(0 0 0 / 20%);
+            background: white;
             display: none;
             background-color: white;
             position: relative;
@@ -343,7 +336,9 @@
                 <input type="radio" name="da" value="D" />
                 <label style="color:red;margin-left:10px;">D</label>
                 <textarea placeholder="Nhập đáp án" required name="D" class="addch"></textarea><br />
-                <button class="navbar-right dangTN">ADD</button>
+                <button class="btn btn-primary navbar-right  dangTN" >ADD</button>
+                <br />
+                <br />
             }
             <button class="huySuaBaitap glyphicon glyphicon-menu-up" id=ansuabaitap></button>
         }
@@ -352,15 +347,23 @@
     <div class="hideSuaBaitap" id="hideSuaBaiTap" style="display:none">
         @using (Html.BeginForm("Editbaitaptn", "Class", new { id = Model[0].MaBaiTap }, FormMethod.Post, new { enctype = "multipart/form-data" }))
         {
-            <input type="text" name="Chude" placeholder="Chủ đề" class="chudeTL" required value=@Model[0].BaiTap.ChuDe />
-            <textarea name="noidungbt" placeholder="Nội dung bài tập" class="noidungTL" required>@Model[0].BaiTap.Thongtin</textarea>
-            <label>Ngày kết thúc</label><input type="datetime-local" name="thoigiankethuc" class="thoigianTL" required style="margin-left:10px" value="@Model[0].BaiTap.ThoiGianKetThuc.Value.ToString(string.Format("yyyy-MM-ddThh:mm"))" />
-            <button class="navbar-right dangTN">Edit</button>
+            <input type="text" name="Chude" placeholder="Chủ đề" class="form-control" style="margin-bottom: 10px;" required value='@Model[0].BaiTap.ChuDe' />
+            <textarea name="noidungbt" placeholder="Nội dung bài tập" class="form-control noidungTL" required>@Model[0].BaiTap.Thongtin</textarea>
+            
+            <ul class="nav nav-tabs">
+                <li class="nav-item">
+                    <label>Hạn làm :</label>
+                </li>
+                <li class="nav-item">
+                    <input type="datetime-local" name="thoigiankethuc" class="thoigianTL form-control" required style="margin-left:10px" value="@Model[0].BaiTap.ThoiGianKetThuc.Value.ToString(string.Format("yyyy-MM-ddThh:mm"))" />
+                </li>
+            </ul>
+            <button class="btn btn-primary navbar-right dangTN">Edit</button>
             <br />
             <br />
         }
 
-        <button class="huySuaBaitap glyphicon glyphicon-menu-up" id=ansuabaitap></button>
+        <button class="huySuaBaitap glyphicon glyphicon-menu-up" id="ansuabaitap" ></button>
     </div>
     @if (Model != null)
     {
@@ -409,7 +412,7 @@
                     }
 
                     <br />
-                    <button class="save">Save</button>
+                    <button class="btn btn-primary save">Save</button>
 
                 }
                 <button class="huyeditcauhoi glyphicon glyphicon-menu-up" id="@i.MaCauHoi"></button>

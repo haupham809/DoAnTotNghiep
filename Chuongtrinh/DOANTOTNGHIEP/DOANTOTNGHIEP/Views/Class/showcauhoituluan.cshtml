@@ -82,9 +82,11 @@
 
         #hideSuaBaiTap {
             width: 100%;
-            border: 1px solid black;
+            box-shadow: 10px 5px 5px rgb(0 0 0 / 20%);
+            background: white;
             border-radius: 10px;
             padding: 20px;
+            margin-top: 10px;
             margin-bottom: 10px;
             display: none;
         }
@@ -163,7 +165,7 @@
 </head>
 
 <body class="container" style="margin-top:20px">
-    <div style="width:100%;border:1px solid #000000; border-radius:10px; margin-top:10px; padding:10px;" class="baitap">
+    <div style="width: 100%; box-shadow: 10px 5px 5px rgb(0 0 0 / 20%); background: white; border-radius: 10px; margin-top: 10px; padding: 10px;" class="baitap">
         <table style="margin-bottom:20px;">
             <tr>
                 <th><img src=@Model.LopHoc.TaiKhoan.HinhAnh width="30" height="30" style="border-radius:45px;" /></th>
@@ -204,12 +206,21 @@
         <button class="glyphicon glyphicon-edit navbar-right editcauhoi" style="margin-right:2%;margin-bottom:20px;border:0px;background-color:transparent"></button>
         <br />
     </div>
-    <div class="hideSuaBaitap" id="hideSuaBaiTap">
+    <div class="hideSuaBaitap" id="hideSuaBaiTap" >
         @using (Html.BeginForm("Editbaitaptl", "Class", new { id = Model.MaBaiTap }, FormMethod.Post, new { enctype = "multipart/form-data" }))
         {
-            <input type="text" name="Chude" placeholder="Chủ đề" class="chudeTN" required value=@Model.ChuDe />
-            <textarea name="noidungbt" placeholder="Nội dung bài tập" class="noidungTN" required>@Model.Thongtin</textarea>
-            <label>Ngày kết thúc</label><input type="datetime-local" name="thoigiankethuc" class="thoigianTL" required style="margin-left:10px"   value="@Model.ThoiGianKetThuc.Value.ToString(string.Format("yyyy-MM-ddThh:mm"))" />
+            <input type="text" name="Chude" placeholder="Chủ đề" class="form-control" style="margin-bottom: 10px;" required value='@Model.ChuDe' />
+            <textarea name="noidungbt" placeholder="Nội dung bài tập" class="form-control" required>@Model.Thongtin</textarea>
+            
+
+            <ul class="nav nav-tabs">
+                <li class="nav-item">
+                    <label>Hạn nộp :</label>
+                </li>
+                <li class="nav-item">
+                    <input type="datetime-local" name="thoigiankethuc" class="form-control" required style="margin-left:10px" value="@Model.ThoiGianKetThuc.Value.ToString(string.Format("yyyy-MM-ddThh:mm"))" />
+                </li>
+            </ul>
             {
                 foreach (var filetb in Model.FileBTTLs)
                 {

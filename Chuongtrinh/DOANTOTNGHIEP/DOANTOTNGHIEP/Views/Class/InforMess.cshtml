@@ -20,7 +20,8 @@
         }
 
     #mess {
-        background-color: whitesmoke
+        border-radius: 10px;
+        padding:10px
     }
 
     .messthanhvien {
@@ -29,6 +30,7 @@
         border: 0px solid #000000;
         background-color: transparent;
         padding: 5px
+
     }
 
     #noidung {
@@ -77,15 +79,16 @@
     #btngui {
         margin-top: 30%;
         font-size: 40px;
-        border: 0px solid black;
         background-color: transparent;
-        text-align: center
+        text-align: center;
+        border: 0
     }
 
     .nutgui {
         float: right;
         height: 100%;
-        text-align: center
+        text-align: center;
+        
     }
 
     .noidungtinnhan {
@@ -116,8 +119,9 @@
         $('#noidung').scrollTop($('#noidung')[0].scrollHeight);
 
         load1();
-
-        $("#@Model.TenDangNhap").css("color", "white");
+        @*$("#thanhvien").css("background-color", "#F0F0F0");
+        $(".thanhvien_@Model.TenDangNhap").css("background-color", "white");
+*@
         $("#btngui").click(function () {
             var nn ="@Model.TenDangNhap";
             var tn = $("#tinnhan").val();
@@ -136,11 +140,11 @@
 
         });
 
-        
+
 
     });
 
-    
+
     $(function () {
 
         loadClient();
@@ -225,11 +229,11 @@
                             $("#btngui").trigger('click');
 
                         }
-                        
-                        
-                    } 
-                    
-                    
+
+
+                    }
+
+
                 }
             },
             toolbar: [
@@ -275,7 +279,9 @@
 
     <div class="messthanhvien" style="padding:10px">
         <img src=@Model.HinhAnh width="30" height="30" style="border-radius:45px;"><label class="tennguoinhan">  @Model.Ho  @Model.Ten</label>
+        <hr />
     </div>
+    
     <div id="noidung">
         @{
             int zz = 0;
@@ -315,7 +321,7 @@
             <textarea id="tinnhan" required></textarea>
         </div>
         <div class="nutgui" style="text-align:center">
-            <button class="fa fa-telegram" id="btngui"></button>
+            <button class="fa fa-envelope" id="btngui"></button>
         </div>
 
 

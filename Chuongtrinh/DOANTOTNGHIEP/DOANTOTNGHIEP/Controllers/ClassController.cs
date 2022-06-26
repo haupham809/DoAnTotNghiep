@@ -735,8 +735,7 @@ namespace DOANTOTNGHIEP.Controllers
             var bt = db.BaiTapTLs.SingleOrDefault(x => x.MaBaiNop.ToString().Equals(ma));
             bt.Diem = baitap.Diem;
             db.SaveChanges();
-            var baitap1 = db.BaiTapTLs.SingleOrDefault(x => x.MaBaiNop.ToString().Equals(ma) && x.NguoiNop.Equals(ten));
-            return View("ShowInforTL", baitap1);
+            return RedirectToAction("ShowInforTL", new { ten = ten , ma =ma});
         }
 
 
@@ -2442,6 +2441,7 @@ Extension;
 
         }
 
+        
         public float comparetwofilepdf(string file1, string file2)
         {
             float percent = 0;
@@ -2593,7 +2593,35 @@ Extension;
             }
             return noidung;
         }
+        public ActionResult kiemtradaovan(string ma)
+        {
+            DB db = new DB();
+            var dbfile = db.TTBaiTapTLs.Where(x => x.MaBaiNop.ToString().Equals(ma)).ToList();
+            List<Kiemtradaovan> kiemtra = new List<Kiemtradaovan>();
+            foreach (var ifile in dbfile)
+            {
+                var dv = ifile.Plagiarism1.Where(x => x.Mafile.Equals(ifile.Ma)).OrderBy(y => y.Percents).ToList();
+               
+                foreach (var daovan in dv)
+                {
+                    if(daovan.Comparisonfile == null)
+                    {
+                        break;
+                    }
+                    var dbfile1 = db.TTBaiTapTLs.SingleOrDefault(x => x.Ma.ToString().Equals(daovan.Comparisonfile.ToString()));
+                    Kiemtradaovan kt = new Kiemtradaovan();
+                    kt.Percents = daovan.Percents;
+                    kt.Tailieu1 = ifile;
+                    kt.Tailieu2 = dbfile1;
+                    kiemtra.Add(kt);
 
+
+
+                }
+            }
+            
+            return View(kiemtra);
+        }
     }
 
 }

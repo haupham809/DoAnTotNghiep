@@ -17,118 +17,124 @@
     <script type="text/javascript">
         $(document).ready(function () {
         reset();
-        $('.headdiem').css("color", "black");
-        $('.headdiem').css("background-color", "white");
+            $('.table_id').DataTable({
+                "language": {
+                    "url": "//cdn.datatables.net/plug-ins/1.11.3/i18n/vi.json"
+                }
+            });
         });
-        
-
     </script>
 </head>
 <body>
     <div style="margin:5px;margin-top:20px;">
-        <a href='@ViewBag.excel' class="link-info" style="margin-left:10px;font-size:20px" download>Xuất excel </a>
-        <a href='@ViewBag.pdf' class="link-info" style="margin-left:10px;font-size:20px" download >Xuất PDF </a>   
-        <table style="margin-top:10px;width:100%">
-            <tr style="width:100%;border-bottom:3px solid #000000;position:page;background-color:white">
+        <div style="margin-bottom:30px">
+            <a href='@ViewBag.excel' class="link-info" style="margin-left:10px;font-size:20px" download>Xuất excel </a>
+            <a href='@ViewBag.pdf' class="link-info" style="margin-left:10px;font-size:20px" download>Xuất PDF </a>
+            </div>
+        <table style="margin-top:10px;width:100%" class="table table-hover table_id">
+
+            <thead class="table-primary">
+                <tr role="row" class="bg-primary">
 
 
 
 
 
-                <th style="padding:10px;">
-                    <label>Hình đại diện</label>
+                    <th style="border:1px solid white">
+                        <label>Hình đại diện</label>
 
-                <th style="padding: 10px;">
-                    <label>Họ tên</label>
-                </th>
-                <th style=" padding: 10px;">
-                    <label>Email</label>
-                </th>
-                <th style="padding: 10px;">
-                    <label>Ngày Tham gia</label>
-                </th>
-                <th style="padding: 10px;">
-                    <label>Số lượng bài đã nộp</label>
-                </th>
-                <th style="padding: 10px;">
-                    <label>Số lượng bài trễ</label>
-                </th>
-                <th style=" padding: 10px;">
-                    <label>Số lượng bài chưa nộp</label>
-                </th>
-                <th style=" padding: 10px;">
-                    <label>Số lượng bài đã chấm</label>
-                </th>
-                <th style="padding: 10px;">
-                    <label>Điểm</label>
-                </th>
+                    <th style="border:1px solid white">
+                        <label>Họ tên</label>
+                    </th>
+                    <th style="border:1px solid white">
+                        <label>Email</label>
+                    </th>
+                    <th style="border:1px solid white">
+                        <label>Ngày Tham gia</label>
+                    </th>
+                    <th style="border:1px solid white">
+                        <label>Số lượng bài đã nộp</label>
+                    </th>
+                    <th style="border:1px solid white">
+                        <label>Số lượng bài trễ</label>
+                    </th>
+                    <th style="border:1px solid white">
+                        <label>Số lượng bài chưa nộp</label>
+                    </th>
+                    <th style="border:1px solid white">
+                        <label>Số lượng bài đã chấm</label>
+                    </th>
+                    <th style="border:1px solid white">
+                        <label>Điểm</label>
+                    </th>
 
-            </tr>
-
-            @if (Model != null)
-            {
-                foreach (var i in Model)
+                </tr>
+            </thead>
+            <tbody>
+                @if (Model != null)
                 {
+                    foreach (var i in Model)
+                    {
 
 
-                    <tr>
+                        <tr>
 
 
 
 
 
 
-                        <th style="padding:20px; background-color:#E6E6E6;border:3px solid white">
-                            <a href="~/Class/Infordiem/@i.taikhoan">
-                                <img src=@i.anh width="40" height="40" style="border-radius:5px;" />
-                            </a>
-                        </th>
-                        <th style="padding:20px; background-color:#E6E6E6;border:3px solid white">
-                            <a href="~/Class/Infordiem/@i.taikhoan">
-                                <label>@i.Hoten</label>
-                            </a>
-                        </th>
-                        <th style="padding:20px;background-color:#E6E6E6;border:3px solid white ">
-                            <a href="~/Class/Infordiem/@i.taikhoan">
-                                <label>@i.email</label>
-                            </a>
-                        </th>
-                        <th style="padding:20px; background-color:#E6E6E6;border:3px solid white">
-                            <a href="~/Class/Infordiem/@i.taikhoan">
-                                <label>@i.ngaythamgia.ToString(string.Format("HH:mm:ss dd/MM/yyyy"))</label>
-                            </a>
-                        </th>
-                        <th style="padding:20px;background-color:#E6E6E6;border:3px solid white ">
-                            <a href="~/Class/Infordiem/@i.taikhoan">
-                                <label>@i.soluongbaitap</label>
-                            </a>
-                        </th>
-                        <th style="padding:20px;background-color:#E6E6E6;border:3px solid white ">
-                            <a href="~/Class/Infordiem/@i.taikhoan">
-                                <label>@i.soluongtre</label>
-                            </a>
-                        </th>
-                        <th style="padding:20px;background-color:#E6E6E6;border:3px solid white ">
-                            <a href="~/Class/Infordiem/@i.taikhoan">
-                                <label>@i.soluongchuanop</label>
-                            </a>
-                        </th>
-                        <th style="padding:20px; background-color:#E6E6E6;border:3px solid white">
-                            <a href="~/Class/Infordiem/@i.taikhoan">
-                                <label>@i.soluongbaicodiem</label>
-                            </a>
-                        </th>
-                        <th style="padding:20px;background-color:#E6E6E6;border:3px solid white ">
-                            <a href="~/Class/Infordiem/@i.taikhoan">
-                                <label>@i.diem.ToString()</label>
-                            </a>
-                        </th>
+                            <th style="padding:20px; background-color:#E6E6E6;border:3px solid white">
+                                <a href="~/Class/Infordiem/@i.taikhoan">
+                                    <img src=@i.anh width="40" height="40" style="border-radius:5px;" />
+                                </a>
+                            </th>
+                            <th style="padding:20px; background-color:#E6E6E6;border:3px solid white">
+                                <a href="~/Class/Infordiem/@i.taikhoan">
+                                    <label>@i.Hoten</label>
+                                </a>
+                            </th>
+                            <th style="padding:20px;background-color:#E6E6E6;border:3px solid white ">
+                                <a href="~/Class/Infordiem/@i.taikhoan">
+                                    <label>@i.email</label>
+                                </a>
+                            </th>
+                            <th style="padding:20px; background-color:#E6E6E6;border:3px solid white">
+                                <a href="~/Class/Infordiem/@i.taikhoan">
+                                    <label>@i.ngaythamgia.ToString(string.Format("HH:mm:ss dd/MM/yyyy"))</label>
+                                </a>
+                            </th>
+                            <th style="padding:20px;background-color:#E6E6E6;border:3px solid white ">
+                                <a href="~/Class/Infordiem/@i.taikhoan">
+                                    <label>@i.soluongbaitap</label>
+                                </a>
+                            </th>
+                            <th style="padding:20px;background-color:#E6E6E6;border:3px solid white ">
+                                <a href="~/Class/Infordiem/@i.taikhoan">
+                                    <label>@i.soluongtre</label>
+                                </a>
+                            </th>
+                            <th style="padding:20px;background-color:#E6E6E6;border:3px solid white ">
+                                <a href="~/Class/Infordiem/@i.taikhoan">
+                                    <label>@i.soluongchuanop</label>
+                                </a>
+                            </th>
+                            <th style="padding:20px; background-color:#E6E6E6;border:3px solid white">
+                                <a href="~/Class/Infordiem/@i.taikhoan">
+                                    <label>@i.soluongbaicodiem</label>
+                                </a>
+                            </th>
+                            <th style="padding:20px;background-color:#E6E6E6;border:3px solid white ">
+                                <a href="~/Class/Infordiem/@i.taikhoan">
+                                    <label>@i.diem.ToString()</label>
+                                </a>
+                            </th>
 
-                    </tr>
+                        </tr>
+                    }
                 }
-            }
-
+            </tbody>
         </table>
-    </div>
+        </div>
 </body>
 </html>

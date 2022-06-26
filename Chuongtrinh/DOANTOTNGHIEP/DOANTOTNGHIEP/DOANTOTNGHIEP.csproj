@@ -282,6 +282,7 @@
     <Compile Include="Models\Diem.cs" />
     <Compile Include="Models\document.cs" />
     <Compile Include="Models\FileBTTL.cs" />
+    <Compile Include="Models\filekiemtra.cs" />
     <Compile Include="Models\FileTB.cs" />
     <Compile Include="Models\GetData\GetAccount.cs" />
     <Compile Include="Models\GetData\GetClass.cs" />
@@ -363,6 +364,7 @@
     <Content Include="Content\font-awesome.css" />
     <Content Include="Content\font-awesome.min.css" />
     <Content Include="Content\image\Icon\b7671b668a78e0208b9c2d1c36802ce8.gif" />
+    <Content Include="Content\image\Icon\class.png" />
     <Content Include="Content\image\Icon\classroom-icon-png-8.png" />
     <Content Include="Content\image\Icon\classroom-icon-png-81.jpg" />
     <Content Include="Content\image\Icon\empty_states_students.png" />
@@ -1437,6 +1439,7 @@
     <Content Include="Scripts\umd\popper.js.flow" />
     <Content Include="Scripts\umd\popper.js.map" />
     <Content Include="Scripts\umd\popper.min.js.map" />
+    <Content Include="Views\Class\kiemtradaovan.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
