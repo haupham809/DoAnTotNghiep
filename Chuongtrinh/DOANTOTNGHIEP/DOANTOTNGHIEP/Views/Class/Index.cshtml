@@ -225,7 +225,7 @@
     }
 
     $(function () {
-        var thongbao = $.connection.thongbao;
+        var thongbao = $.connection.chat;
         loadClient();
 
 
@@ -241,7 +241,7 @@
     });
 
         function loadClient() {
-            var thongbao = $.connection.thongbao;
+            var thongbao = $.connection.chat;
             thongbao.client.thongbao = function (malop, nguoitao) {
                 if ("@lop.MaLop" == malop && nguoitao != "@nguoitao") {
                     $(".thongbaomoi").css("display", "block");

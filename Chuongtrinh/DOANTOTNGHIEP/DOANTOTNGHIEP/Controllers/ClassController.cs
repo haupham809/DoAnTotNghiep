@@ -44,6 +44,14 @@ namespace DOANTOTNGHIEP.Controllers
 
             }
         }
+        public string getsession()
+        {
+            //checkcookieuser();
+            var user = Session["user"] as DOANTOTNGHIEP.Models.TaiKhoan;
+            return user.TenDangNhap;
+
+        }
+
         // GET: Class
         //hien thong báo 
         public ActionResult Index(string id)

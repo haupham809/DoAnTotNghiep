@@ -241,6 +241,12 @@
     <Reference Include="Twilio, Version=5.75.2.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Twilio.5.75.2\lib\net451\Twilio.dll</HintPath>
     </Reference>
+    <Reference Include="WebDriver, Version=4.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Selenium.WebDriver.4.3.0\lib\net47\WebDriver.dll</HintPath>
+    </Reference>
+    <Reference Include="WebDriver.Support, Version=4.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Selenium.Support.4.3.0\lib\net47\WebDriver.Support.dll</HintPath>
+    </Reference>
     <Reference Include="WebGrease">
       <Private>True</Private>
       <HintPath>..\packages\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
@@ -303,10 +309,8 @@
     <Compile Include="Models\TTBaiTapTL.cs" />
     <Compile Include="Models\TTBaiTapTN.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Signalr\Baitap.cs" />
-    <Compile Include="Signalr\Message.cs" />
-    <Compile Include="Signalr\MyHub1.cs" />
-    <Compile Include="Signalr\Thongbao.cs" />
+    <Compile Include="Signalr\Chat.cs" />
+    <Compile Include="Signalr\ConnectionMapping.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>

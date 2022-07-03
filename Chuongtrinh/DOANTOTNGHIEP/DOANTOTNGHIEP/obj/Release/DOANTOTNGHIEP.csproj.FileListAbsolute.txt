@@ -207,7 +207,6 @@ C:\Users\HAU\Desktop\DoAnTotNghiep\Chuongtrinh\DOANTOTNGHIEP\DOANTOTNGHIEP\bin\S
 C:\Users\HAU\Desktop\DoAnTotNghiep\Chuongtrinh\DOANTOTNGHIEP\DOANTOTNGHIEP\bin\Spire.Doc.dll
 C:\Users\HAU\Desktop\DoAnTotNghiep\Chuongtrinh\DOANTOTNGHIEP\DOANTOTNGHIEP\bin\Spire.DocViewer.Forms.dll
 C:\Users\HAU\Desktop\DoAnTotNghiep\Chuongtrinh\DOANTOTNGHIEP\DOANTOTNGHIEP\bin\Spire.Email.dll
-C:\Users\HAU\Desktop\DoAnTotNghiep\Chuongtrinh\DOANTOTNGHIEP\DOANTOTNGHIEP\bin\Spire.License.dll
 C:\Users\HAU\Desktop\DoAnTotNghiep\Chuongtrinh\DOANTOTNGHIEP\DOANTOTNGHIEP\bin\Spire.OfficeViewer.Forms.dll
 C:\Users\HAU\Desktop\DoAnTotNghiep\Chuongtrinh\DOANTOTNGHIEP\DOANTOTNGHIEP\bin\Spire.Pdf.dll
 C:\Users\HAU\Desktop\DoAnTotNghiep\Chuongtrinh\DOANTOTNGHIEP\DOANTOTNGHIEP\bin\Spire.PdfViewer.Asp.dll
@@ -242,7 +241,6 @@ C:\Users\HAU\Desktop\DoAnTotNghiep\Chuongtrinh\DOANTOTNGHIEP\DOANTOTNGHIEP\bin\S
 C:\Users\HAU\Desktop\DoAnTotNghiep\Chuongtrinh\DOANTOTNGHIEP\DOANTOTNGHIEP\bin\Spire.Doc.xml
 C:\Users\HAU\Desktop\DoAnTotNghiep\Chuongtrinh\DOANTOTNGHIEP\DOANTOTNGHIEP\bin\Spire.DocViewer.Forms.xml
 C:\Users\HAU\Desktop\DoAnTotNghiep\Chuongtrinh\DOANTOTNGHIEP\DOANTOTNGHIEP\bin\Spire.Email.xml
-C:\Users\HAU\Desktop\DoAnTotNghiep\Chuongtrinh\DOANTOTNGHIEP\DOANTOTNGHIEP\bin\Spire.License.xml
 C:\Users\HAU\Desktop\DoAnTotNghiep\Chuongtrinh\DOANTOTNGHIEP\DOANTOTNGHIEP\bin\Spire.OfficeViewer.Forms.xml
 C:\Users\HAU\Desktop\DoAnTotNghiep\Chuongtrinh\DOANTOTNGHIEP\DOANTOTNGHIEP\bin\Spire.Pdf.xml
 C:\Users\HAU\Desktop\DoAnTotNghiep\Chuongtrinh\DOANTOTNGHIEP\DOANTOTNGHIEP\bin\Spire.PdfViewer.Asp.xml
@@ -434,3 +432,41 @@ C:\Users\TUF FX 506 I710870H\Desktop\DoAnTotNghiep\Chuongtrinh\DOANTOTNGHIEP\DOA
 C:\Users\TUF FX 506 I710870H\Desktop\DoAnTotNghiep\Chuongtrinh\DOANTOTNGHIEP\DOANTOTNGHIEP\obj\Release\DOANTOTNGHIEP.csproj.CopyComplete
 C:\Users\TUF FX 506 I710870H\Desktop\DoAnTotNghiep\Chuongtrinh\DOANTOTNGHIEP\DOANTOTNGHIEP\obj\Release\DOANTOTNGHIEP.dll
 C:\Users\TUF FX 506 I710870H\Desktop\DoAnTotNghiep\Chuongtrinh\DOANTOTNGHIEP\DOANTOTNGHIEP\obj\Release\DOANTOTNGHIEP.pdb
+C:\Users\HAU\Desktop\DoAnTotNghiep\Chuongtrinh\DOANTOTNGHIEP\DOANTOTNGHIEP\bin\Microsoft.AspNetCore.Http.Abstractions.dll
+C:\Users\HAU\Desktop\DoAnTotNghiep\Chuongtrinh\DOANTOTNGHIEP\DOANTOTNGHIEP\bin\Microsoft.AspNetCore.Http.dll
+C:\Users\HAU\Desktop\DoAnTotNghiep\Chuongtrinh\DOANTOTNGHIEP\DOANTOTNGHIEP\bin\Microsoft.AspNetCore.Http.Features.dll
+C:\Users\HAU\Desktop\DoAnTotNghiep\Chuongtrinh\DOANTOTNGHIEP\DOANTOTNGHIEP\bin\Microsoft.AspNetCore.WebUtilities.dll
+C:\Users\HAU\Desktop\DoAnTotNghiep\Chuongtrinh\DOANTOTNGHIEP\DOANTOTNGHIEP\bin\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+C:\Users\HAU\Desktop\DoAnTotNghiep\Chuongtrinh\DOANTOTNGHIEP\DOANTOTNGHIEP\bin\Microsoft.Extensions.ObjectPool.dll
+C:\Users\HAU\Desktop\DoAnTotNghiep\Chuongtrinh\DOANTOTNGHIEP\DOANTOTNGHIEP\bin\Microsoft.Extensions.Options.dll
+C:\Users\HAU\Desktop\DoAnTotNghiep\Chuongtrinh\DOANTOTNGHIEP\DOANTOTNGHIEP\bin\Microsoft.Extensions.Primitives.dll
+C:\Users\HAU\Desktop\DoAnTotNghiep\Chuongtrinh\DOANTOTNGHIEP\DOANTOTNGHIEP\bin\Microsoft.IdentityModel.Logging.dll
+C:\Users\HAU\Desktop\DoAnTotNghiep\Chuongtrinh\DOANTOTNGHIEP\DOANTOTNGHIEP\bin\Microsoft.IdentityModel.Tokens.dll
+C:\Users\HAU\Desktop\DoAnTotNghiep\Chuongtrinh\DOANTOTNGHIEP\DOANTOTNGHIEP\bin\Microsoft.Net.Http.Headers.dll
+C:\Users\HAU\Desktop\DoAnTotNghiep\Chuongtrinh\DOANTOTNGHIEP\DOANTOTNGHIEP\bin\System.Buffers.dll
+C:\Users\HAU\Desktop\DoAnTotNghiep\Chuongtrinh\DOANTOTNGHIEP\DOANTOTNGHIEP\bin\System.ComponentModel.Annotations.dll
+C:\Users\HAU\Desktop\DoAnTotNghiep\Chuongtrinh\DOANTOTNGHIEP\DOANTOTNGHIEP\bin\System.IdentityModel.Tokens.Jwt.dll
+C:\Users\HAU\Desktop\DoAnTotNghiep\Chuongtrinh\DOANTOTNGHIEP\DOANTOTNGHIEP\bin\System.Memory.dll
+C:\Users\HAU\Desktop\DoAnTotNghiep\Chuongtrinh\DOANTOTNGHIEP\DOANTOTNGHIEP\bin\System.Numerics.Vectors.dll
+C:\Users\HAU\Desktop\DoAnTotNghiep\Chuongtrinh\DOANTOTNGHIEP\DOANTOTNGHIEP\bin\System.Runtime.CompilerServices.Unsafe.dll
+C:\Users\HAU\Desktop\DoAnTotNghiep\Chuongtrinh\DOANTOTNGHIEP\DOANTOTNGHIEP\bin\System.Text.Encodings.Web.dll
+C:\Users\HAU\Desktop\DoAnTotNghiep\Chuongtrinh\DOANTOTNGHIEP\DOANTOTNGHIEP\bin\Twilio.dll
+C:\Users\HAU\Desktop\DoAnTotNghiep\Chuongtrinh\DOANTOTNGHIEP\DOANTOTNGHIEP\bin\WebDriver.dll
+C:\Users\HAU\Desktop\DoAnTotNghiep\Chuongtrinh\DOANTOTNGHIEP\DOANTOTNGHIEP\bin\WebDriver.Support.dll
+C:\Users\HAU\Desktop\DoAnTotNghiep\Chuongtrinh\DOANTOTNGHIEP\DOANTOTNGHIEP\bin\Microsoft.AspNetCore.Http.xml
+C:\Users\HAU\Desktop\DoAnTotNghiep\Chuongtrinh\DOANTOTNGHIEP\DOANTOTNGHIEP\bin\Microsoft.AspNetCore.Http.Abstractions.xml
+C:\Users\HAU\Desktop\DoAnTotNghiep\Chuongtrinh\DOANTOTNGHIEP\DOANTOTNGHIEP\bin\Microsoft.AspNetCore.Http.Features.xml
+C:\Users\HAU\Desktop\DoAnTotNghiep\Chuongtrinh\DOANTOTNGHIEP\DOANTOTNGHIEP\bin\Microsoft.AspNetCore.WebUtilities.xml
+C:\Users\HAU\Desktop\DoAnTotNghiep\Chuongtrinh\DOANTOTNGHIEP\DOANTOTNGHIEP\bin\Microsoft.Extensions.DependencyInjection.Abstractions.xml
+C:\Users\HAU\Desktop\DoAnTotNghiep\Chuongtrinh\DOANTOTNGHIEP\DOANTOTNGHIEP\bin\Microsoft.Extensions.ObjectPool.xml
+C:\Users\HAU\Desktop\DoAnTotNghiep\Chuongtrinh\DOANTOTNGHIEP\DOANTOTNGHIEP\bin\Microsoft.Extensions.Options.xml
+C:\Users\HAU\Desktop\DoAnTotNghiep\Chuongtrinh\DOANTOTNGHIEP\DOANTOTNGHIEP\bin\Microsoft.Extensions.Primitives.xml
+C:\Users\HAU\Desktop\DoAnTotNghiep\Chuongtrinh\DOANTOTNGHIEP\DOANTOTNGHIEP\bin\Microsoft.IdentityModel.Tokens.xml
+C:\Users\HAU\Desktop\DoAnTotNghiep\Chuongtrinh\DOANTOTNGHIEP\DOANTOTNGHIEP\bin\Microsoft.Net.Http.Headers.xml
+C:\Users\HAU\Desktop\DoAnTotNghiep\Chuongtrinh\DOANTOTNGHIEP\DOANTOTNGHIEP\bin\System.Buffers.xml
+C:\Users\HAU\Desktop\DoAnTotNghiep\Chuongtrinh\DOANTOTNGHIEP\DOANTOTNGHIEP\bin\System.IdentityModel.Tokens.Jwt.xml
+C:\Users\HAU\Desktop\DoAnTotNghiep\Chuongtrinh\DOANTOTNGHIEP\DOANTOTNGHIEP\bin\System.Memory.xml
+C:\Users\HAU\Desktop\DoAnTotNghiep\Chuongtrinh\DOANTOTNGHIEP\DOANTOTNGHIEP\bin\System.Numerics.Vectors.xml
+C:\Users\HAU\Desktop\DoAnTotNghiep\Chuongtrinh\DOANTOTNGHIEP\DOANTOTNGHIEP\bin\System.Runtime.CompilerServices.Unsafe.xml
+C:\Users\HAU\Desktop\DoAnTotNghiep\Chuongtrinh\DOANTOTNGHIEP\DOANTOTNGHIEP\bin\System.Text.Encodings.Web.xml
+C:\Users\HAU\Desktop\DoAnTotNghiep\Chuongtrinh\DOANTOTNGHIEP\DOANTOTNGHIEP\bin\Twilio.xml

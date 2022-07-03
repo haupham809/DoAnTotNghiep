@@ -101,27 +101,7 @@
     }
     $(function () {
 
-        loadCl1()
-             $.connection.hub.start().done(function () {
-                console.log("ket noi thanh cong");
-                 var hubmess = $.connection.chat;
-
-                console.log(hubmess.connection.id);
-                $.ajax({
-                    url: '/Class/addtoken', type: 'post',
-                    data: {
-                        token: hubmess.connection.id,
-                        user: "@nguoitao",
-                    }
-                });
-
-
-            });
-          });
-
-    function loadCl1() {
-
-        var hubmess1 = $.connection.chat;
+         var hubmess1 = $.connection.chat;
         var tenlo = "";
         hubmess1.client.classname = function (tenlop) {
             tenlo = tenlop;
@@ -151,8 +131,10 @@
 
         }
 
-    }
 
+          });
+
+ 
 
 </script>
 <body style="background-color: #F0F0F0 ">

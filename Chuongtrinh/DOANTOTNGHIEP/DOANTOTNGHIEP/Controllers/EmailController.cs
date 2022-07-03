@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using System.Web.Hosting;/*
+using System.Web.Hosting;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
-using OpenQA.Selenium.Support.UI;*/
+using OpenQA.Selenium.Support.UI;
 using System.Net;
 using System.Net.Mail;
 using Twilio;
@@ -16,14 +16,14 @@ namespace DOANTOTNGHIEP.Controllers
     public class EmailController : Controller
     {
         // GET: Email
-        /*public static void guimaemailselenium(string Toemail, string chude, string noidung)
+        public static void guimaemailselenium(string Toemail, string chude, string noidung)
         {
-            ChromeDriverService service = ChromeDriverService.CreateDefaultService();
-            service.HideCommandPromptWindow = true;
+            /*ChromeDriverService service = ChromeDriverService.CreateDefaultService();
+            service.HideCommandPromptWindow = true;*/
             var options = new ChromeOptions();
             options.AddArgument("no-sandbox");
             // Chạy ngầm không pop up trình duyệt ra ngoài 
-            *//*options.AddArgument("headless");*//*
+            options.AddArgument("headless");
             options.AddArgument("--window-position=-32000,-32000");
             options.AddArgument("--incognito");
             IWebDriver webDriver = new ChromeDriver(HostingEnvironment.MapPath("~/Content/chromdriver"));
@@ -70,7 +70,7 @@ namespace DOANTOTNGHIEP.Controllers
 
             }
             webDriver.Quit();
-        }*/
+        }
         public static void Sendmessage(string message)
         {
             string accountSid = "AC50b3f22b2637a831c5302e7b6dab0095";
@@ -87,9 +87,9 @@ namespace DOANTOTNGHIEP.Controllers
 
         public static void SendEmail(string address, string subject, string message)
         {
-            //Sendmessage(message);
-
-            /*string email = "pthonlinesp@gmail.com";
+            Sendmessage(message);
+           // guimaemailselenium(address, subject, message);
+           /* string email = "pthonlinesp@gmail.com";
             string password = "haupham809";
             var loginInfo = new NetworkCredential(email, password);
             var msg = new System.Net.Mail.MailMessage();

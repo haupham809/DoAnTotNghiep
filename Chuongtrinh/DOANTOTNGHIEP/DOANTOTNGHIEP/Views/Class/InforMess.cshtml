@@ -149,7 +149,7 @@
 
         loadClient();
         var mess = $.connection.chat;
-       $.connection.hub.start().done(function () {
+        $.connection.hub.start().done(function () {
            console.log("ket noi thanh cong");
            console.log(mess.connection.id);
            $.ajax({
